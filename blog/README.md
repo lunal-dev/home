@@ -12,6 +12,6 @@
 
 ## Partnerships
 
-- [📣 Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
-- [📣 Partnership with Reppo for Confidential AI](/blog/reppo-partnership.md)
-- [📣 Partnership with Nexus for zkVM Privacy](/blog/nexus-partnership.md)
+- 📣 [Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
+- 📣 [Partnership with Reppo for Confidential AI](/blog/reppo-partnership.md)
+- 📣 [Partnership with Nexus for zkVM Privacy](/blog/nexus-partnership.md)
