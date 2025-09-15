@@ -1,11 +1,11 @@
 # Lunal partners with Lucid for AI Location Verification
 
-<div align="center" style="margin: 2em 0;">
-  <nav style="font-size: 1.5em; font-weight: 600;">
-    <a href="/README.md" style="text-decoration: none; margin: 0 2em; color: #2563eb; transition: color 0.3s ease;">Home</a>&nbsp;&nbsp;
-    <a href="/pricing.md" style="text-decoration: none; margin: 0 2em; color: #2563eb; transition: color 0.3s ease;">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/README.md" style="text-decoration: none; margin: 0 2em; color: #2563eb; transition: color 0.3s ease;">Docs</a>&nbsp;&nbsp;
-    <a href="/blog/README.md" style="text-decoration: none; margin: 0 2em; color: #2563eb; transition: color 0.3s ease;">Blog</a>
+<div align="center">
+  <nav>
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
+    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
+    <a href="/docs/README.md">Docs</a>&nbsp;&nbsp;
+    <a href="/blog/README.md">Blog</a>
   </nav>
 </div>
 
