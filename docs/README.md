@@ -1,4 +1,4 @@
-# Documentation - Lunal
+# Lunal Documentation
 
 <div align="center" style="margin: 2em 0;">
   <nav style="font-size: 1.5em; font-weight: 600;">
@@ -7,7 +7,6 @@
     <a href="/docs/README.md" style="text-decoration: none; margin: 0 2em; color: #2563eb; transition: color 0.3s ease;">Docs</a>
   </nav>
 </div>
-
 
 ## Getting Started with Lunal
 
