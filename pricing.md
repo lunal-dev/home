@@ -2,7 +2,7 @@
 
 <div align="center">
   <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
+    <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>

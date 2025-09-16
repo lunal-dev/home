@@ -2,10 +2,9 @@
 
 <div align="center">
   <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
+    <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/README.md">Docs</a>&nbsp;&nbsp;
-    <a href="/blog/README.md">Blog</a>
+    <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
 
