@@ -8,7 +8,7 @@
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/README.md">Docs</a>
+    <a href="/docs/">Docs</a>
   </nav>
 </div>
 
@@ -24,8 +24,6 @@ Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us f
 - 📣 [Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
 - 📣 [Partnership with Reppo for Confidential AI](/blog/reppo-partnership.md)
 - 📣 [Partnership with Nexus for zkVM Privacy](/blog/nexus-partnership.md)
-
----
 
 ## Why Lunal?
 
