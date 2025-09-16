@@ -1,12 +1,12 @@
-# A partnership with Nexus for zkVM Privacy
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# A partnership with Nexus for zkVM Privacy
 
 *May 15, 2025*
 

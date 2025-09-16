@@ -1,12 +1,12 @@
-# A Partnership with Reppo for Confidential AI
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# A Partnership with Reppo for Confidential AI
 
 *May 21, 2025*
 

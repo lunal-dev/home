@@ -1,12 +1,12 @@
-# Deploy TEE-secured Code on Lunal
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# Deploy TEE-secured Code on Lunal
 
 This page documents the process of deploying and scaling code secured in Trusted Execution Environments (TEEs) on Lunal.
 

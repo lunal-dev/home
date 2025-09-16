@@ -1,12 +1,12 @@
-# Lunal partners with Impulse AI for Private AI Training, Fine-Tuning, and Inference
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# Lunal partners with Impulse AI for Private AI Training, Fine-Tuning, and Inference
 
 *July 23, 2025*
 

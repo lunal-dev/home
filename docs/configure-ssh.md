@@ -1,12 +1,12 @@
-# Access Lunal VMs via SSH
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# Access Lunal VMs via SSH
 
 This page documents the process of securely configuring and connecting to a TEE-secured development VM on Lunal via SSH.
 

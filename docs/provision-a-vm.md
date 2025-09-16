@@ -1,12 +1,12 @@
-# Launch a TEE-secured VM on Lunal
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# Launch a TEE-secured VM on Lunal
 
 This page documents the process to launch a TEE-secured (Trusted Execution Environment) virtual machine on Lunal.
 

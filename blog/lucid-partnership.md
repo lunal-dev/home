@@ -1,12 +1,12 @@
-# Lunal partners with Lucid for AI Location Verification
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# Lunal partners with Lucid for AI Location Verification
 
 *August 23, 2025*
 

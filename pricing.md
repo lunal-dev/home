@@ -1,6 +1,4 @@
-# Lunal Pricing
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
@@ -8,6 +6,7 @@
   </nav>
 </div>
 
+# Lunal Pricing
 
 ## Pricing
 

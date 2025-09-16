@@ -1,12 +1,12 @@
-# Lunal's Security Architecture
-
-<div align="center">
+<div align="right">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/README.md">Docs</a>
   </nav>
 </div>
+
+# Lunal's Security Architecture
 
 ## Table of Contents
 
