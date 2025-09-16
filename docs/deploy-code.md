@@ -1,4 +1,4 @@
-<div align="right">
+<div align="center">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
