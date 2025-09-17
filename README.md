@@ -49,7 +49,7 @@ Here are problems Lunal solves that make using TEEs easier:
 
 - **Automatic scaling:** Global, automatic scaling based on CPU usage, GPU usage, memory pressure, and/or request/response latency. Scaling metrics are privately measured in the TEE with zero-knowledge proofs (ZKP).
 
-- **Application services:** Privacy-preserving rate limiting, load balancing, routing, DDoS protection, and caching. Lunal's services run in TEEs themselves; Lunal can't see any passthrough or cached data.
+- **Application services:** Privacy-preserving firewalls, DDoS protection, rate limiting, routing, load balancing, and caching. Lunal’s services run in TEEs themselves; Lunal can’t see any passthrough or cached data.
 
 - **Security:** TEE keys are automatically rotated. Uploaded data can only be decrypted in Lunal TEEs. Hardened OS and language runtimes, reproducible builds, and policy-enforced further reduce the attack surface.
 
