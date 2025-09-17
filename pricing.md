@@ -8,21 +8,27 @@
 
 # Lunal Pricing
 
-## Pricing
+There are two ways to use Lunal: Hosted and Licensed.
+
+Want to scale quickly? Use Lunal’s hosted infrastructure and run on our hardware.
+
+Already have CPUs, GPUs, and infrastructure? License Lunal to run the full stack on your hardware.
+
+## Hosted
 
 - All prices are in USD, billed with Stripe.
 - Confidential VMs can be rented hourly or monthly (730 hours/mo).
-- Ingress and egress bandwidth is free.
+- Ingress and egress bandwidth is free for normal usage.
 - All CPUs are secured with AMD SEV-SNP or Intel TDX.
 - All GPUs are secured with NVIDIA Confidential Computing (CC).
 - Machines can be deployed to locations globally.
 - Want to test out a machine? [Contact us](mailto:ansgar@lunal.dev) and we'll set one up for you. No charge.
 
-## Confidential VM Pricing
+### Confidential VM Pricing
 
 Ideal for general purpose, private workloads.
 
-### Free Tier
+#### Free Tier
 
 Get started with Lunal's free tier, perfect for testing and development.
 
@@ -32,7 +38,7 @@ Get started with Lunal's free tier, perfect for testing and development.
 
 One free tier machine per account per month. [Contact us](mailto:ansgar@lunal.dev) to get started.
 
-### Paid Tier
+#### Paid Tier
 
 | vCPUs | RAM (GB) | SSD (GB) | Hourly Price ($/hr) | Monthly Price ($/mo) |
 | ----- | -------- | -------- | ------------------- | -------------------- |
@@ -48,7 +54,7 @@ One free tier machine per account per month. [Contact us](mailto:ansgar@lunal.de
 | 192   | 896      | 4TB      | $14.34              | $10,468              |
 | 360   | 2.9TB    | 8TB      | $34.38              | $25,100              |
 
-## Confidential VMs with GPUs
+### Confidential VMs with GPUs
 
 Ideal for private AI training and inference.
 
@@ -61,8 +67,26 @@ Ideal for private AI training and inference.
 
 Need something custom? [Let us know](mailto:ansgar@lunal.dev); we love bespoke solutions.
 
+
+## Licensed
+
+License Lunal to run Lunal's entire software stack on your hardware.
+
+Everything provided by our hosted platform is included for your on-prem deployments:
+-	Application services and middleware: firewalls, DDoS protection, rate limiting, routing, load balancing, and caching, all secured and scaled in TEEs.
+-	Support for AMD and Intel CPU TEEs and NVIDIA Hopper + Blackwell GPU confidential computing.
+-	CI/CD pipeline that checks out your code on every commit, reproducibly builds it, and deploys it.
+-	Automatic scaling with privacy-preserving zero-knowledge proofs.
+-	TEE memory ecryption and automatic key rotation for security.
+-	End-to-end telemetry and logging, all encrypted with your public key.
+
+All software runs on-premise, on your hardware. Licensing is billed monthly with Stripe and scales with your deployment; you only pay for what you use.
+
+[Contact us](mailto:ansgar@lunal.dev) us to discuss license pricing.
+
 ---
 
 <div align="center">
   <a href="mailto:ansgar@lunal.dev"><strong>Contact Us to Get Started</strong></a>
 </div>
+
