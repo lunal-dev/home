@@ -41,7 +41,7 @@ Here are problems Lunal solves that make using TEEs easier:
 
 - **Drop-in compatibility:** Deploy and scale your existing applications and AI workloads in TEEs as-is, with zero changes.
 
-- **Seamless CI/CD:** Connect Lunal to your GitHub repo. On every commit, Lunal checks out your code, reproducibly builds it, and deploys it.
+- **Seamless CI/CD:** Connect Lunal to your GitHub repo. On every commit, Lunal checks out your code, verifiably builds it, and deploys it.
 
 - **End-to-end verifiability:** Lunal automatically staples a verifiable TEE attestation to every HTTP response in an HTTP response header. These attestations affirm the TEE is uncompromised and attest to all software inside - from the AI model loaded to the git commit of your code.
 
