@@ -1,0 +1,238 @@
+# **Zero-Knowledge Proofs at Lunal**
+
+## **Overview**
+
+Lunal uses zero-knowledge (ZK) proofs to complement TEE attestations and prove that Lunal's infrastructure operates correctly while preserving customer privacy. This documentation explains our rationale for using ZK and the specific use cases we've implemented.
+
+## **Why Lunal Uses ZK**
+
+### **The Trust Challenge with TEEs**
+
+Trusted Execution Environments (TEEs) can cryptographically attest to what software was loaded during boot, but they have some limitations:
+
+* **Initial state only**: TEE attestations capture what software was loaded, but provide no guarantees about runtime behavior
+* **No execution verification**: TEEs cannot prove that software executed correctly or behaved as intended after boot
+
+This limitation is critical in Lunal's architecture. Lunal TEEs run two distinct types of software:
+
+1. **Customer applications**: this is the software that customers load and run inside the TEE.
+2. **Lunal software**: this is software that Lunal needs to run inside the customer's TEE for use cases such as performance monitoring, autoscaling, etc.
+
+Both the customer's software and Lunal's software become part of the TEE's trusted compute base, where Lunal's software has to be considered fully trusted. While customers maintain full control over their own software and applications, they must extend trust to Lunal's software running alongside their workloads within the same TEE. Although any Lunal software deployed inside customer TEEs would be open source and externally audited, this still requires some level of trust by customers every time that software runs.
+
+### **From Trust to Proof**
+
+ZK transforms this trust requirement into cryptographic verification. Instead of asking customers to trust that Lunal's software behaves correctly, ZK allows us to prove it. Specifically, ZK enables:
+
+* **Correctness guarantees**: Demonstrate that infrastructure software executed exactly as intended
+* **Privacy preservation**: Prove valid outputs without exposing sensitive customer data
+* **Continuous verification**: Prove correctness every time software runs, providing ongoing cryptographic guarantees throughout the lifetime of customer workloads
+
+## **Use Cases**
+
+### **1\. Autoscaling Metrics Extraction**
+
+#### **The Challenge**
+
+Lunal needs to measure system metrics for autoscaling decisions, but hypervisors have limited visibility into guest VMs:
+
+| Metric      | Hypervisor Visibility | Limitation                                |
+| ----------- | --------------------- | ----------------------------------------- |
+| **Memory**  | Allocated memory only | Cannot see actual usage within guest      |
+| **CPU**     | Global utilization    | Cannot break down by individual processes |
+| **Disk**    | Storage allocation    | Blind to filesystem utilization           |
+| **Network** | Packet flow           | Cannot see application-level metrics      |
+
+#### **The Solution**
+
+Lunal runs telemetry extraction software inside the TEE and uses ZK proofs to verify autoscaling decisions without exposing sensitive process data.
+
+#### **Example: Memory-Based Autoscaling**
+
+```
+Private Inputs:
+- Per-process memory usage
+- Swap activity
+- Page fault rates
+
+Public Outputs:
+- Scaling decision (scale out: yes/no)
+- Threshold percentage (e.g., 87%)
+
+ZK Constraint:
+IF p90_memory_usage > 85% of allocated_memory
+THEN scaling_out_required = true
+```
+
+The proof verifies the scaling logic executed correctly without revealing which processes are running or their individual memory consumption.
+
+#### **Example: CPU-Based Autoscaling**
+
+```
+Private Inputs:
+- Per-process CPU usage
+- Process ownership (Lunal vs. customer)
+
+Public Outputs:
+- Aggregate utilization band (e.g., "70-80%")
+- Scaling decision
+- Lunal overhead confirmation (< 10%)
+
+ZK Constraints:
+IF customer_process_cpu_p95 > 80%
+THEN trigger_scale_out = true
+
+AND lunal_overhead < 10% of total_cpu
+```
+
+This proves that scaling decisions are based on actual customer workload needs, not Lunal's own overhead.
+
+#### **Example: Disk-Based Autoscaling**
+
+```
+Private Inputs:
+- Filesystem usage per mount point
+- Inode usage
+- I/O queue depths
+
+Public Outputs:
+- Storage pressure indicator
+- Scaling decision
+
+ZK Constraints:
+IF disk_usage > 85% OR inode_usage > 90%
+THEN trigger_scale_out = true
+
+IF io_queue_depth > threshold
+THEN performance_issue = true
+```
+
+### **2\. Software Inclusion Proofs**
+
+#### **The Challenge**
+
+When customers license Lunal software for on-premise deployment, they run it alongside proprietary applications Lunal cannot access. TEEs provide a single measurement hash for all software, but since Lunal cannot reproduce measurements that include customer software, we have no way to verify which Lunal components were actually included.
+
+#### **The Solution**
+
+Lunal uses Merkle trees to generate inclusion proofs that verify specific software components were loaded correctly.
+
+#### **How It Works**
+
+```
+Deployment Structure:
+├── Customer Application A (proprietary)
+├── Customer Application B (proprietary)
+├── Lunal Component X ← We can prove this
+├── Lunal Component Y ← We can prove this
+└── Customer Application C (proprietary)
+
+Merkle Tree:
+         Root Hash (in TEE attestation)
+              /          \
+            ...          ...
+           /   \        /   \
+        Hash(A) Hash(B) Hash(X) Hash(Y) ...
+
+ZK Inclusion Proof:
+- Public Input: Root hash from TEE attestation
+- Private Input: Component X binary + Merkle path
+- Public Output: "Component X included" ✓
+```
+
+**Important Note**: Proving software was loaded correctly does not prove the software ran correctly. It only verifies the initial state.
+
+### **3\. Performance Monitoring and SLAs**
+
+#### **The Challenge**
+
+Lunal runs application services (load balancers, API gateways, proxies) inside TEEs to maintain privacy guarantees. We need to monitor these services for operational health and SLA compliance without exposing customer request data or traffic patterns.
+
+#### **The Solution**
+
+ZK proofs verify service performance and SLA compliance with zero visibility into actual customer traffic.
+
+#### **Example: API Gateway Health Monitoring**
+
+```
+Private Inputs:
+- HTTP status codes per request
+- Error logs
+- Connection states
+- Backend health checks
+
+Public Outputs:
+- Health score: 99.95%
+- SLA compliance: ✓
+- Reporting period: 2024-01-15 to 2024-01-22
+
+ZK Constraints:
+✓ 5xx_error_rate < 0.1%
+✓ backend_availability > 99%
+✓ connection_success_rate > 99.5%
+✓ rate_limit_violations = 0
+```
+
+The proof confirms the gateway is healthy and meeting SLAs without revealing which endpoints were called, request payloads, or customer identifiers.
+
+#### **Example: Latency SLA Verification**
+
+```
+Private Inputs:
+- Request latencies (array of timestamps)
+- Request types (GET, POST, etc.)
+- Timestamp pairs (request_start, request_end)
+
+Public Outputs:
+- SLA status: COMPLIANT
+- Reporting period: Week 3, January 2024
+- Breach count: 0
+
+ZK Constraints:
+✓ p95_latency < 100ms (SLA threshold)
+✓ p99_latency < 500ms (ceiling limit)
+✓ sample_size > 10,000 requests
+```
+
+#### **Example: Percentile Calculation Without Data Exposure**
+
+Lunal calculates latency percentiles for internal performance improvements:
+
+```
+Private Inputs:
+- Individual request latencies: [23ms, 45ms, 67ms, ...]
+- Request count: 50,000
+
+Public Outputs:
+- p50: 45ms
+- p95: 98ms
+- p99: 234ms
+
+ZK Proof:
+Verifies correct percentile calculation without revealing:
+- Individual request latencies
+- Request patterns or distributions
+- Traffic volume fluctuations
+- Customer-specific performance characteristics
+```
+
+This allows Lunal to optimize platform performance while maintaining complete customer privacy.
+
+## **Caveats and Limitations**
+
+### **Performance Constraints**
+
+Most ZK proofs cannot be used in the hot path of customer requests due to performance overhead. All Lunal ZK use cases operate asynchronously and out-of-band from customer traffic. Therefore, Lunal's usage of ZK is limited to background processes where proving times on the order of magnitude of seconds are acceptable. The verification of such proofs take order of magnitude 10s of ms.
+
+### **Arithmetic Circuit Limitations**
+
+ZK can only prove operations that can be represented as arithmetic circuits. This creates fundamental constraints on what we can verify.
+
+System interactions that cannot be represented as arithmetic circuits:
+
+* **Syscalls**: The actual syscall that returns CPU usage measurements
+* **Network operations**: Socket creation, packet transmission
+* **File system I/O**: Disk reads, writes, and operations
+* **Hardware modules**: HSM operations, TPM interactions
+
+In practice, this means Lunal's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Lunal can prove “given these CPU usage measurements, Lunal's autoscaling logic correctly determined scaling was needed” but cannot prove “these CPU usage measurements were collected correctly from the system.” The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.
