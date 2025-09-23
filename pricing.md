@@ -12,7 +12,7 @@ There are two ways to use Lunal: Hosted and Licensed.
 
 Want to scale quickly? Use Lunal’s hosted infrastructure and run on our hardware.
 
-Already have CPUs, GPUs, and infrastructure? License Lunal to run the full stack on your hardware.
+Already have CPUs, GPUs, and infrastructure? License Lunal to run Lunal's full stack on your hardware.
 
 ## Hosted
 
@@ -72,7 +72,7 @@ Need something custom? [Let us know](mailto:ansgar@lunal.dev); we love bespoke s
 
 License Lunal to run Lunal's entire software stack on your hardware.
 
-Everything provided by our hosted platform is included for your on-prem deployments:
+Everything provided by our hosted platform is included for your on-prem deployment:
 -	Application services and middleware: firewalls, DDoS protection, rate limiting, routing, load balancing, and caching, all secured and scaled in TEEs.
 -	Support for AMD and Intel CPU TEEs and NVIDIA Hopper + Blackwell GPU confidential computing.
 -	CI/CD pipeline that checks out your code on every commit, reproducibly builds it, and deploys it.
