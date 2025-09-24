@@ -37,7 +37,7 @@ Here are problems Lunal solves that make using TEEs easier:
 
 ### Key Features
 
-- **Accelerated + CPU Compute:** Unified CPU and GPU TEEs so your software, models, and data stay private, secure, and verifiable.
+- **Unified CPU + Accelerators:** Combined CPU and GPU TEEs so your software, models, and data stay private, secure, and verifiable.
 
 - **Drop-in compatibility:** Deploy and scale your existing applications and AI workloads in TEEs as-is, with zero changes.
 
