@@ -20,6 +20,7 @@ Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us f
 
 ## Latest News
 
+- 📣 [Partnership with Vail for Verifiable AI](/blog/vail-partnership.md)
 - 📣 [Partnership with Lucid for AI Location Verification](/blog/lucid-partnership.md)
 - 📣 [Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
 - 📣 [Partnership with Reppo for Confidential AI](/blog/reppo-partnership.md)
