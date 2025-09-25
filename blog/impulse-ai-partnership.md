@@ -8,7 +8,7 @@
 
 # Lunal partners with Impulse AI for Private AI Training, Fine-Tuning, and Inference
 
-*July 23, 2025*
+July 23, 2025
 
 We're excited to announce a partnership with [Impulse AI](https://impulselabs.ai/) to bring confidential, verifiable compute to Impulse's training and inference infrastructure.
 

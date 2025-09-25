@@ -8,7 +8,7 @@
 
 # A Partnership with Reppo for Confidential AI
 
-*May 21, 2025*
+May 21, 2025
 
 We're excited to announce a partnership with [Reppo](https://reppo.xyz/) to bring confidential, verifiable compute to Reppo's decentralized network.
 
