@@ -8,7 +8,7 @@
 
 # Lunal partners with Lucid for AI Location Verification
 
-*August 23, 2025*
+August 23, 2025
 
 We're excited to announce a partnership with [Lucid Computing](https://lucidcomputing.ai/) for trusted AI location verification.
 

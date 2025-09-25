@@ -8,7 +8,7 @@
 
 # A partnership with Nexus for zkVM Privacy
 
-*May 15, 2025*
+May 15, 2025
 
 We're pleased to announce a partnership with [Nexus](https://nexus.xyz/) to bring confidential, verifiable compute to the Nexus network.
 

@@ -7,7 +7,7 @@
 </div>
 
 # A Partnership with VAIL for Verifiable AI
-*September 07, 2025*
+September 07, 2025
 
 We're excited to announce a partnership with [VAIL](https://www.projectvail.com/) to power their verifiable AI tooling and software with Lunal's Trusted Execution Environment infrastructure.
 
