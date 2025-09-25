@@ -1,7 +1,15 @@
-**A Partnership with VAIL for Verifiable AI**
+<div align="center">
+<nav>
+<a href="/">Home</a>&nbsp;&nbsp;
+<a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
+<a href="/docs/">Docs</a>
+</nav>
+</div>
+
+# A Partnership with VAIL for Verifiable AI
 *September 07, 2025*
 
-We're excited to announce a partnership with VAIL to power their verifiable AI tooling and software with Lunal's Trusted Execution Environment infrastructure.
+We're excited to announce a partnership with [VAIL](https://www.projectvail.com/) to power their verifiable AI tooling and software with Lunal's Trusted Execution Environment infrastructure.
 
 VAIL is building tooling and software for verifiable AI, creating systems that can identify models through behavioral fingerprinting and verify model properties in real-time across deployment environments.
 
@@ -15,5 +23,5 @@ Model verification typically requires either trusting the verification platform 
 
 VAIL's verification tools can now run with the privacy and attestation guarantees needed for production AI systems.
 
-Learn more about VAIL at https://www.projectvail.com/.
-Learn more about Lunal at https://lunal.dev.
+Learn more about VAIL at [https://www.projectvail.com/](https://www.projectvail.com/).
+Learn more about Lunal at [https://lunal.dev](/).
