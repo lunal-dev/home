@@ -17,4 +17,5 @@
 - 📣 [Partnership with Nexus for zkVM Privacy](/blog/nexus-partnership.md)
 
 ## Blog Posts
+- 📝 [Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
 - 📝 [Benchmarking TEE Performance on CPUs](/blog/tee-performance-cpus.md)
