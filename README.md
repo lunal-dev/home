@@ -38,7 +38,7 @@ Here are problems Lunal solves that make using TEEs easier:
 
 ### Key Features
 
-- **Unified CPU + Accelerators:** Combined CPU and GPU TEEs so your software, models, and data stay private, secure, and verifiable.
+- **Unified CPU & Accelerators:** Combined CPU and GPU TEEs so your software, models, and data stay private, secure, and verifiable.
 
 - **Drop-in compatibility:** Deploy and scale your existing applications and AI workloads in TEEs as-is, with zero changes.
 
@@ -56,6 +56,6 @@ Here are problems Lunal solves that make using TEEs easier:
 
 - **SDKs:** Client and server SDKs encrypt data for upload to Lunal and verify the TEE attestations in responses.
 
-- **Logging:** All telemetry and logs are recorded privately in the TEE. Additionally, they're encrypted with your public key; only you can read them.
+- **Logging:** All telemetry and logs are recorded privately in the TEE and encrypted with your public key; only you can read them.
 
 👋 [Ansgar](https://github.com/gruns), [Amean](https://github.com/AmeanAsad), and the merry band of misfits at Lunal
