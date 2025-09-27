@@ -10,8 +10,11 @@
 
 ## Partnerships
 
-- 📣 [Partnership with Vail for Verifiable AI](/blog/vail-partnership.md)
+- 📣 [Partnership with VAIL for Verifiable AI](/blog/vail-partnership.md)
 - 📣 [Partnership with Lucid for AI Location Verification](/blog/lucid-partnership.md)
 - 📣 [Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
 - 📣 [Partnership with Reppo for Confidential AI](/blog/reppo-partnership.md)
 - 📣 [Partnership with Nexus for zkVM Privacy](/blog/nexus-partnership.md)
+
+## Blog Posts
+- 📝 [Benchmarking TEE Performance on CPUs](/blog/tee-performance-cpus.md)
