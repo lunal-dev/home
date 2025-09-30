@@ -28,7 +28,7 @@ Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us f
 
 ## Why Lunal?
 
-TEEs provide a never-possible-before combination of privacy, performance, and verifiability. For the first time ever, you can now compute on encrypted data with end-to-end verification of the running software. Including AI inference. But TEEs are tricky.
+TEEs provide a never-possible-before combination of privacy, security, verifiability, and performance. For the first time ever, you can now compute on encrypted data with end-to-end verification of the running software. Including AI inference. But TEEs are tricky.
 
 First, privacy doesn't stop at the TEE: all surrounding software and systems must also preserve privacy. And to be verifiable, everything in TEEs must be measurable, attestable, and reproducible.
 
