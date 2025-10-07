@@ -20,6 +20,7 @@ Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us f
 
 ## Latest News
 
+- 📣 [Blog - Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
 - 📣 [Partnership with Vail to Fingerprint and Verify AI Models](/blog/vail-partnership.md)
 - 📣 [Partnership with Lucid for AI Location Verification](/blog/lucid-partnership.md)
 - 📣 [Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
