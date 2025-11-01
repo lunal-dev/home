@@ -14,7 +14,9 @@
 
 # Lunal - The Trusted Compute Company
 
-Lunal is the fastest way to deploy software and run AI inference, agents, and training in Trusted Execution Environments (TEEs) - with zero configuration, guaranteed privacy, full verifiability, and automatic scaling.
+Lunal is software for secure, verifiable, private AI.
+
+Built with Trusted Execution Environments (TEEs) and Zero Knowledge Cryptography (ZKP), it's the fastest way to secure model weights and agents, deliver end-to-end private inference + training, and provide training data provenance.
 
 Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us for a hot cup of TEE. 🫖
 
