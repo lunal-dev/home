@@ -14,9 +14,9 @@
 
 # Lunal - The Confidential Compute Company
 
-Lunal is software for secure, verifiable, and private AI.
+Lunal is software for secure, private, verifiable AI.
 
-Built with Trusted Execution Environments (TEEs) and Zero-knowledge Cryptography (ZK), it's the fastest way to secure model weights and agents, deliver end-to-end private inference and training, and prove model data provenance.
+Built with Trusted Execution Environments (TEEs) and Zero-knowledge Cryptography (ZK), it's the fastest way to secure model weights and agents, deliver end-to-end private inference and training, and provide model data provenance.
 
 Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us for a hot cup of TEE. 🫖
 
