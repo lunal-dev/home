@@ -2,7 +2,8 @@
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
     <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
   </nav>
 </div>
 
