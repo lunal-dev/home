@@ -15,7 +15,7 @@ We believe a small, tenacious team can outrun, outmaneuver, and outperform lumbe
 
 We work together in person in sunny San Francisco, California. We believe in person is the best way to work. We also believe, today, San Francisco is the best place on earth to build a startup.
 
-We're well capitalized. We raised $7.5M from top tier investors including [Initialized Capital](https://initialized.com/), [Notable Capital](https://www.notablecap.com/), [Soma Capital](https://somacap.com/), and [Stanford StartX](https://startx.com/).
+We're well capitalized. We raised $7.5M from top tier investors including [Initialized Capital](https://initialized.com/), [Notable Capital](https://www.notablecap.com/), and [Soma Capital](https://somacap.com/).
 
 Compensation, salary and equity, is top market rate.
 
@@ -24,23 +24,29 @@ We're looking for relentless minds. Interested? Please email us at [team@lunal.d
 
 ## 🧱 Software Engineer
 
-Lunal is growing. Fast. And we're looking for software engineers to help build the world's largest confidential computing network.
+Lunal is growing. Fast. And we're looking for software engineers to help build the foundations of private, secure, and verifiable compute.
 
 As an engineer at Lunal, you'll design distributed systems, push the boundaries of confidential computing, deploy infrastructure globally, and ship software every day.
 
-### Responsibilities
+### What You’ll Work on:
 
-- Design and implement distributed systems.
-- Design, implement, and deploy software.
-- Evaluate engineering tradeoffs.
-- Design, operate, and scale global infrastructure.
-- Evaluate new technologies.
-- Advocate best software engineering practices.
-- Communicate clearly.
+We have a core list of work streams where engineers will contribute to either one or more. These work streams are focused on TEE infrastructure, cryptography, and build systems. So far, this includes:
 
-### Requirements
+- Designing and building software to enable end to end private inference workloads
+- Developing attestation standards for TEEs that provide a common API over all current TEE implementations.
+- Cryptographic protocols behind secure attestation and key management for TEEs.
+- Using Zero Knowledge (ZK) cryptography to develop fully private control plane management of infrastructure. Our usage of ZK is not in the hotpath and is fully scalable with the current performance standards of modern ZK proofs
+- A builds and packaging module that utilizes TEEs to fully attest to software build processes.
+- And more…
 
-Be relentless. Have a 'Find a way or make a way.' attitude.
+**Requirements**
+
+- Consistency: You ship every week.
+- Curiosity: You embrace unfamiliarity and figure it out fast. New problems energize you.
+- Relentlessness: You find a way or make a way.
+- Collaborative: You’re easy to work with and ship with other people.
+
+We believe in “show not tell”. Showing us the above through prior work and experiences related to the field is all we need.
 
 #### Qualifications
 
@@ -51,6 +57,7 @@ Thats it. Really. We dont care where, or if, you went to school.
 - Distributed systems experience.
 - Cryptography experience.
 - Low level systems experience.
+- Open Source contributions.
 - Experience with Python, Golang, and/or Rust.
 - Experience with Linux.
 - Experience with Kubernetes.
