@@ -9,7 +9,7 @@
 
 # Careers at Lunal
 
-At Lunal, we wake up every day to secure the world's data with safe, private AI.
+At Lunal, we wake up every day to secure the world's data with secure, private AI.
 
 We believe a small, tenacious team can outrun, outmaneuver, and outperform lumbering giants. We live it. To build that team, we're looking for people with grit that get things done and want to be pivotal in an ascendant startup.
 
