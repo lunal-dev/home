@@ -17,7 +17,7 @@ We work together in person in sunny San Francisco, California. We believe in per
 
 We're well capitalized. We raised $7.5M from [Initialized Capital](https://initialized.com/), [Notable Capital](https://www.notablecap.com/), [Soma Capital](https://somacap.com/), and great angels.
 
-We're looking for consistent, curious, relentless minds. Interested? Please email us at [team@lunal.dev](mailto:team@lunal.dev). We'd love to hear from you.
+We're looking for relentless minds. Interested? Please email us at [team@lunal.dev](mailto:team@lunal.dev). We'd love to hear from you.
 
 ## 🧱 Software Engineer
 
@@ -44,10 +44,10 @@ Here are a few examples of the hard problems you'll work on at Lunal:
 
 Lunal values these traits above all others:
 
-- Consistency: You ship daily.
-- Relentlessness: You find a way or make a way.
-- Curiosity: You thrive in the unfamiliar. New problems energize you.
-- Collaborative: You're collaboreative, communicate clearly, and easy to work with.
+- Consistent: You ship daily.
+- Relentless: You find a way or make a way.
+- Curious: You thrive in the unfamiliar. New problems energize you.
+- Collaborative: People want to work with you. You communicate clearly.
 
 ### Qualifications
 
