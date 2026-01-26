@@ -19,7 +19,7 @@ We work together in person in sunny San Francisco, California. We believe in per
 
 We're well capitalized. We raised $7.5M from [Initialized Capital](https://initialized.com/), [Notable Capital](https://www.notablecap.com/), [Soma Capital](https://somacap.com/), and great angels.
 
-We're looking for relentless minds. Interested? Email us at [team@lunal.dev](mailto:team@lunal.dev). We'd love to hear from you.
+We're looking for relentless minds. Interested? Email us at [ansgar@lunal.dev](mailto:ansgar@lunal.dev). We'd love to hear from you.
 
 
 ## 🧱 Software Engineer
@@ -73,6 +73,6 @@ It's a bonus, not a requirement, if you have experience with any of the followin
 
 ## Outro
 
-Don't see the right opening for you? [Email us](mailto:team@lunal.dev). We'd love to hear from you.
+Don't see the right opening for you? [Email us](mailto:ansgar@lunal.dev). We'd love to hear from you.
 
 Lunal is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.
