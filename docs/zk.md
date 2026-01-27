@@ -1,3 +1,13 @@
+<div align="center">
+  <nav>
+    <a href="/">Home</a>&nbsp;&nbsp;
+    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
+  </nav>
+</div>
+
+
 # **Zero-Knowledge Proofs at Lunal**
 
 ## **Overview**
@@ -6,27 +16,53 @@ Lunal uses zero-knowledge (ZK) proofs to complement TEE attestations and prove t
 
 ## **Why Lunal Uses ZK**
 
-### **The Trust Challenge with TEEs**
+### **The Fundamental Limitation of Attestation**
 
-Trusted Execution Environments (TEEs) can cryptographically attest to what software was loaded during boot, but they have some limitations:
+Confidential computing attestation proves **identity**, not **behavior**.
 
-* **Initial state only**: TEE attestations capture what software was loaded, but provide no guarantees about runtime behavior
-* **No execution verification**: TEEs cannot prove that software executed correctly or behaved as intended after boot
+A TEE attestation cryptographically answers: "What software was loaded?" It does not answer: "Did that software behave correctly?" Behavior can be *implied* from identity. If you know exactly what code was loaded and trust that code, you can reason about what it *should* do. But implication is not proof. The attestation itself says nothing about what actually happened at runtime.
 
-This limitation is critical in Lunal's architecture. Lunal TEEs run two distinct types of software:
+This distinction matters enormously when things go wrong. When things security is breached, debugging, incident response, and security audits all ultimately require inspecting behavior: What did the system actually do? What data did it process? What decisions did it make? Attestation alone cannot answer these questions. It can only confirm that the right code was present when the system started.
 
-1. **Customer applications**: this is the software that customers load and run inside the TEE.
-2. **Lunal software**: this is software that Lunal needs to run inside the customer's TEE for use cases such as performance monitoring, autoscaling, etc.
+### **The Trust Challenge in Lunal's Architecture**
 
-Both the customer's software and Lunal's software become part of the TEE's trusted compute base, where Lunal's software has to be considered fully trusted. While customers maintain full control over their own software and applications, they must extend trust to Lunal's software running alongside their workloads within the same TEE. Although any Lunal software deployed inside customer TEEs would be open source and externally audited, this still requires some level of trust by customers every time that software runs.
+This limitation is particularly acute in Lunal's architecture. Lunal TEEs run two distinct types of software:
+
+1. **Customer applications**: software that customers load and run inside the TEE
+2. **Lunal software**: software that Lunal runs inside the customer's TEE for operations such as attestation, performance monitoring, and autoscaling
+
+Both become part of the TEE's trusted boundary. While customers maintain full control over their own applications, they must extend trust to Lunal's software running alongside their workloads. Even though Lunal's software is open source and externally audited, this still requires customers to trust that the software behaves as documented every time it runs.
 
 ### **From Trust to Proof**
 
-ZK transforms this trust requirement into cryptographic verification. Instead of asking customers to trust that Lunal's software behaves correctly, ZK allows us to prove it. Specifically, ZK enables:
+ZK is the nuclear option for proving behavior. Unlike attestation (which proves identity) or logging (which can be forged), ZK proofs are cryptographically bounded. They mathematically guarantee that a specific computation occurred correctly, with no room for tampering or misrepresentation.
 
-* **Correctness guarantees**: Demonstrate that infrastructure software executed exactly as intended
-* **Privacy preservation**: Prove valid outputs without exposing sensitive customer data
-* **Continuous verification**: Prove correctness every time software runs, providing ongoing cryptographic guarantees throughout the lifetime of customer workloads
+With ZK, instead of asking customers to trust that Lunal's software behaves correctly, we can prove it every time the software runs.
+
+### **What Are Zero-Knowledge Proofs?**
+
+A zero-knowledge proof (ZKP) is a cryptographic protocol that allows one party (the prover) to prove to another party (the verifier) that a statement is true, without revealing any information beyond the validity of the statement itself.
+
+Imagine you want to prove you know the solution to a Sudoku puzzle without revealing the solution. With a ZKP, you could mathematically demonstrate that you possess a valid solution, and the verifier would be cryptographically certain you're telling the truth, yet they'd learn nothing about the actual numbers in your grid.
+ZK proofs satisfy three properties:
+
+1. **Completeness**: If the statement is true, the verifier will be convinced.
+
+2. **Soundness**: If the statement is false, no cheating prover can convince the verifier.
+
+3. **Zero-Knowledge**: If the statement is true, the verifier learns nothing beyond that fact. No information about the underlying data leaks.
+
+### **The Cost of Cryptographic Certainty**
+
+However, ZK is not a general-purpose solution. If your security architecture is a castle, ZK is a super expensive precision cannon: devastatingly effective where deployed, but extremely expensive to fire and limited in ammunition.
+
+**Integration complexity.** ZK requires representing computations as arithmetic circuits. This is a fundamentally different programming model that requires specialized expertise and significant engineering investment.
+
+**Performance overhead.** Proof generation is computationally expensive. ZK cannot be used in hot paths. It is limited to background processes where proving times of seconds (not milliseconds) are acceptable.
+
+**Scope limitations.** Not everything can be proven. System calls, network operations, file I/O, and hardware interactions cannot be represented as arithmetic circuits. ZK proves the *processing* of data, not its *collection*.
+
+This means ZK must be deployed strategically at high-value chokepoints rather than comprehensively across an entire system.
 
 ## **Use Cases**
 
@@ -123,8 +159,8 @@ Lunal uses Merkle trees to generate inclusion proofs that verify specific softwa
 Deployment Structure:
 ├── Customer Application A (proprietary)
 ├── Customer Application B (proprietary)
-├── Lunal Component X ← We can prove this
-├── Lunal Component Y ← We can prove this
+├── Lunal Component X (can prove this)
+├── Lunal Component Y (can prove this)
 └── Customer Application C (proprietary)
 
 Merkle Tree:
@@ -137,7 +173,7 @@ Merkle Tree:
 ZK Inclusion Proof:
 - Public Input: Root hash from TEE attestation
 - Private Input: Component X binary + Merkle path
-- Public Output: "Component X included" ✓
+- Public Output: "Component X included"
 ```
 
 **Important Note**: Proving software was loaded correctly does not prove the software ran correctly. It only verifies the initial state.
@@ -163,14 +199,14 @@ Private Inputs:
 
 Public Outputs:
 - Health score: 99.95%
-- SLA compliance: ✓
+- SLA compliance: yes
 - Reporting period: 2024-01-15 to 2024-01-22
 
 ZK Constraints:
-✓ 5xx_error_rate < 0.1%
-✓ backend_availability > 99%
-✓ connection_success_rate > 99.5%
-✓ rate_limit_violations = 0
+5xx_error_rate < 0.1%
+backend_availability > 99%
+connection_success_rate > 99.5%
+rate_limit_violations = 0
 ```
 
 The proof confirms the gateway is healthy and meeting SLAs without revealing which endpoints were called, request payloads, or customer identifiers.
@@ -189,9 +225,9 @@ Public Outputs:
 - Breach count: 0
 
 ZK Constraints:
-✓ p95_latency < 100ms (SLA threshold)
-✓ p99_latency < 500ms (ceiling limit)
-✓ sample_size > 10,000 requests
+p95_latency < 100ms (SLA threshold)
+p99_latency < 500ms (ceiling limit)
+sample_size > 10,000 requests
 ```
 
 #### **Example: Percentile Calculation Without Data Exposure**
@@ -235,4 +271,4 @@ System interactions that cannot be represented as arithmetic circuits:
 * **File system I/O**: Disk reads, writes, and operations
 * **Hardware modules**: HSM operations, TPM interactions
 
-In practice, this means Lunal's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Lunal can prove “given these CPU usage measurements, Lunal's autoscaling logic correctly determined scaling was needed” but cannot prove “these CPU usage measurements were collected correctly from the system.” The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.
+In practice, this means Lunal's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Lunal can prove "given these CPU usage measurements, Lunal's autoscaling logic correctly determined scaling was needed" but cannot prove "these CPU usage measurements were collected correctly from the system." The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.
