@@ -122,7 +122,7 @@ Each `SNP_LAUNCH_UPDATE` constructs a `PAGE_INFO` structure and hashes it:
 │   │  new_digest = SHA-384(PAGE_INFO)                                   │ │
 │   └────────────────────────────────────────────────────────────────────┘ │
 │                                                                          │
-│   After all pages: final launch digest = MEASUREMENT in attestation report│
+│  After all pages: final launch digest = MEASUREMENT in attestation report│
 │                                                                          │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
