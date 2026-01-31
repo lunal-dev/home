@@ -15,9 +15,9 @@ Welcome to the Lunal documentation! Choose a topic below to get started with Tru
 
 ### Documentation Sections
 
-- **[Confidential Computing Primer](confidential-computing-primer/)** - A comprehensive guide on Confidential Computing and how it works underneath the hood
-- **[Security](security.md)** - Understand Lunal's security architecture and best practices
-- **[Zero Knowledge](zk.md)** - Learn about zero-knowledge proofs and their applications
+- **[Confidential Computing Primer](confidential-computing-primer/)** - A comprehensive guide on Confidential Computing and how it works underneath the hood.
+- **[Security](security.md)** - Understand Lunal's security architecture and best practices.
+- **[Zero Knowledge](zk.md)** - Learn about zero-knowledge (ZK) proofs and their applications.
 
 ---
 
