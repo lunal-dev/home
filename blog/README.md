@@ -9,11 +9,6 @@
 
 # Lunal Blog
 
-## Partnerships
-
-- 📣 [Partnership with Vail to Fingerprint and Verify AI Models](/blog/vail-partnership.md)
-- 📣 [Partnership with Lucid for AI Location Verification](/blog/lucid-partnership.md)
-
-## Blog Posts
+- 📝 [A Confidenital Computing Primer](docs/confidential-computing-primer/)
 - 📝 [Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
-- 📝 [Benchmarking TEE Performance on CPUs](/blog/tee-performance-cpus.md)
+- 📝 [Benchmarking CPU TEE Performance](/blog/tee-performance-cpus.md)
