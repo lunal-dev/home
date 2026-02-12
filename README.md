@@ -27,9 +27,6 @@ Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us f
 - 📣 [Blog - Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
 - 📣 [Partnership with Vail to Fingerprint and Verify AI Models](/blog/vail-partnership.md)
 - 📣 [Partnership with Lucid for AI Location Verification](/blog/lucid-partnership.md)
-- 📣 [Partnership with Impulse AI for Private Training, Fine-Tuning, and Inference](/blog/impulse-ai-partnership.md)
-- 📣 [Partnership with Reppo for Confidential AI](/blog/reppo-partnership.md)
-- 📣 [Partnership with Nexus for zkVM Privacy](/blog/nexus-partnership.md)
 
 ## Why Lunal?
 
