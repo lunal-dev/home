@@ -25,7 +25,7 @@ Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us f
 
 - 📣 [A Confidential Computing Primer](/docs/confidential-computing-primer)
 - 📣 [Blog - Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
-- 📣 [Benchmarking TEE Performance on CPUs](/blog/tee-performance-cpus.md)
+- 📣 [Blog - Benchmarking TEE Performance on CPUs](/blog/tee-performance-cpus.md)
 
 ## Why Lunal?
 
