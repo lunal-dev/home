@@ -7,56 +7,73 @@
 <div align="center">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
+    <a href="/components.md">Components</a>&nbsp;&nbsp;
+    <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/blog/">Blog</a>&nbsp;&nbsp;
     <a href="/careers/">Careers</a>
   </nav>
 </div>
 
-# Lunal - The Confidential Compute Company
+# Lunal
 
-Lunal is software for secure, private, verifiable AI.
+Lunal is the AI confidential compute platform. We run your AI workloads (inference, training, agents) inside hardware-encrypted environments called Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
 
-Built with Trusted Execution Environments (TEEs) and Zero-knowledge Cryptography (ZK), Lunal delivers end-to-end private inference and training, secures model weights and agents, and provides verifiable data provenance.
+You deploy your code as-is unchanged. You get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
 
-Ready to get started or curious? [Say hi](mailto:ansgar@lunal.dev) and join us for a hot cup of TEE. 🫖
 
-## Latest News
+[Say hi](mailto:ansgar@lunal.dev). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
 
-- 📣 [A Confidential Computing Primer](/docs/confidential-computing-primer)
-- 📣 [Blog - Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
-- 📣 [Blog - Benchmarking TEE Performance on CPUs](/blog/tee-performance-cpus.md)
+## Example Use Cases
 
-## Why Lunal?
+* You are an **AI inference provider** who needs to guarantee data privacy during inference. You use Lunal to offer an end-to-end private inference product where customer data is never visible to you or your infrastructure.
+* You are an **AI lab** that needs to train on highly sensitive data and prove to customers exactly what data was used during training. You use Lunal to set up fully confidential training workloads, enabling customers to cryptographically verify training data provenance.
+* You are an **AI lab** that needs to protect proprietary weights from extraction during inference or fine-tuning. You use Lunal to ensure weights never leave hardware-enforced secure enclaves.
+* You are an **inference provider** serving third-party models and regulators require proof that the audited model is what's actually running in production. You use Lunal to provide verifiable attestation of model integrity.
+* You are an **AI agent company** whose agents handle credentials and API keys that must never be exposed in plaintext. You use Lunal to enforce hardware-level isolation so secrets never exist outside the TEE.
+* You are building **multi-agent systems** and agents need to verify each other's identity and code before establishing trust. You use Lunal to provide cryptographic attestation between agents.
 
-TEEs provide a never-possible-before combination of privacy, security, verifiability, and performance. For the first time ever, you can now compute on encrypted data with end-to-end verification of the running software. Including AI inference. But TEEs are tricky.
 
-First, privacy doesn't stop at the TEE: all surrounding software and systems must also preserve privacy. And to be verifiable, everything in TEEs must be measurable, attestable, and reproducible.
+## What We Solve
 
-Getting this right is hard. Getting it right at scale, with best-in-class security and zero downtime? Even harder. That's why we built Lunal: unified software and infrastructure that make TEEs simple, usable, and scalable.
+Confidential computing protects data while it's being processed, not just at rest or in transit. The core technology is Trusted Execution Environments (TEEs), a hardware feature built into modern CPUs and GPUs. TEEs turn existing VMs into fully encrypted, hardened, tamper-proof compute environments.
 
-Here are problems Lunal solves that make using TEEs easier:
+A TEE by itself is just a primitive. Running production workloads inside TEEs and scaling them is a serious engineering challenge. You have to solve attestation, key management, build verifiability, networking, autoscaling, and logging, among others.
 
-### Key Features
+Lunal solves all of these. We built a set of independent components that each address a specific problem. Use them all together or integrate individual pieces into your existing stack. Lunal is confidential computing that just works, without building the infrastructure yourself.
 
-- **Unified CPU & Accelerators:** Combined CPU and GPU TEEs so your software, models, and data stay private, secure, and verifiable.
+[See the complete component catalogue](/components.md).
 
-- **Drop-in compatibility:** Deploy and scale your existing applications and AI workloads in TEEs as-is, with zero changes.
+## How To Use Lunal
 
-- **Seamless CI/CD:** Connect Lunal to your GitHub repo. On every commit, Lunal checks out your code, verifiably builds it, and deploys it.
+### Enterprise / Licensed
 
-- **End-to-end verifiability:** Lunal automatically staples a verifiable TEE attestation to every HTTP response in an HTTP response header. These attestations affirm the TEE is uncompromised and attest to all software inside - from the AI model loaded to the git commit of your code.
+**For AI labs, infrastructure providers, and large organizations with existing hardware/infrastructure.**
 
-  You, and any third party, can independently verify these attestations. Attestations are signed by Intel, AMD, and/or NVIDIA.
+Lunal's software stack deploys on your infrastructure. Components are modular: use the full platform or integrate specific pieces into your existing architecture.
 
-- **Automatic scaling:** Global, automatic scaling based on CPU usage, GPU usage, memory pressure, and/or request/response latency. Scaling metrics are privately measured in the TEE with zero-knowledge proofs (ZKP).
+Start with a pilot to map components onto your stack. Components work end-to-end or individually. On-prem, bare metal, all major clouds.
 
-- **Application services:** Privacy-preserving firewalls, DDoS protection, rate limiting, routing, load balancing, and caching. Lunal’s services run in TEEs themselves; Lunal can’t see any passthrough or cached data.
+We explain how we work with enterprises in depth [here](/enterprise.md) or [contact us](mailto:ansgar@lunal.dev).
 
-- **Security:** TEE keys are automatically rotated. Uploaded data can only be decrypted in Lunal TEEs. Hardened OS and language runtimes, reproducible builds, and policy-enforced further reduce the attack surface.
+### Hosted Platform
 
-- **SDKs:** Client and server SDKs encrypt data for upload to Lunal and verify the TEE attestations in responses.
+**For teams that want to run workloads privately without managing TEE infrastructure.**
 
-- **Logging:** All telemetry and logs are recorded privately in the TEE and encrypted with your public key; only you can read them.
+Bring your workload: inference, training, fine-tuning, any application. Lunal runs it on TEE-backed infrastructure. You get an endpoint with attestation built in.
 
-👋 [Ansgar](https://github.com/gruns), [Amean](https://github.com/AmeanAsad), and the merry band of misfits at Lunal
+No code changes required. Your existing applications, containers, and models work as-is. The full platform is included: attestation, key management, autoscaling, private networking, CI/CD, encrypted logging. Global deployment.
+
+[Contact us](mailto:ansgar@lunal.dev).
+
+### AI Agents
+
+**For teams building AI agents that need access to credentials, tools, and external services.**
+
+Agents run inside TEEs with hardware-enforced credential isolation. Tokens and API keys never exist in plaintext outside the TEE. Multi-agent systems verify each other through attestation. Each agent proves what code it's running before others trust it.
+
+[Contact us](mailto:ansgar@lunal.dev).
+
+## Get Started
+
+[Say hi](mailto:ansgar@lunal.dev). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
