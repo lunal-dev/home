@@ -1,7 +1,6 @@
 <div align="center">
   <nav>
     <a href="/">Home</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
     <a href="/careers/">Careers</a>
   </nav>
@@ -16,6 +15,7 @@ Welcome to the Lunal documentation! Choose a topic below to get started with Tru
 ### Documentation Sections
 
 - **[Confidential Computing Primer](confidential-computing-primer/)** - A comprehensive guide on Confidential Computing and how it works underneath the hood.
+- **[Attestable Builds](attestable-builds/)** - Learn what attestable builds are, why they matter, and how TEEs make software verification possible.
 - **[Security](security.md)** - Understand Lunal's security architecture and best practices.
 - **[Zero Knowledge](zk.md)** - Learn about zero-knowledge (ZK) proofs and their applications.
 

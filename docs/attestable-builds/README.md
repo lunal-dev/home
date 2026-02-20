@@ -1,3 +1,11 @@
+<div align="center">
+  <nav>
+    <a href="/">Home</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
+  </nav>
+</div>
+
 # What Are Attestable Builds?
 
 This document explains what attestable builds are, why they matter, and how they solve the software verification problem. After reading it, you'll understand the core insight behind attestable builds and why Trusted Execution Environments make them possible now.
