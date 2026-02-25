@@ -9,6 +9,6 @@
 
 # Lunal Blog
 
-- 📝 [A Confidenital Computing Primer](docs/confidential-computing-primer/)
+- 📝 [A Confidential Computing Primer](../docs/confidential-computing-primer/)
 - 📝 [Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
 - 📝 [Benchmarking CPU TEE Performance](/blog/tee-performance-cpus.md)
