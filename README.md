@@ -6,7 +6,7 @@
 
 <div align="center">
   <nav>
-    <a href="/">Home</a>&nbsp;&nbsp;
+    <a href="/lunal-dev/home">Home</a>&nbsp;&nbsp;
     <a href="/components.md">Components</a>&nbsp;&nbsp;
     <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
@@ -42,7 +42,7 @@ A TEE by itself is just a primitive. Running production workloads inside TEEs an
 
 Lunal solves all of these. We built a set of independent components that each address a specific problem. Use them all together or integrate individual pieces into your existing stack. Lunal is confidential computing that just works, without building the infrastructure yourself.
 
-See the [complete component catalogue](/components.md).
+See the complete [component catalogue](/components.md).
 
 ## How To Use Lunal
 

@@ -1,6 +1,6 @@
 <div align="center">
   <nav>
-    <a href="/">Home</a>&nbsp;&nbsp;
+    <a href="/lunal-dev/home">Home</a>&nbsp;&nbsp;
     <a href="/components.md">Components</a>&nbsp;&nbsp;
     <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
@@ -13,7 +13,7 @@
 
 Lunal is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
 
-See how [modular adoption works in practice](/enterprise.md).
+See how [modular adoption](/enterprise.md) works in practice.
 
 ## Component Catalogue
 
@@ -125,4 +125,4 @@ Each component has defined interfaces and integrates with existing infrastructur
 
 Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.
 
-Talk to us about [what fits your stack](mailto:ansgar@lunal.dev) or see how [enterprise engagements work](/enterprise.md).
+Talk to us about [what fits your stack](mailto:ansgar@lunal.dev) or see how [enterprise engagements](/enterprise.md) work.
