@@ -1,3 +1,14 @@
+<div align="center">
+  <nav>
+    <a href="/">Home</a>&nbsp;&nbsp;
+    <a href="/components.md">Components</a>&nbsp;&nbsp;
+    <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/blog/">Blog</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
+  </nav>
+</div>
+
 # Secure AI Needs TEEs
 
 AI security standards are being developed in real-time as the technology scales from research labs to billions of users. As these models take on more consequential roles in software systems in terms of delegating, making decisions, and acting on our behalf, questions remain about how to effectively secure these systems. In addition, frontier models are increasingly viewed as strategic national assets that require protection from sophisticated threat actors. The intersection of this rapid technological advancement, the scale of deployment, and this new complex threat landscape necessitates an equivalently accelerated effort to develop practical security standards and implement them at production scale.
