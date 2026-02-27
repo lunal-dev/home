@@ -13,7 +13,7 @@
 
 Lunal is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
 
-[See how modular adoption works in practice](/enterprise.md).
+See how [modular adoption works in practice](/enterprise.md).
 
 ## Component Catalogue
 
@@ -125,4 +125,4 @@ Each component has defined interfaces and integrates with existing infrastructur
 
 Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.
 
-[Talk to us about what fits your stack](mailto:ansgar@lunal.dev) or [see how enterprise engagements work](/enterprise.md).
+Talk to us about [what fits your stack](mailto:ansgar@lunal.dev) or see how [enterprise engagements work](/enterprise.md).

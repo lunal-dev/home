@@ -17,7 +17,7 @@ We know your infrastructure is bespoke. It looks different from everyone else's.
 
 We built Lunal with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
 
-[See the full component catalogue](/components.md).
+See the [full component catalogue](/components.md).
 
 
 ## How We Work Together
