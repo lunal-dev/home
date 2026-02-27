@@ -12,7 +12,7 @@ Maybe you're running their code unencrypted and just claiming otherwise. Maybe y
 
 Attestation provides that proof. The hardware itself measures what code was loaded, and AMD's keys (fused into the silicon at manufacturing) sign a statement about that measurement. A customer can verify: "This signature is valid and chains to AMD's root key. The measurement matches what I expected. Therefore, AMD's hardware is asserting that my code is running."
 
-This is the problem Lunal solves. We make attestation accessible suc that you don't need to implement the verification flow yourself, but understanding it helps you reason about what guarantees you're actually getting.
+This is the problem Lunal solves. We make attestation accessible such that you don't need to implement the verification flow yourself, but understanding it helps you reason about what guarantees you're actually getting.
 
 ## What Gets Measured
 
