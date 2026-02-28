@@ -6,7 +6,7 @@
 
 <div align="center">
   <nav>
-    <a href="/lunal-dev/home">Home</a>&nbsp;&nbsp;
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
     <a href="/components.md">Components</a>&nbsp;&nbsp;
     <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;

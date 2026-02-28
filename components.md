@@ -1,6 +1,6 @@
 <div align="center">
   <nav>
-    <a href="/lunal-dev/home">Home</a>&nbsp;&nbsp;
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
     <a href="/components.md">Components</a>&nbsp;&nbsp;
     <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
@@ -14,6 +14,19 @@
 Lunal is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
 
 See how [modular adoption](/enterprise.md) works in practice.
+
+### Table of Contents
+
+- [Component Catalogue](#component-catalogue)
+  - [Attestation Service](#attestation-service)
+  - [Key Management Service (KMS)](#key-management-service-kms)
+  - [Build Pipeline](#build-pipeline)
+  - [Networking and Application Services](#networking-and-application-services)
+  - [Oblivious HTTP Gateway](#oblivious-http-gateway)
+  - [Control Plane](#control-plane)
+  - [Hardened VM Image](#hardened-vm-image)
+  - [SDKs (Client and Server)](#sdks-client-and-server)
+- [Modularity](#modularity)
 
 ## Component Catalogue
 

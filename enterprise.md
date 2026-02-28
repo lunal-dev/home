@@ -1,6 +1,6 @@
 <div align="center">
   <nav>
-    <a href="/lunal-dev/home">Home</a>&nbsp;&nbsp;
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
     <a href="/components.md">Components</a>&nbsp;&nbsp;
     <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
@@ -18,6 +18,18 @@ We know your infrastructure is bespoke. It looks different from everyone else's.
 We built Lunal with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
 
 See the full [component catalogue](/components.md).
+
+### Table of Contents
+
+- [How We Work Together](#how-we-work-together)
+  - [Discovery](#discovery)
+  - [Pilot](#pilot)
+  - [Production](#production)
+- [Deep Dive: What Happens During a Pilot](#deep-dive-what-happens-during-a-pilot)
+  - [Drawing the Trust Boundary](#drawing-the-trust-boundary)
+  - [Making the Stack Confidential](#making-the-stack-confidential)
+  - [Filling the Gaps](#filling-the-gaps)
+- [Get Started](#get-started)
 
 
 ## How We Work Together
@@ -88,5 +100,4 @@ Your infrastructure determines which components you need. In some cases, it requ
 ## Get Started
 
 [Tell us](mailto:ansgar@lunal.dev) about your infrastructure and what you're trying to protect. We'll scope a pilot.
-
 
