@@ -17,6 +17,7 @@ Welcome to the Lunal documentation! Choose a topic below to get started with Tru
 
 ### Documentation Sections
 
+- **[Introduction to TEEs](intro-to-tees.md)** - A high-level introduction to Trusted Execution Environments: what they are, how they work, and their limitations.
 - **[Confidential Computing Primer](confidential-computing-primer/)** - A comprehensive guide on Confidential Computing and how it works underneath the hood.
 - **[Attestable Builds](attestable-builds/)** - Learn what attestable builds are, why they matter, and how TEEs make software verification possible.
 - **[Security](security.md)** - Understand Lunal's security architecture and best practices.
@@ -26,7 +27,7 @@ Welcome to the Lunal documentation! Choose a topic below to get started with Tru
 
 ## Quick Start
 
-New to TEEs? We recommend starting with the **[Confidential Computing Primer](confidential-computing-primer/)** to understand confidential computing fundamentals, then explore our security documentation for best practices.
+New to TEEs? Start with the **[Introduction to TEEs](intro-to-tees.md)** for a high-level overview, then move on to the **[Confidential Computing Primer](confidential-computing-primer/)** for a detailed technical deep dive.
 
 ## Need Help?
 
