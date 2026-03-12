@@ -16,44 +16,81 @@ function safePath(relativePath: string): string {
 }
 
 /**
+ * Converts a file-system-relative markdown path to an absolute website route.
+ * sourceDir is the directory of the markdown file being processed (relative to CONTENT_ROOT).
+ */
+function resolveLink(href: string, sourceDir: string): string {
+  // Already absolute
+  if (href.startsWith("/")) {
+    // /README.md -> /
+    if (href === "/README.md") return "/";
+    // Strip .md extension
+    href = href.replace(/\.md$/, "");
+    // Strip trailing slash
+    href = href.replace(/\/$/, "");
+    return href;
+  }
+
+  // Relative link — resolve against the source file's directory
+  const resolved = path.posix.normalize(path.posix.join("/", sourceDir, href));
+  // Strip .md extension
+  let route = resolved.replace(/\.md$/, "");
+  // Strip trailing slash
+  route = route.replace(/\/$/, "");
+  return route;
+}
+
+/**
  * Reads a markdown file from the content root (the repo root),
  * strips the GitHub HTML nav header, and rewrites internal links
  * to work as website routes.
+ *
+ * @param relativePath - path to the markdown file relative to CONTENT_ROOT
  */
 export function getMarkdownContent(relativePath: string): string {
   const filePath = safePath(relativePath);
   let content = fs.readFileSync(filePath, "utf-8");
 
-  // Strip the GitHub nav header block (the <div align="center"><nav>...</nav></div> and optional <br>)
+  // The directory of this markdown file, relative to CONTENT_ROOT
+  const sourceDir = path.posix.dirname(relativePath);
+
+  // Strip the GitHub nav header block
   content = content.replace(
     /<div align="center">\s*<nav>[\s\S]*?<\/nav>\s*<\/div>\s*(?:<br\s*\/?>)?/,
     ""
   );
 
-  // Rewrite internal markdown links to website routes:
-  // /README.md -> /
-  content = content.replace(/\(\/README\.md\)/g, "(/)");
-  // /foo.md -> /foo (root-level .md files become top-level routes)
-  content = content.replace(/\(\/([\w-]+)\.md\)/g, "(/$1)");
-  // /path/to/file.md -> /path/to/file (nested .md files)
-  content = content.replace(/\(\/([\w-]+(?:\/[\w-]+)+)\.md\)/g, "(/$1)");
-  // /path/to/dir/ -> /path/to/dir (trailing slash on directories)
-  content = content.replace(/\(\/([\w-]+(?:\/[\w-]+)*)\/(\.\.\/[\w-]+(?:\/[\w-]+)*\/?)?\)/g, (match, p) => {
-    // Only strip trailing slash from directory links, not relative links
-    if (match.includes("../")) return match;
-    return `(/${p})`;
-  });
+  // Rewrite markdown links: [text](href) -> [text](resolved route)
+  // Matches (href) in markdown link syntax, but not image src or bare URLs
+  content = content.replace(
+    /\]\(([^)]+)\)/g,
+    (_match, href: string) => {
+      // Skip external links, anchors, mailto, and image files
+      if (
+        href.startsWith("http://") ||
+        href.startsWith("https://") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("#")
+      ) {
+        return `](${href})`;
+      }
 
-  // Generic: convert relative .md links in docs (e.g., intro-to-tees.md -> intro-to-tees)
-  content = content.replace(/\((\.\.\/)?([\w-]+)\.md\)/g, (_match, prefix, name) => {
-    if (prefix === "../") {
-      return `(/docs/${name})`;
+      // Skip non-markdown links (images, etc)
+      if (!href.endsWith(".md") && !href.endsWith("/") && !href.includes(".md#")) {
+        // Could be a relative directory link or an asset
+        if (href.startsWith("./assets/") || href.startsWith("/assets/")) {
+          return `](${href.replace("./assets/", "/assets/")})`;
+        }
+        // Leave as-is if not a markdown link
+        return `](${href})`;
+      }
+
+      // Split href and anchor
+      const [linkPath, anchor] = href.split("#");
+      const route = resolveLink(linkPath, sourceDir);
+      return `](${route}${anchor ? "#" + anchor : ""})`;
     }
-    return `(${name})`;
-  });
-
-  // Convert relative links within the same directory (01-threat-model.md -> 01-threat-model)
-  content = content.replace(/\(([\d][\w-]+)\.md\)/g, "($1)");
+  );
 
   // Handle image paths - ./assets/logo.png -> /assets/logo.png
   content = content.replace(/\(\.\/assets\//g, "(/assets/");
