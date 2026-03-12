@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --muted: #777777;
+  --border: #222222;
+  --accent: #f0c040;
+  --heading: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-heading: var(--heading);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Markdown prose styling */
+.prose {
+  max-width: none;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.prose h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--heading);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.prose h1:first-child,
+.prose > div:first-child + h1 {
+  margin-top: 0;
+}
+
+.prose h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--heading);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prose h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--heading);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose h4 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin-bottom: 0.875rem;
+  color: var(--foreground);
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline !important;
+  text-decoration-color: var(--accent) !important;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px !important;
+  transition: text-decoration-color 0.15s;
+}
+
+.prose a:hover {
+  text-decoration-color: transparent !important;
+}
+
+.prose strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.875rem;
+}
+
+.prose ul > li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.prose ul > li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.prose ol {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.875rem;
+  counter-reset: item;
+}
+
+.prose ol > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.25rem;
+  counter-increment: item;
+}
+
+.prose ol > li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+/* Nested list items use dimmer marker */
+.prose li > ul > li::before {
+  content: "-";
+  color: var(--muted);
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--muted);
+  margin-bottom: 0.875rem;
+}
+
+.prose code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  color: var(--accent);
+  background: none;
+  padding: 0;
+}
+
+.prose pre {
+  background: #050505;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 0.875rem;
+}
+
+.prose pre code {
+  color: var(--foreground);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.875rem;
+  font-size: 14px;
+}
+
+.prose thead th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11px;
+}
+
+.prose tbody td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.prose tbody tr:hover {
+  background: #0a0a0a;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hide the GitHub nav header from markdown files */
+.prose > div[align="center"]:first-child {
+  display: none;
+}
+
+.prose > div[align="center"]:first-child + br {
+  display: none;
+}
