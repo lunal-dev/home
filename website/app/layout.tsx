@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${lora.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
-        <main className="px-6 md:px-10 py-16 max-w-[720px] mx-auto">
+        <main className="px-6 md:px-10 py-16 max-w-[860px] mx-auto">
           {children}
         </main>
         <footer className="border-t border-border px-6 py-10 text-center text-xs text-muted tracking-wide">

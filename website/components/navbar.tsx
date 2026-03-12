@@ -19,7 +19,7 @@ export function Navbar() {
 
   return (
     <header className="border-b border-border sticky top-0 bg-background z-50">
-      <nav className="max-w-[720px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between text-sm">
+      <nav className="max-w-[860px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between text-sm">
         <div className="flex items-center gap-8">
           <Link
             href="/"

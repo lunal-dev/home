@@ -178,10 +178,12 @@ body {
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 0.875rem;
+  line-height: 1.2;
 }
 
 .prose pre code {
   color: var(--foreground);
+  font-family: inherit;
 }
 
 .prose hr {
