@@ -2,7 +2,7 @@
 
 :root {
   --background: #1a1a1a;
-  --foreground: #ffffff;
+  --foreground: #d4d4d4;
   --muted: #777777;
   --border: #222222;
   --accent: #f0c040;
@@ -99,7 +99,7 @@ body {
 }
 
 .prose strong {
-  color: var(--accent);
+  color: var(--heading);
   font-weight: 600;
 }
 
