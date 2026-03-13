@@ -1,8 +1,19 @@
+<div align="center">
+  <nav>
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
+    <a href="/components.md">Components</a>&nbsp;&nbsp;
+    <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/blog/">Blog</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
+  </nav>
+</div>
+
 # Provenance and Standards
 
 This document explains how attestable builds produce verifiable claims about software and how those claims fit into the broader supply chain security ecosystem. After reading it, you'll understand what SLSA and in-toto are, why standards matter for interoperability, what artifacts Kettle produces, and how to interpret provenance documents.
 
-We assume familiarity with the attestable builds concept from [What Are Attestable Builds?](attestable-builds.md) and the build flow from [How It Works](how-it-works.md). No prior knowledge of supply chain security standards is required.
+We assume familiarity with the attestable builds concept from [What Are Attestable Builds?](README.md) and the build flow from [How It Works](how-it-works.md). No prior knowledge of supply chain security standards is required.
 
 ## Why Standards Matter
 

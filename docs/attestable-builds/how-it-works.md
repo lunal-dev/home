@@ -1,8 +1,19 @@
+<div align="center">
+  <nav>
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
+    <a href="/components.md">Components</a>&nbsp;&nbsp;
+    <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/blog/">Blog</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
+  </nav>
+</div>
+
 # How Attestable Builds Work
 
 This document explains the architecture and mechanics of attestable builds. After reading it, you'll understand each phase of the build process, how cryptographic binding works at every step, and how verification closes the loop from source to running code.
 
-We assume you've read [What Are Attestable Builds?](attestable-builds.md) and understand the core concept: attestable builds prove that specific inputs were used to produce specific outputs in a verified environment. This document shows exactly how that works.
+We assume you've read [What Are Attestable Builds?](README.md) and understand the core concept: attestable builds prove that specific inputs were used to produce specific outputs in a verified environment. This document shows exactly how that works.
 
 ## Kettle: Lunal's Implementation
 

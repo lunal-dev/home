@@ -1,6 +1,17 @@
+<div align="center">
+  <nav>
+    <a href="/README.md">Home</a>&nbsp;&nbsp;
+    <a href="/components.md">Components</a>&nbsp;&nbsp;
+    <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>&nbsp;&nbsp;
+    <a href="/blog/">Blog</a>&nbsp;&nbsp;
+    <a href="/careers/">Careers</a>
+  </nav>
+</div>
+
 # Threat Model and Security Boundaries
 
-This document explains what attestable builds protect against and what they don't. After reading it, you'll understand where the trust boundaries lie, what specific attacks are prevented, and which assumptions you're still making. We assume familiarity with the concepts from the previous sections: [What Are Attestable Builds?](attestable-builds.md), [How It Works](how-it-works.md), and [Provenance & Standards](provenance-standards.md).
+This document explains what attestable builds protect against and what they don't. After reading it, you'll understand where the trust boundaries lie, what specific attacks are prevented, and which assumptions you're still making. We assume familiarity with the concepts from the previous sections: [What Are Attestable Builds?](README.md), [How It Works](how-it-works.md), and [Provenance & Standards](provenance-standards.md).
 
 Security claims without clear boundaries are marketing. This document draws the boundaries.
 

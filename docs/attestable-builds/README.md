@@ -13,6 +13,8 @@
 
 This document explains what attestable builds are, why they matter, and how they solve the software verification problem. After reading it, you'll understand the core insight behind attestable builds and why Trusted Execution Environments make them possible now.
 
+This introduction is then followed by three more documents. [How It Works](how-it-works.md), [Provenance & Standards](provenance-standards.md) and [Threat Model and Security Boundaries](threat-model.md).
+
 We assume familiarity with git, package managers, and the concept of cryptographic hashes.
 
 ## The Verification Problem
