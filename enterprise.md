@@ -99,5 +99,5 @@ Your infrastructure determines which components you need. In some cases, it requ
 
 ## Get Started
 
-[Tell us](mailto:ansgar@lunal.dev) about your infrastructure and what you're trying to protect. We'll scope a pilot.
+[Tell us](mailto:founders@lunal.dev) about your infrastructure and what you're trying to protect. We'll scope a pilot.
 

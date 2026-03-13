@@ -31,4 +31,4 @@ New to TEEs? Start with the **[Introduction to TEEs](intro-to-tees.md)** for a h
 
 ## Need Help?
 
-Can't find what you're looking for? [Contact us](mailto:ansgar@lunal.dev) and we'll help you get up and running.
+Can't find what you're looking for? [Contact us](mailto:founders@lunal.dev) and we'll help you get up and running.

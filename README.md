@@ -22,7 +22,7 @@ Lunal is the AI confidential compute platform. We run your AI workloads (inferen
 You deploy your code as-is unchanged. You get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
 
 
-[Say hi](mailto:ansgar@lunal.dev). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
+[Say hi](mailto:founders@lunal.dev). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
 
 ## Example Use Cases
 
@@ -54,7 +54,7 @@ Lunal's software stack deploys on your infrastructure. Components are modular: u
 
 Start with a pilot to map components onto your stack. Components work end-to-end or individually. On-prem, bare metal, all major clouds.
 
-We explain how we work with enterprises in depth [here](/enterprise.md) or [contact us](mailto:ansgar@lunal.dev).
+We explain how we work with enterprises in depth [here](/enterprise.md) or [contact us](mailto:founders@lunal.dev).
 
 ### Hosted Platform
 
@@ -64,7 +64,7 @@ Bring your workload: inference, training, fine-tuning, any application. Lunal ru
 
 No code changes required. Your existing applications, containers, and models work as-is. The full platform is included: attestation, key management, autoscaling, private networking, CI/CD, encrypted logging. Global deployment.
 
-[Contact us](mailto:ansgar@lunal.dev).
+[Contact us](mailto:founders@lunal.dev).
 
 ### AI Agents
 
@@ -72,8 +72,8 @@ No code changes required. Your existing applications, containers, and models wor
 
 Agents run inside TEEs with hardware-enforced credential isolation. Tokens and API keys never exist in plaintext outside the TEE. Multi-agent systems verify each other through attestation. Each agent proves what code it's running before others trust it.
 
-[Contact us](mailto:ansgar@lunal.dev).
+[Contact us](mailto:founders@lunal.dev).
 
 ## Get Started
 
-[Say hi](mailto:ansgar@lunal.dev). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
+[Say hi](mailto:founders@lunal.dev). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.

@@ -138,4 +138,4 @@ Each component has defined interfaces and integrates with existing infrastructur
 
 Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.
 
-Talk to us about [what fits your stack](mailto:ansgar@lunal.dev) or see how [enterprise engagements](/enterprise.md) work.
+Talk to us about [what fits your stack](mailto:founders@lunal.dev) or see how [enterprise engagements](/enterprise.md) work.
