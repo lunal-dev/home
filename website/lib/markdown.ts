@@ -94,6 +94,8 @@ export function getMarkdownContent(relativePath: string): string {
 
   // Handle image paths - ./assets/logo.png -> /assets/logo.png
   content = content.replace(/\(\.\/assets\//g, "(/assets/");
+  // Handle HTML img src attributes - src="./assets/..." -> src="/assets/..."
+  content = content.replace(/src="\.\/assets\//g, 'src="/assets/');
 
   return content;
 }

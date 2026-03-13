@@ -23,9 +23,9 @@ export function Navbar() {
         <div className="flex items-center gap-8">
           <Link
             href="/"
-            className="text-accent text-base font-medium tracking-wider uppercase hover:opacity-70 transition-opacity"
+            className="text-accent text-base font-medium tracking-wider hover:opacity-70 transition-opacity"
           >
-            lunal
+            Lunal
           </Link>
           <div className="hidden sm:flex items-center gap-6">
             {NAV_ITEMS.map((item) => (

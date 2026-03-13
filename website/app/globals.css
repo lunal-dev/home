@@ -87,15 +87,14 @@ body {
 
 .prose a {
   color: var(--accent);
-  text-decoration: underline !important;
-  text-decoration-color: var(--accent) !important;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px !important;
-  transition: text-decoration-color 0.15s;
+  text-decoration-line: none !important;
 }
 
 .prose a:hover {
-  text-decoration-color: transparent !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: var(--accent) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px;
 }
 
 .prose strong {
@@ -225,11 +224,11 @@ body {
   height: auto;
 }
 
-/* Hide the GitHub nav header from markdown files */
-.prose > div[align="center"]:first-child {
+/* Hide the GitHub nav header from markdown files (contains <nav>) */
+.prose > div[align="center"]:first-child:has(nav) {
   display: none;
 }
 
-.prose > div[align="center"]:first-child + br {
+.prose > div[align="center"]:first-child:has(nav) + br {
   display: none;
 }
