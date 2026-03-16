@@ -1,0 +1,45 @@
+# Lunal
+
+> The AI confidential compute platform.
+
+Lunal runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Lunal.
+
+Deploy code unchanged. Get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
+
+## Key Pages
+
+- [Home](https://lunal.dev/): Overview, use cases, and how to use Lunal
+- [Components](https://lunal.dev/components): Modular component catalogue (attestation service, KMS, build pipeline, networking, OHTTP gateway, control plane, hardened VM, SDKs)
+- [Enterprise](https://lunal.dev/enterprise): How Lunal works with large organizations — discovery, pilot, production engagement model
+- [Documentation](https://lunal.dev/docs): Technical documentation index
+
+## Docs
+
+- [Introduction to TEEs](https://lunal.dev/docs/intro-to-tees): High-level introduction to Trusted Execution Environments
+- [Confidential Computing Primer](https://lunal.dev/docs/confidential-computing-primer): Six-part deep technical series on confidential computing using AMD SEV-SNP
+  - [01. Threat Model & Security Boundaries](https://lunal.dev/docs/confidential-computing-primer/01-threat-model)
+  - [02. Hardware Foundations](https://lunal.dev/docs/confidential-computing-primer/02-hardware-foundations)
+  - [03. Memory Integrity](https://lunal.dev/docs/confidential-computing-primer/03-memory-integrity)
+  - [04. Privilege & Communication](https://lunal.dev/docs/confidential-computing-primer/04-privilege-and-communication)
+  - [05. Attestation & Verification](https://lunal.dev/docs/confidential-computing-primer/05-attestation)
+  - [06. Measurement Strategies](https://lunal.dev/docs/confidential-computing-primer/06-measurement-strategies)
+- [Attestable Builds](https://lunal.dev/docs/attestable-builds): What attestable builds are, why they matter, and how TEEs make software verification possible
+  - [How It Works](https://lunal.dev/docs/attestable-builds/how-it-works): Architecture and mechanics of the attestable build pipeline
+  - [Provenance & Standards](https://lunal.dev/docs/attestable-builds/provenance-standards): SLSA, in-toto, and how attestable build output fits the supply chain security ecosystem
+  - [Threat Model](https://lunal.dev/docs/attestable-builds/threat-model): What attestable builds protect against and what they don't
+- [Security Architecture](https://lunal.dev/docs/security): Lunal's security architecture, verification API, and CLI
+- [Zero-Knowledge Proofs](https://lunal.dev/docs/zk): How Lunal uses ZK proofs to complement TEE attestations
+
+## Blog
+
+- [Secure AI Needs TEEs](https://lunal.dev/blog/secure-ai-needs-tees): Why TEEs are essential for AI security
+- [TEE Performance on CPUs](https://lunal.dev/blog/tee-performance-cpus): Benchmarks showing ~1.5% overhead for TEE-protected workloads
+
+## Other
+
+- [Careers](https://lunal.dev/careers): Open positions at Lunal
+- [Contact](mailto:founders@lunal.dev): founders@lunal.dev
+
+## Optional
+
+- [llms-full.txt](https://lunal.dev/llms-full.txt): Complete content from all pages for full context
