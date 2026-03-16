@@ -6,14 +6,65 @@ Lunal runs AI workloads (inference, training, agents) inside hardware-encrypted 
 
 Deploy code unchanged. Get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
 
-## Key Pages
+## Use Cases
 
-- [Home](https://lunal.dev/): Overview, use cases, and how to use Lunal
-- [Components](https://lunal.dev/components): Modular component catalogue (attestation service, KMS, build pipeline, networking, OHTTP gateway, control plane, hardened VM, SDKs)
-- [Enterprise](https://lunal.dev/enterprise): How Lunal works with large organizations — discovery, pilot, production engagement model
-- [Documentation](https://lunal.dev/docs): Technical documentation index
+- **AI inference providers** guaranteeing data privacy during inference — customer data is never visible to the provider or their infrastructure.
+- **AI labs** training on sensitive data with cryptographically verifiable data provenance.
+- **AI labs** protecting proprietary weights from extraction during inference or fine-tuning — weights never leave hardware-enforced secure enclaves.
+- **Inference providers** proving to regulators that the audited model is what's actually running in production via verifiable attestation.
+- **AI agent companies** enforcing hardware-level credential isolation — tokens and API keys never exist in plaintext outside the TEE.
+- **Multi-agent systems** where agents verify each other's identity and code through cryptographic attestation before establishing trust.
 
-## Docs
+## Performance
+
+TEE overhead is minimal. Benchmarks comparing identical workloads inside TEE-enabled vs regular VMs show ~1.5% overhead. The largest overhead observed across any stage was 2.08%.
+
+| Metric           | TEE Environment | Regular Environment | Difference |
+| ---------------- | --------------- | ------------------- | ---------- |
+| Execution Speed  | 5.16 kHz        | 5.26 kHz            | -1.90%     |
+| Runtime Duration | 89.46s          | 87.78s              | +1.91%     |
+| CPU Utilization  | 26.61%          | 26.23%              | +1.45%     |
+| Memory Usage     | 19.02 GB        | 18.87 GB            | +0.80%     |
+
+Tested on AMD EPYC with SEV-SNP using cryptographic proving workloads (STARK proofs via zkVM) — among the most compute-intensive workloads possible. If overhead is negligible here, it's negligible for typical AI workloads.
+
+Full benchmark details: [TEE Performance on CPUs](https://lunal.dev/blog/tee-performance-cpus)
+
+## Components
+
+Lunal is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack.
+
+- **Attestation Service** — Generates and verifies TEE attestation reports. Trust anchor for the platform. Supports AMD SEV-SNP (VCEK/VLEK), Intel TDX, and NVIDIA CC. Continuous re-attestation with automatic key revocation. Public verification API and CLI.
+- **Key Management Service (KMS)** — Gates secret and key distribution on attestation. Workloads prove what they're running before receiving secrets. Optional certificate authority and TEE registry. Integrates with existing secret stores (e.g. HashiCorp Vault).
+- **Build Pipeline** — Produces attestable builds: runs builds inside a TEE with cryptographic proof of inputs, environment, and outputs. Verifiable chain from git commit to running code without needing deterministic compilers. Achieves SLSA Build L3 through hardware enforcement.
+- **Networking & Application Services** — All networking runs inside TEEs. API gateway, attesting proxy (TLS termination bound to attestation via EKM), firewalls, DDoS protection, load balancing. Internal mTLS with attestation-rooted certificates.
+- **Oblivious HTTP Gateway** — OHTTP-compatible gateway in a TEE paired with a third-party relay. Separates client identity from request content. No single party learns both who is asking and what they're asking.
+- **Control Plane** — Orchestration, scheduling, and autoscaling inside a TEE. Telemetry extracted from within the encrypted boundary. Optional ZK proofs verify scaling decisions without exposing per-process data. Supports on-prem, bare metal, and cloud (CPU and GPU).
+- **Hardened VM Image** — Minimal, hardened base OS for all workloads. No unnecessary services or debugging tools in production. Measured as part of TEE launch. SELinux, seccomp filters, network isolation.
+- **SDKs (Client and Server)** — Client SDK handles encryption, attestation verification, and KMS key negotiation. Server SDK handles attestation report generation and TEE-side encryption. Verification API and CLI for programmatic and manual checks.
+
+### Adoption Patterns
+
+- **Attestation only:** Attestation service + SDKs — for teams adding TEE verification to existing deployments.
+- **Security layer:** Attestation + KMS + build pipeline — for organizations needing the cryptographic verification layer.
+- **Full platform:** All components end-to-end — equivalent to the hosted platform, deployed on your infrastructure.
+
+## Enterprise
+
+Lunal works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure.
+
+**Three-phase engagement:**
+1. **Discovery** (free) — Understand your architecture and threat model. Outcome: gap analysis and pilot scope.
+2. **Pilot** (1-4 months) — Deploy components on your infrastructure. Architectural deep dive, integration design, deployment, cryptographic verification. If closing the trust boundary requires components that don't exist yet, we build them. No strings attached — license or walk away.
+3. **Production** — Full deployment with ongoing support. On-prem, bare metal, all major clouds.
+
+## How To Use Lunal
+
+- **Enterprise / Licensed:** Deploy Lunal's software stack on your infrastructure. Components are modular — use the full platform or specific pieces. [Enterprise details](https://lunal.dev/enterprise)
+- **Hosted Platform:** Bring your workload, Lunal runs it on TEE-backed infrastructure. No code changes. Full platform included. [Contact us](mailto:founders@lunal.dev)
+- **AI Agents:** Agents run inside TEEs with hardware-enforced credential isolation. Multi-agent attestation built in. [Contact us](mailto:founders@lunal.dev)
+
+## Documentation
 
 - [Introduction to TEEs](https://lunal.dev/docs/intro-to-tees): High-level introduction to Trusted Execution Environments
 - [Confidential Computing Primer](https://lunal.dev/docs/confidential-computing-primer): Six-part deep technical series on confidential computing using AMD SEV-SNP
@@ -24,22 +75,22 @@ Deploy code unchanged. Get end-to-end privacy, enhanced security, and full verif
   - [05. Attestation & Verification](https://lunal.dev/docs/confidential-computing-primer/05-attestation)
   - [06. Measurement Strategies](https://lunal.dev/docs/confidential-computing-primer/06-measurement-strategies)
 - [Attestable Builds](https://lunal.dev/docs/attestable-builds): What attestable builds are, why they matter, and how TEEs make software verification possible
-  - [How It Works](https://lunal.dev/docs/attestable-builds/how-it-works): Architecture and mechanics of the attestable build pipeline
-  - [Provenance & Standards](https://lunal.dev/docs/attestable-builds/provenance-standards): SLSA, in-toto, and how attestable build output fits the supply chain security ecosystem
-  - [Threat Model](https://lunal.dev/docs/attestable-builds/threat-model): What attestable builds protect against and what they don't
-- [Security Architecture](https://lunal.dev/docs/security): Lunal's security architecture, verification API, and CLI
+  - [How It Works](https://lunal.dev/docs/attestable-builds/how-it-works)
+  - [Provenance & Standards](https://lunal.dev/docs/attestable-builds/provenance-standards)
+  - [Threat Model](https://lunal.dev/docs/attestable-builds/threat-model)
+- [Security Architecture](https://lunal.dev/docs/security): Verification API, CLI, and security model
 - [Zero-Knowledge Proofs](https://lunal.dev/docs/zk): How Lunal uses ZK proofs to complement TEE attestations
 
 ## Blog
 
 - [Secure AI Needs TEEs](https://lunal.dev/blog/secure-ai-needs-tees): Why TEEs are essential for AI security
-- [TEE Performance on CPUs](https://lunal.dev/blog/tee-performance-cpus): Benchmarks showing ~1.5% overhead for TEE-protected workloads
+- [TEE Performance on CPUs](https://lunal.dev/blog/tee-performance-cpus): Benchmarks showing ~1.5% overhead
 
-## Other
+## Contact
 
 - [Careers](https://lunal.dev/careers): Open positions at Lunal
-- [Contact](mailto:founders@lunal.dev): founders@lunal.dev
+- [Email](mailto:founders@lunal.dev): founders@lunal.dev
 
-## Optional
+## Full Documentation
 
-- [llms-full.txt](https://lunal.dev/llms-full.txt): Complete content from all pages for full context
+- [llms-full.txt](https://lunal.dev/llms-full.txt): Complete content from all pages — entire docs site in one file (4600+ lines)
