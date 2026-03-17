@@ -2,11 +2,11 @@
 
 :root {
   --background: #1a1a1a;
-  --foreground: #d4d4d4;
-  --muted: #777777;
-  --border: #222222;
-  --accent: #f0c040;
-  --heading: #ffffff;
+  --foreground: #d6d6d6;
+  --muted: #888888;
+  --border: #333333;
+  --accent: #58a6ff;
+  --heading: #d6d6d6;
 }
 
 @theme inline {
@@ -16,16 +16,15 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-heading: var(--heading);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
-  font-size: 16px;
-  line-height: 1.7;
+  font-family: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
@@ -36,17 +35,16 @@ body {
 /* Markdown prose styling */
 .prose {
   max-width: none;
-  line-height: 1.8;
-  font-size: 16px;
+  line-height: 1.6;
+  font-size: 0.9rem;
 }
 
 .prose h1 {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: normal;
   color: var(--heading);
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
-  letter-spacing: -0.01em;
 }
 
 .prose h1:first-child,
@@ -55,33 +53,31 @@ body {
 }
 
 .prose h2 {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: normal;
   color: var(--heading);
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .prose h3 {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: normal;
   color: var(--heading);
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
 .prose h4 {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: normal;
   color: var(--foreground);
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
 .prose p {
-  margin-bottom: 0.875rem;
+  margin-bottom: 1rem;
   color: var(--foreground);
 }
 
@@ -93,8 +89,8 @@ body {
 .prose a:hover {
   text-decoration-line: underline !important;
   text-decoration-color: var(--accent) !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 4px;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px;
 }
 
 .prose strong {
@@ -105,34 +101,35 @@ body {
 .prose ul {
   list-style: none;
   padding-left: 0;
-  margin-bottom: 0.875rem;
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
 }
 
 .prose ul > li {
   position: relative;
-  padding-left: 1.25rem;
-  margin-bottom: 0.25rem;
+  padding-left: 1.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .prose ul > li::before {
-  content: ">";
+  content: "•";
   position: absolute;
-  left: 0;
-  color: var(--accent);
+  left: 0.25rem;
+  color: var(--muted);
   font-weight: 400;
 }
 
 .prose ol {
   list-style: none;
   padding-left: 0;
-  margin-bottom: 0.875rem;
+  margin-bottom: 1rem;
   counter-reset: item;
 }
 
 .prose ol > li {
   position: relative;
   padding-left: 1.75rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
   counter-increment: item;
 }
 
@@ -140,7 +137,7 @@ body {
   content: counter(item) ".";
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 
@@ -157,14 +154,14 @@ body {
 }
 
 .prose blockquote {
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--border);
   padding-left: 1rem;
   color: var(--muted);
-  margin-bottom: 0.875rem;
+  margin-bottom: 1rem;
 }
 
 .prose code {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: inherit;
   font-size: 0.875em;
   color: var(--accent);
   background: none;
@@ -172,12 +169,12 @@ body {
 }
 
 .prose pre {
-  background: #050505;
+  background: #0a0a0a;
   border: 1px solid var(--border);
   padding: 1rem;
   overflow-x: auto;
-  margin-bottom: 0.875rem;
-  line-height: 1.2;
+  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .prose pre code {
@@ -194,19 +191,17 @@ body {
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 0.875rem;
-  font-size: 14px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
 }
 
 .prose thead th {
   text-align: left;
-  font-weight: 500;
+  font-weight: normal;
   color: var(--accent);
   border-bottom: 1px solid var(--border);
   padding: 0.5rem 0.75rem 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 11px;
+  font-size: 0.8rem;
 }
 
 .prose tbody td {
@@ -216,7 +211,7 @@ body {
 }
 
 .prose tbody tr:hover {
-  background: #0a0a0a;
+  background: #1a1a1a;
 }
 
 .prose img {
