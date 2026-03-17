@@ -19,15 +19,15 @@ export function Navbar() {
 
   return (
     <header className="border-b border-border sticky top-0 bg-background z-50">
-      <nav className="max-w-[860px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between text-sm">
-        <div className="flex items-center gap-8">
+      <nav className="max-w-[860px] mx-auto px-4 md:px-10 h-14 flex items-center justify-between text-sm">
+        <div className="flex items-center gap-6">
           <Link
             href="/"
-            className="text-accent text-base font-medium tracking-wider hover:opacity-70 transition-opacity"
+            className="text-accent tracking-wider hover:opacity-70 transition-opacity"
           >
-            Lunal
+            lunal
           </Link>
-          <div className="hidden sm:flex items-center gap-6">
+          <div className="hidden sm:flex items-center gap-5">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
@@ -61,13 +61,13 @@ export function Navbar() {
         </div>
       </nav>
       {open && (
-        <div className="sm:hidden border-t border-border px-6 py-4 flex flex-col gap-1">
+        <div className="sm:hidden border-t border-border px-4 py-4 flex flex-col gap-1">
           {[{ label: "home", href: "/" }, ...NAV_ITEMS].map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`text-base py-2 transition-colors hover:text-accent ${
+              className={`py-2 transition-colors hover:text-accent ${
                 pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href + "/"))
                   ? "text-heading"
                   : "text-muted"

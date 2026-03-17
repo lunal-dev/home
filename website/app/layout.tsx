@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Lora, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
-
-const lora = Lora({
-  variable: "--font-serif",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Lunal",
@@ -35,9 +24,9 @@ export default function RootLayout({
           {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`}
         </Script>
       </head>
-      <body className={`${lora.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased">
         <Navbar />
-        <main className="px-6 md:px-10 py-16 max-w-[860px] mx-auto">
+        <main className="px-4 md:px-10 py-12 max-w-[860px] mx-auto">
           {children}
         </main>
         <footer className="border-t border-border px-6 py-10 text-center text-xs text-muted tracking-wide">
