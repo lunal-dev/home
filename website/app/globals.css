@@ -41,8 +41,8 @@ body {
 
 .prose h1 {
   font-size: 1.4rem;
-  font-weight: normal;
-  color: var(--heading);
+  font-weight: 600;
+  color: #ffffff;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -54,16 +54,18 @@ body {
 
 .prose h2 {
   font-size: 1.05rem;
-  font-weight: normal;
-  color: var(--heading);
+  font-weight: 600;
+  color: #ffffff;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .prose h3 {
   font-size: 0.9rem;
-  font-weight: normal;
-  color: var(--heading);
+  font-weight: 600;
+  color: var(--accent);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -71,9 +73,10 @@ body {
 .prose h4 {
   font-size: 0.9rem;
   font-weight: normal;
-  color: var(--foreground);
+  color: var(--muted);
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
+  font-style: italic;
 }
 
 .prose p {
