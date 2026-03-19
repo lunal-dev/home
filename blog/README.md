@@ -11,6 +11,10 @@
 
 # Lunal Blog
 
-- 📝 [A Confidential Computing Primer](../docs/confidential-computing-primer/)
-- 📝 [Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md)
-- 📝 [Benchmarking CPU TEE Performance](/blog/tee-performance-cpus.md)
+| Date | Post |
+|------|------|
+| 19 Mar 2026 | [Kettle: Attested Builds from a TEE](/blog/kettle-attested-builds.md) |
+| 1 Mar 2026 | [Introduction to TEEs](../docs/intro-to-tees.md) |
+| 27 Jan 2026 | [A Confidential Computing Primer](../docs/confidential-computing-primer/) |
+| 26 Sep 2025 | [Secure AI Needs TEEs](/blog/secure-ai-needs-tees.md) |
+| 26 Sep 2025 | [Benchmarking CPU TEE Performance](/blog/tee-performance-cpus.md) |
