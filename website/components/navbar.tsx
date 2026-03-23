@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { label: "docs", href: "/docs" },
   { label: "blog", href: "/blog" },
   { label: "careers", href: "/careers" },
+  { label: "team", href: "/team" },
 ];
 
 const DEMO_ITEMS = [

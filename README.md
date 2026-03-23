@@ -11,7 +11,8 @@
     <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
     <a href="/docs/">Docs</a>&nbsp;&nbsp;
     <a href="/blog/">Blog</a>&nbsp;&nbsp;
-    <a href="/careers/">Careers</a>
+    <a href="/careers/">Careers</a>&nbsp;&nbsp;
+    <a href="/team.md">Team</a>
   </nav>
 </div>
 
