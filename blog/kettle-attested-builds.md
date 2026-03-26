@@ -86,4 +86,4 @@ Full documentation, architecture, and threat model: [github.com/lunal-dev/kettle
 
 ---
 
-Kettle is part of Lunal's broader infrastructure for confidential computing. If you're building systems where the integrity of code matters, this is the foundation.
+Kettle is part of Conf AI's broader infrastructure for confidential computing. If you're building systems where the integrity of code matters, this is the foundation.

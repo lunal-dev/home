@@ -1,6 +1,6 @@
 # Threat Model & Security Boundaries
 
-This threat model is the main driver behind Lunal's architecture. We designed our platform around the principle that even our own infrastructure shouldn't be able to see customer data.
+This threat model is the main driver behind Conf AI's architecture. We designed our platform around the principle that even our own infrastructure shouldn't be able to see customer data.
 
 This document explains what confidential computing protects against and what it doesn't. After reading it, you'll understand where the trust boundaries lie, what an attacker with hypervisor control can and cannot do, and which guarantees you actually get from the hardware. This assumes you're comfortable with basic virtualization concepts (VMs, hypervisors, memory) but doesn't require any prior knowledge of confidential computing.
 
@@ -127,4 +127,4 @@ The boundaries are precise. You get strong confidentiality and integrity for dat
 
 Understanding these boundaries is essential for reasoning about what confidential computing actually gives you. The following documents explain how the hardware enforces these boundaries: how encryption works, how the RMP provides integrity, how guests communicate with the hypervisor safely, and how attestation lets you verify the whole thing.
 
-Lunal's platform is built on this threat model. Our infrastructure services—firewalls, load balancers, routing—run in TEEs themselves. We can't see your data, and you don't have to trust that we won't look. The hardware enforces it.
+Conf AI's platform is built on this threat model. Our infrastructure services—firewalls, load balancers, routing—run in TEEs themselves. We can't see your data, and you don't have to trust that we won't look. The hardware enforces it.

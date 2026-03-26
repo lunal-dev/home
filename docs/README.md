@@ -10,18 +10,18 @@
   </nav>
 </div>
 
-# Lunal Documentation
+# Conf AI Documentation
 
-## Getting Started with Lunal
+## Getting Started with Conf AI
 
-Welcome to the Lunal documentation! Choose a topic below to get started with Trusted Execution Environments (TEEs).
+Welcome to the Conf AI documentation! Choose a topic below to get started with Trusted Execution Environments (TEEs).
 
 ### Documentation Sections
 
 - **[Introduction to TEEs](intro-to-tees.md)** - A high-level introduction to Trusted Execution Environments: what they are, how they work, and their limitations.
 - **[Confidential Computing Primer](confidential-computing-primer/)** - A comprehensive guide on Confidential Computing and how it works underneath the hood.
 - **[Attestable Builds](attestable-builds/)** - Learn what attestable builds are, why they matter, and how TEEs make software verification possible.
-- **[Security](security.md)** - Understand Lunal's security architecture and best practices.
+- **[Security](security.md)** - Understand Conf AI's security architecture and best practices.
 - **[Zero Knowledge](zk.md)** - Learn about zero-knowledge (ZK) proofs and their applications.
 
 ---
@@ -32,4 +32,4 @@ New to TEEs? Start with the **[Introduction to TEEs](intro-to-tees.md)** for a h
 
 ## Need Help?
 
-Can't find what you're looking for? [Contact us](mailto:founders@lunal.dev) and we'll help you get up and running.
+Can't find what you're looking for? [Contact us](mailto:founders@confidential.ai) and we'll help you get up and running.

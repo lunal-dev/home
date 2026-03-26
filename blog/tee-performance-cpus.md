@@ -10,7 +10,6 @@
   </nav>
 </div>
 
-
 # TEE Performance on CPUs
 September 15, 2025
 

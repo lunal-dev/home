@@ -18,6 +18,10 @@
   --color-heading: var(--heading);
 }
 
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

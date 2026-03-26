@@ -10,7 +10,7 @@
   </nav>
 </div>
 
-# Lunal Blog
+# Conf AI Blog
 
 | Date | Post |
 |------|------|

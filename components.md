@@ -12,7 +12,7 @@
 
 # Components
 
-Lunal is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
+Conf AI is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
 
 See how [modular adoption](/enterprise.md) works in practice.
 
@@ -87,7 +87,7 @@ As an example of what this looks like in practice: internal traffic between comp
 
 **Problem:** TLS protects request contents, but infrastructure operators can still observe metadata: which clients connect, when, and how often. For some applications, traffic analysis is itself a privacy concern.
 
-Lunal provides an OHTTP-compatible gateway that runs inside a TEE. It pairs with a third-party relay to separate identity from content.
+Conf AI provides an OHTTP-compatible gateway that runs inside a TEE. It pairs with a third-party relay to separate identity from content.
 
 The client encrypts their request to the attested gateway, then sends it through the relay. The relay sees the client's IP address but cannot read the payload. The gateway decrypts and processes the request but only sees that it came from the relay, not which client sent it. No single party learns both who is asking and what they're asking. Clients verify the gateway's attestation before encrypting requests to it.
 
@@ -108,7 +108,7 @@ Not every deployment uses our control plane. For example, many organizations run
 
 **Problem:** TEEs provide hardware isolation, but the software inside still needs to be locked down. A bloated or misconfigured VM image expands the attack surface inside the TEE.
 
-The hardened VM image is the base operating system all Lunal workloads run on. It is minimal, hardened, and measured.
+The hardened VM image is the base operating system all Conf AI workloads run on. It is minimal, hardened, and measured.
 
 Minimal means only the components needed to run your workload. No unnecessary services, no debugging tools, no package managers in production. Secure SELinux policies enforce mandatory access control. Seccomp filters block dangerous syscalls. Network isolation is enforced at multiple layers.
 
@@ -139,4 +139,4 @@ Each component has defined interfaces and integrates with existing infrastructur
 
 Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.
 
-Talk to us about [what fits your stack](mailto:founders@lunal.dev) or see how [enterprise engagements](/enterprise.md) work.
+Talk to us about [what fits your stack](mailto:founders@confidential.ai) or see how [enterprise engagements](/enterprise.md) work.

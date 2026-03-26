@@ -16,7 +16,7 @@ This page is dedicated to highlight how we work with large organizations and ent
 
 We know your infrastructure is bespoke. It looks different from everyone else's. It may be difficult or impossible to change your deployment target. The stack you've built over years isn't something you're going to rip out easily for a new vendor.
 
-We built Lunal with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
+We built Conf AI with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
 
 See the full [component catalogue](/components.md).
 
@@ -46,11 +46,11 @@ The outcome is a gap analysis: here is your trust boundary today, here are the c
 
 ### Pilot
 
-The pilot is a paid engagement. The timeline varies depending on the scope but the typical range is 1-4 months. The purpose is to deploy Lunal components on your infrastructure and get a production ready deployment. At the end, you decide whether to license our stack or walk away. No strings attached.
+The pilot is a paid engagement. The timeline varies depending on the scope but the typical range is 1-4 months. The purpose is to deploy Conf AI components on your infrastructure and get a production ready deployment. At the end, you decide whether to license our stack or walk away. No strings attached.
 
 Every pilot typically follows this sequence:
 
-- **Architectural deep dive.** We go through your stack component by component. How workloads are deployed, how traffic flows, where keys are managed, and so on. The outcome is an integration design: which Lunal components map where, what the deployment topology looks like, and where the trust boundaries sit.
+- **Architectural deep dive.** We go through your stack component by component. How workloads are deployed, how traffic flows, where keys are managed, and so on. The outcome is an integration design: which Conf AI components map where, what the deployment topology looks like, and where the trust boundaries sit.
 - **Design.** We define a fully end-to-end private architecture for your workloads. If closing the trust boundary requires components that don't exist yet, we build them for you during the pilot. The outcome is a complete design with every gap accounted for.
 - **Deployment.** Components deploy in your environment running real workloads. We iterate until the trust boundary holds end-to-end. The outcome is a working deployment on your infrastructure.
 - **Testing.** We verify the system together. Attestation reports, measurement verification, certificate chain validation. Every claim we make is cryptographically verifiable. You don't take our word for it. The outcome is evidence you can evaluate internally.
@@ -100,5 +100,5 @@ Your infrastructure determines which components you need. In some cases, it requ
 
 ## Get Started
 
-[Tell us](mailto:founders@lunal.dev) about your infrastructure and what you're trying to protect. We'll scope a pilot.
+[Tell us](mailto:founders@confidential.ai) about your infrastructure and what you're trying to protect. We'll scope a pilot.
 

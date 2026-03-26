@@ -1,8 +1,8 @@
-# Lunal
+# Conf AI
 
 > The AI confidential compute platform.
 
-Lunal runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Lunal.
+Conf AI runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Conf AI.
 
 Deploy code unchanged. Get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
 
@@ -28,11 +28,11 @@ TEE overhead is minimal. Benchmarks comparing identical workloads inside TEE-ena
 
 Tested on AMD EPYC with SEV-SNP using cryptographic proving workloads (STARK proofs via zkVM) — among the most compute-intensive workloads possible. If overhead is negligible here, it's negligible for typical AI workloads.
 
-Full benchmark details: [TEE Performance on CPUs](https://lunal.dev/blog/tee-performance-cpus)
+Full benchmark details: [TEE Performance on CPUs](https://confidential.ai/blog/tee-performance-cpus)
 
 ## Components
 
-Lunal is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack.
+Conf AI is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack.
 
 - **Attestation Service** — Generates and verifies TEE attestation reports. Trust anchor for the platform. Supports AMD SEV-SNP (VCEK/VLEK), Intel TDX, and NVIDIA CC. Continuous re-attestation with automatic key revocation. Public verification API and CLI.
 - **Key Management Service (KMS)** — Gates secret and key distribution on attestation. Workloads prove what they're running before receiving secrets. Optional certificate authority and TEE registry. Integrates with existing secret stores (e.g. HashiCorp Vault).
@@ -51,46 +51,46 @@ Lunal is a set of independent, composable components. Use them all or integrate 
 
 ## Enterprise
 
-Lunal works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure.
+Conf AI works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure.
 
 **Three-phase engagement:**
 1. **Discovery** (free) — Understand your architecture and threat model. Outcome: gap analysis and pilot scope.
 2. **Pilot** (1-4 months) — Deploy components on your infrastructure. Architectural deep dive, integration design, deployment, cryptographic verification. If closing the trust boundary requires components that don't exist yet, we build them. No strings attached — license or walk away.
 3. **Production** — Full deployment with ongoing support. On-prem, bare metal, all major clouds.
 
-## How To Use Lunal
+## How To Use Conf AI
 
-- **Enterprise / Licensed:** Deploy Lunal's software stack on your infrastructure. Components are modular — use the full platform or specific pieces. [Enterprise details](https://lunal.dev/enterprise)
-- **Hosted Platform:** Bring your workload, Lunal runs it on TEE-backed infrastructure. No code changes. Full platform included. [Contact us](mailto:founders@lunal.dev)
-- **AI Agents:** Agents run inside TEEs with hardware-enforced credential isolation. Multi-agent attestation built in. [Contact us](mailto:founders@lunal.dev)
+- **Enterprise / Licensed:** Deploy Conf AI's software stack on your infrastructure. Components are modular — use the full platform or specific pieces. [Enterprise details](https://confidential.ai/enterprise)
+- **Hosted Platform:** Bring your workload, Conf AI runs it on TEE-backed infrastructure. No code changes. Full platform included. [Contact us](mailto:founders@confidential.ai)
+- **AI Agents:** Agents run inside TEEs with hardware-enforced credential isolation. Multi-agent attestation built in. [Contact us](mailto:founders@confidential.ai)
 
 ## Documentation
 
-- [Introduction to TEEs](https://lunal.dev/docs/intro-to-tees): High-level introduction to Trusted Execution Environments
-- [Confidential Computing Primer](https://lunal.dev/docs/confidential-computing-primer): Six-part deep technical series on confidential computing using AMD SEV-SNP
-  - [01. Threat Model & Security Boundaries](https://lunal.dev/docs/confidential-computing-primer/01-threat-model)
-  - [02. Hardware Foundations](https://lunal.dev/docs/confidential-computing-primer/02-hardware-foundations)
-  - [03. Memory Integrity](https://lunal.dev/docs/confidential-computing-primer/03-memory-integrity)
-  - [04. Privilege & Communication](https://lunal.dev/docs/confidential-computing-primer/04-privilege-and-communication)
-  - [05. Attestation & Verification](https://lunal.dev/docs/confidential-computing-primer/05-attestation)
-  - [06. Measurement Strategies](https://lunal.dev/docs/confidential-computing-primer/06-measurement-strategies)
-- [Attestable Builds](https://lunal.dev/docs/attestable-builds): What attestable builds are, why they matter, and how TEEs make software verification possible
-  - [How It Works](https://lunal.dev/docs/attestable-builds/how-it-works)
-  - [Provenance & Standards](https://lunal.dev/docs/attestable-builds/provenance-standards)
-  - [Threat Model](https://lunal.dev/docs/attestable-builds/threat-model)
-- [Security Architecture](https://lunal.dev/docs/security): Verification API, CLI, and security model
-- [Zero-Knowledge Proofs](https://lunal.dev/docs/zk): How Lunal uses ZK proofs to complement TEE attestations
+- [Introduction to TEEs](https://confidential.ai/docs/intro-to-tees): High-level introduction to Trusted Execution Environments
+- [Confidential Computing Primer](https://confidential.ai/docs/confidential-computing-primer): Six-part deep technical series on confidential computing using AMD SEV-SNP
+  - [01. Threat Model & Security Boundaries](https://confidential.ai/docs/confidential-computing-primer/01-threat-model)
+  - [02. Hardware Foundations](https://confidential.ai/docs/confidential-computing-primer/02-hardware-foundations)
+  - [03. Memory Integrity](https://confidential.ai/docs/confidential-computing-primer/03-memory-integrity)
+  - [04. Privilege & Communication](https://confidential.ai/docs/confidential-computing-primer/04-privilege-and-communication)
+  - [05. Attestation & Verification](https://confidential.ai/docs/confidential-computing-primer/05-attestation)
+  - [06. Measurement Strategies](https://confidential.ai/docs/confidential-computing-primer/06-measurement-strategies)
+- [Attestable Builds](https://confidential.ai/docs/attestable-builds): What attestable builds are, why they matter, and how TEEs make software verification possible
+  - [How It Works](https://confidential.ai/docs/attestable-builds/how-it-works)
+  - [Provenance & Standards](https://confidential.ai/docs/attestable-builds/provenance-standards)
+  - [Threat Model](https://confidential.ai/docs/attestable-builds/threat-model)
+- [Security Architecture](https://confidential.ai/docs/security): Verification API, CLI, and security model
+- [Zero-Knowledge Proofs](https://confidential.ai/docs/zk): How Conf AI uses ZK proofs to complement TEE attestations
 
 ## Blog
 
-- [Secure AI Needs TEEs](https://lunal.dev/blog/secure-ai-needs-tees): Why TEEs are essential for AI security
-- [TEE Performance on CPUs](https://lunal.dev/blog/tee-performance-cpus): Benchmarks showing ~1.5% overhead
+- [Secure AI Needs TEEs](https://confidential.ai/blog/secure-ai-needs-tees): Why TEEs are essential for AI security
+- [TEE Performance on CPUs](https://confidential.ai/blog/tee-performance-cpus): Benchmarks showing ~1.5% overhead
 
 ## Contact
 
-- [Careers](https://lunal.dev/careers): Open positions at Lunal
-- [Email](mailto:founders@lunal.dev): founders@lunal.dev
+- [Careers](https://confidential.ai/careers): Open positions at Conf AI
+- [Email](mailto:founders@confidential.ai): founders@confidential.ai
 
 ## Full Documentation
 
-- [llms-full.txt](https://lunal.dev/llms-full.txt): Complete content from all pages — entire docs site in one file (4600+ lines)
+- [llms-full.txt](https://confidential.ai/llms-full.txt): Complete content from all pages — entire docs site in one file (4600+ lines)

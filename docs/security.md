@@ -10,7 +10,7 @@
   </nav>
 </div>
 
-# Lunal's Security Architecture
+# Conf AI's Security Architecture
 
 ## Table of Contents
 
@@ -65,7 +65,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 ## Security Overview
 
-Lunal's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
+Conf AI's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
 
 ### Zero Trust Architecture
 
@@ -96,7 +96,7 @@ Our platform uses a double envelope encryption approach:
 This approach ensures:
 
 - The client is able to independently verify that it's talking to a legitimate TEE.
-- Our platform independently also performs this verification and additionally ensures that this TEE is a legitimate Lunal TEE that is part of our registry.
+- Our platform independently also performs this verification and additionally ensures that this TEE is a legitimate Conf AI TEE that is part of our registry.
 - For data to be accessed by any TEE, both verifications are required.
 
 ### Key Rotation and Lifecycle Management
@@ -110,7 +110,7 @@ Security is maintained through comprehensive key management:
 
 ### Continuous Attestation and Ephemeral Data
 
-Security doesn't stop after initial verification. Lunal's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
+Security doesn't stop after initial verification. Conf AI's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
 
 ### Continuous Attestation
 - Every TEE undergoes periodic re-attestation to verify its integrity
@@ -180,7 +180,7 @@ Our streamlined security flow ensures data protection throughout the entire proc
 
 ### Fail-Safe Design
 
-Lunal's system is designed to withstand various attack scenarios:
+Conf AI's system is designed to withstand various attack scenarios:
 
 - If a gateway is compromised, requests for key material would be rejected by our independent KMS
 - If an attestation service is compromised, our KMS independently verifies TEE identity
@@ -193,9 +193,9 @@ Lunal's system is designed to withstand various attack scenarios:
 We've designed our system for easy integration with your applications:
 
 ```javascript
-// 1. Initialize the luna client with your tenant ID
+// 1. Initialize the Lunal client with your tenant ID
 // This ID is provided when you sign up for our service
-const lunaClient = new LunaClient({
+const lunalClient = new LunalClient({
   tenantId: 'your-tenant-id',
   apiKey: 'your-optional-api-key' // Optional for authenticated requests
 });
@@ -203,7 +203,7 @@ const lunaClient = new LunaClient({
 // 2. Send data for secure processing
 // Simply specify the job type and your data
 // Our SDK handles attestation verification and encryption automatically
-const result = await lunaClient.request({
+const result = await lunalClient.request({
   job: 'your-job-name', // Specifies which processing endpoint to use
   data: yourData // The data to be securely processed
 });
@@ -219,11 +219,11 @@ That's it! Our SDK handles all the complex security operations behind the scenes
 
 ### Verification API
 
-For developers who need programmatic verification of TEE attestations, Lunal provides a dedicated Verification API:
+For developers who need programmatic verification of TEE attestations, Conf AI provides a dedicated Verification API:
 
 ```bash
 # Verify a TEE attestation using the API
-curl -X POST https://api.lunal.com/v1/attestation/verify \
+curl -X POST https://api.confidential.ai/v1/attestation/verify \
   -H "Authorization: Bearer your-api-key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -267,7 +267,7 @@ Our Verification API enables:
 
 ### Verification CLI
 
-For security teams and administrators, Lunal offers a simple command-line interface for TEE verification:
+For security teams and administrators, Conf AI offers a simple command-line interface for TEE verification:
 
 ```bash
 # Verify the attestation via CLI
