@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { RenameBanner } from "@/components/rename-banner";
 
 export const metadata: Metadata = {
-  title: "Lunal",
+  title: "Conf AI",
   description: "The AI confidential compute platform.",
 };
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Navbar />
+        <RenameBanner />
         <main className="px-4 md:px-10 py-12 max-w-[860px] mx-auto">
           {children}
         </main>
@@ -54,7 +56,7 @@ export default function RootLayout({
               </svg>
             </a>
           </div>
-          lunal &mdash; confidential compute
+          conf ai &mdash; confidential compute
         </footer>
       </body>
     </html>

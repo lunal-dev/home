@@ -10,10 +10,9 @@
   </nav>
 </div>
 
-
 # Confidential Computing Primer
 
-This is a six-part series explaining confidential computing, the technology behind Lunal. Lunal uses Trusted Execution Environments (TEEs) to provide secure, private, verifiable AI. This series explains how TEEs work under the hood.
+This is a six-part series explaining confidential computing, the technology behind Conf AI. Conf AI uses Trusted Execution Environments (TEEs) to provide secure, private, verifiable AI. This series explains how TEEs work under the hood.
 
 We will be using AMD SEV-SNP as the reference for CPU based confidential computing. The concepts here (threat models, attestation, measurement) apply broadly to TEE technologies, while the implementation details are AMD-specific.
 
@@ -25,11 +24,11 @@ This series is for people who want to understand what's happening beneath the su
 
 After reading this series, you'll be able to:
 
-- Explain what Lunal's TEE infrastructure protects against and what it doesn't
+- Explain what Conf AI's TEE infrastructure protects against and what it doesn't
 - Trace how memory encryption and integrity protection work at the hardware level
 - Understand how workloads communicate safely with an untrusted hypervisor
 - Verify attestation reports and reason about what they prove
-- Understand how Lunal extends trust from hardware measurement to your application code
+- Understand how Conf AI extends trust from hardware measurement to your application code
 
 ## The Documents
 

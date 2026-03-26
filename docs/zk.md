@@ -10,14 +10,13 @@
   </nav>
 </div>
 
-
-# **Zero-Knowledge Proofs at Lunal**
+# **Zero-Knowledge Proofs at Conf AI**
 
 ## **Overview**
 
-Lunal uses zero-knowledge (ZK) proofs to complement TEE attestations and prove that Lunal's infrastructure operates correctly while preserving customer privacy. This documentation explains our rationale for using ZK and the specific use cases we've implemented.
+Conf AI uses zero-knowledge (ZK) proofs to complement TEE attestations and prove that Conf AI's infrastructure operates correctly while preserving customer privacy. This documentation explains our rationale for using ZK and the specific use cases we've implemented.
 
-## **Why Lunal Uses ZK**
+## **Why Conf AI Uses ZK**
 
 ### **The Fundamental Limitation of Attestation**
 
@@ -27,20 +26,20 @@ A TEE attestation cryptographically answers: "What software was loaded?" It does
 
 This distinction matters enormously when things go wrong. When things security is breached, debugging, incident response, and security audits all ultimately require inspecting behavior: What did the system actually do? What data did it process? What decisions did it make? Attestation alone cannot answer these questions. It can only confirm that the right code was present when the system started.
 
-### **The Trust Challenge in Lunal's Architecture**
+### **The Trust Challenge in Conf AI's Architecture**
 
-This limitation is particularly acute in Lunal's architecture. Lunal TEEs run two distinct types of software:
+This limitation is particularly acute in Conf AI's architecture. Conf AI TEEs run two distinct types of software:
 
 1. **Customer applications**: software that customers load and run inside the TEE
-2. **Lunal software**: software that Lunal runs inside the customer's TEE for operations such as attestation, performance monitoring, and autoscaling
+2. **Conf AI software**: software that Conf AI runs inside the customer's TEE for operations such as attestation, performance monitoring, and autoscaling
 
-Both become part of the TEE's trusted boundary. While customers maintain full control over their own applications, they must extend trust to Lunal's software running alongside their workloads. Even though Lunal's software is open source and externally audited, this still requires customers to trust that the software behaves as documented every time it runs.
+Both become part of the TEE's trusted boundary. While customers maintain full control over their own applications, they must extend trust to Conf AI's software running alongside their workloads. Even though Conf AI's software is open source and externally audited, this still requires customers to trust that the software behaves as documented every time it runs.
 
 ### **From Trust to Proof**
 
 ZK is the nuclear option for proving behavior. Unlike attestation (which proves identity) or logging (which can be forged), ZK proofs are cryptographically bounded. They mathematically guarantee that a specific computation occurred correctly, with no room for tampering or misrepresentation.
 
-With ZK, instead of asking customers to trust that Lunal's software behaves correctly, we can prove it every time the software runs.
+With ZK, instead of asking customers to trust that Conf AI's software behaves correctly, we can prove it every time the software runs.
 
 ### **What Are Zero-Knowledge Proofs?**
 
@@ -73,7 +72,7 @@ This means ZK must be deployed strategically at high-value chokepoints rather th
 
 #### **The Challenge**
 
-Lunal needs to measure system metrics for autoscaling decisions, but hypervisors have limited visibility into guest VMs:
+Conf AI needs to measure system metrics for autoscaling decisions, but hypervisors have limited visibility into guest VMs:
 
 | Metric      | Hypervisor Visibility | Limitation                                |
 | ----------- | --------------------- | ----------------------------------------- |
@@ -84,7 +83,7 @@ Lunal needs to measure system metrics for autoscaling decisions, but hypervisors
 
 #### **The Solution**
 
-Lunal runs telemetry extraction software inside the TEE and uses ZK proofs to verify autoscaling decisions without exposing sensitive process data.
+Conf AI runs telemetry extraction software inside the TEE and uses ZK proofs to verify autoscaling decisions without exposing sensitive process data.
 
 #### **Example: Memory-Based Autoscaling**
 
@@ -110,12 +109,12 @@ The proof verifies the scaling logic executed correctly without revealing which 
 ```
 Private Inputs:
 - Per-process CPU usage
-- Process ownership (Lunal vs. customer)
+- Process ownership (Conf AI vs. customer)
 
 Public Outputs:
 - Aggregate utilization band (e.g., "70-80%")
 - Scaling decision
-- Lunal overhead confirmation (< 10%)
+- Conf AI overhead confirmation (< 10%)
 
 ZK Constraints:
 IF customer_process_cpu_p95 > 80%
@@ -124,7 +123,7 @@ THEN trigger_scale_out = true
 AND lunal_overhead < 10% of total_cpu
 ```
 
-This proves that scaling decisions are based on actual customer workload needs, not Lunal's own overhead.
+This proves that scaling decisions are based on actual customer workload needs, not Conf AI's own overhead.
 
 #### **Example: Disk-Based Autoscaling**
 
@@ -150,11 +149,11 @@ THEN performance_issue = true
 
 #### **The Challenge**
 
-When customers license Lunal software for on-premise deployment, they run it alongside proprietary applications Lunal cannot access. TEEs provide a single measurement hash for all software, but since Lunal cannot reproduce measurements that include customer software, we have no way to verify which Lunal components were actually included.
+When customers license Conf AI software for on-premise deployment, they run it alongside proprietary applications Conf AI cannot access. TEEs provide a single measurement hash for all software, but since Conf AI cannot reproduce measurements that include customer software, we have no way to verify which Conf AI components were actually included.
 
 #### **The Solution**
 
-Lunal uses Merkle trees to generate inclusion proofs that verify specific software components were loaded correctly.
+Conf AI uses Merkle trees to generate inclusion proofs that verify specific software components were loaded correctly.
 
 #### **How It Works**
 
@@ -162,8 +161,8 @@ Lunal uses Merkle trees to generate inclusion proofs that verify specific softwa
 Deployment Structure:
 ├── Customer Application A (proprietary)
 ├── Customer Application B (proprietary)
-├── Lunal Component X (can prove this)
-├── Lunal Component Y (can prove this)
+├── Conf AI Component X (can prove this)
+├── Conf AI Component Y (can prove this)
 └── Customer Application C (proprietary)
 
 Merkle Tree:
@@ -185,7 +184,7 @@ ZK Inclusion Proof:
 
 #### **The Challenge**
 
-Lunal runs application services (load balancers, API gateways, proxies) inside TEEs to maintain privacy guarantees. We need to monitor these services for operational health and SLA compliance without exposing customer request data or traffic patterns.
+Conf AI runs application services (load balancers, API gateways, proxies) inside TEEs to maintain privacy guarantees. We need to monitor these services for operational health and SLA compliance without exposing customer request data or traffic patterns.
 
 #### **The Solution**
 
@@ -235,7 +234,7 @@ sample_size > 10,000 requests
 
 #### **Example: Percentile Calculation Without Data Exposure**
 
-Lunal calculates latency percentiles for internal performance improvements:
+Conf AI calculates latency percentiles for internal performance improvements:
 
 ```
 Private Inputs:
@@ -255,13 +254,13 @@ Verifies correct percentile calculation without revealing:
 - Customer-specific performance characteristics
 ```
 
-This allows Lunal to optimize platform performance while maintaining complete customer privacy.
+This allows Conf AI to optimize platform performance while maintaining complete customer privacy.
 
 ## **Caveats and Limitations**
 
 ### **Performance Constraints**
 
-Most ZK proofs cannot be used in the hot path of customer requests due to performance overhead. All Lunal ZK use cases operate asynchronously and out-of-band from customer traffic. Therefore, Lunal's usage of ZK is limited to background processes where proving times on the order of magnitude of seconds are acceptable. The verification of such proofs take order of magnitude 10s of ms.
+Most ZK proofs cannot be used in the hot path of customer requests due to performance overhead. All Conf AI ZK use cases operate asynchronously and out-of-band from customer traffic. Therefore, Conf AI's usage of ZK is limited to background processes where proving times on the order of magnitude of seconds are acceptable. The verification of such proofs take order of magnitude 10s of ms.
 
 ### **Arithmetic Circuit Limitations**
 
@@ -274,4 +273,4 @@ System interactions that cannot be represented as arithmetic circuits:
 * **File system I/O**: Disk reads, writes, and operations
 * **Hardware modules**: HSM operations, TPM interactions
 
-In practice, this means Lunal's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Lunal can prove "given these CPU usage measurements, Lunal's autoscaling logic correctly determined scaling was needed" but cannot prove "these CPU usage measurements were collected correctly from the system." The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.
+In practice, this means Conf AI's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Conf AI can prove "given these CPU usage measurements, Conf AI's autoscaling logic correctly determined scaling was needed" but cannot prove "these CPU usage measurements were collected correctly from the system." The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.

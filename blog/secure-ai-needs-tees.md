@@ -14,7 +14,7 @@
 
 AI security standards are being developed in real-time as the technology scales from research labs to billions of users. As these models take on more consequential roles in software systems in terms of delegating, making decisions, and acting on our behalf, questions remain about how to effectively secure these systems. In addition, frontier models are increasingly viewed as strategic national assets that require protection from sophisticated threat actors. The intersection of this rapid technological advancement, the scale of deployment, and this new complex threat landscape necessitates an equivalently accelerated effort to develop practical security standards and implement them at production scale.
 
-A core component of these emerging security standards and their implementations is Trusted Execution Environments (TEEs), often referred to as Confidential Computing. TEEs are already referenced in multiple AI security and safety standards. Notably, RAND's ["Securing AI Model Weights"](https://www.rand.org/pubs/research_reports/RRA2849-1.html) report identifies TEEs as essential infrastructure for securing modern AI systems. Anthropic has [started exploring](https://www.anthropic.com/research/confidential-inference-trusted-vms) confidential inference built on top of TEEs. Meta is [evaluating using TEEs](https://ai.meta.com/static-resource/private-processing-technical-whitepaper) to bring private AI processing to WhatsApp. Yet the tooling to make practical use of TEEs for AI infrastructure is nowhere near ready, let alone scalable and production-grade. Lunal exists to solve that problem: building the tooling and infrastructure that makes deploying secure AI using TEEs easy.
+A core component of these emerging security standards and their implementations is Trusted Execution Environments (TEEs), often referred to as Confidential Computing. TEEs are already referenced in multiple AI security and safety standards. Notably, RAND's ["Securing AI Model Weights"](https://www.rand.org/pubs/research_reports/RRA2849-1.html) report identifies TEEs as essential infrastructure for securing modern AI systems. Anthropic has [started exploring](https://www.anthropic.com/research/confidential-inference-trusted-vms) confidential inference built on top of TEEs. Meta is [evaluating using TEEs](https://ai.meta.com/static-resource/private-processing-technical-whitepaper) to bring private AI processing to WhatsApp. Yet the tooling to make practical use of TEEs for AI infrastructure is nowhere near ready, let alone scalable and production-grade. Conf AI exists to solve that problem: building the tooling and infrastructure that makes deploying secure AI using TEEs easy.
 
 ## What Are TEEs?
 
@@ -54,7 +54,7 @@ Content policy enforcement gains similar verifiability. When safety filters are 
 
 Model version control becomes tamper-proof when implemented in TEEs. Organizations can prove exactly which model weights were used for specific inferences, creating audit trails that cannot be forged or modified after the fact.
 
-## Lunal: Making TEEs Production-Ready
+## Conf AI: Making TEEs Production-Ready
 
 TEEs represent an extremely valuable primitive for securing AI systems. The hardware is already deployed: the latest generation CPUs and GPUs from Intel, AMD, and NVIDIA all ship with TEE capabilities built in, sitting in data centers right now waiting to be leveraged.
 
@@ -72,7 +72,7 @@ Using TEEs doesn't require changing or rebuilding your stack. Your existing appl
 
 There's no cohesive platform that handles the full stack of TEE deployment concerns while maintaining compatibility with existing development workflows.
 
-Lunal exists to solve this. We're building the standards, tooling, and infrastructure necessary to make using TEEs simple and seamless.
+Conf AI exists to solve this. We're building the standards, tooling, and infrastructure necessary to make using TEEs simple and seamless.
 
 ## Conclusion
 
@@ -80,4 +80,4 @@ The rapid deployment of AI systems at scale has created an urgent need for robus
 
 However, the gap between TEE capabilities and production-ready tooling remains substantial. While the underlying hardware is already deployed across modern data centers, the complex requirements around attestation workflows, reproducible builds, key management, and infrastructure compatibility remain unsolved and prevent potential adoption.
 
-Lunal is bridging this gap by building the comprehensive tooling and infrastructure stack needed to make TEE deployment seamless for AI workloads. As AI systems become increasingly critical to business operations and national security, the ability to provide cryptographic guarantees about model security and data privacy will transition from a competitive advantage to a fundamental requirement.
+Conf AI is bridging this gap by building the comprehensive tooling and infrastructure stack needed to make TEE deployment seamless for AI workloads. As AI systems become increasingly critical to business operations and national security, the ability to provide cryptographic guarantees about model security and data privacy will transition from a competitive advantage to a fundamental requirement.
