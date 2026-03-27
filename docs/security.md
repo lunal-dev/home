@@ -86,27 +86,26 @@ We issue cryptographically verifiable attestations that both clients and our pla
 
 ### Multi-layer Encryption
 
-Our platform uses a double envelope encryption approach:
+Our platform uses multi-recipient hybrid encryption layered inside standard TLS:
 
-1. **Client Key:** Each client receives a unique client key that identifies them and secures their communication with our platform
-2. **Double Envelope Encryption:**
-   - First Layer: Data is encrypted with the verified TEE's public key and a client key
-   - Second Layer: The already-encrypted data is encrypted again with a one-time certificate from our CBS and the client's key again.
+1. **TLS (outer layer):** Standard TLS from client to load balancer protects data in transit.
+2. **Multi-recipient hybrid encryption (inner layer):** The Client SDK encrypts each payload to the public keys of multiple attested TEEs. The load balancer routes the encrypted payload to any available TEE for reliability, but cannot read the content. Only a TEE that passed attestation and holds the corresponding private key can decrypt.
 
 This approach ensures:
 
-- The client is able to independently verify that it's talking to a legitimate TEE.
-- Our platform independently also performs this verification and additionally ensures that this TEE is a legitimate Conf AI TEE that is part of our registry.
-- For data to be accessed by any TEE, both verifications are required.
+- The load balancer can route requests to any of several TEEs for reliability without being able to read the payload.
+- The client independently verifies TEE attestation before encrypting to those TEEs.
+- Our platform independently verifies that each TEE is a legitimate Conf AI TEE that is part of our registry.
+- For data to be accessed by any TEE, both client-side and platform-side verifications are required.
 
-### Key Rotation and Lifecycle Management
+### Certificate Rotation and Lifecycle Management
 
-Security is maintained through comprehensive key management:
+Security is maintained through comprehensive certificate management:
 
-- **Automatic Key Rotation:** All encryption keys are rotated on configurable schedules
-- **Key Versioning:** Previous key versions are maintained for data accessibility
-- **Immediate Revocation:** Keys can be instantly revoked upon security incidents
-- **Audit Trails:** Complete logs of all key operations are maintained
+- **Automatic Certificate Rotation:** All certificates are rotated on configurable schedules
+- **Certificate Versioning:** Previous certificate versions are maintained for data accessibility
+- **Immediate Revocation:** Certificates can be instantly revoked upon security incidents
+- **Audit Trails:** Complete logs of all certificate operations are maintained
 
 ### Continuous Attestation and Ephemeral Data
 
@@ -115,7 +114,7 @@ Security doesn't stop after initial verification. Conf AI's platform continuousl
 ### Continuous Attestation
 - Every TEE undergoes periodic re-attestation to verify its integrity
 - All attestation results are securely logged and available for audit
-- Any abnormal measurements trigger automatic key revocation and alerts
+- Any abnormal measurements trigger automatic certificate revocation and alerts
 
 ### Ephemeral Data Processing
 - Data within TEEs exists only temporarily during processing
@@ -125,7 +124,7 @@ Security doesn't stop after initial verification. Conf AI's platform continuousl
 
 ### Transparent Audit Trail
 - Every attestation, re-attestation, and TEE interaction is logged
-- All key operations are also logged
+- All certificate operations are also logged
 - Customers can verify the integrity of their processing environments
 - Complete audit trails provide evidence for compliance requirements
 
@@ -153,20 +152,20 @@ Our streamlined security flow ensures data protection throughout the entire proc
      - TEE's unique public key
      - Cryptographic proof of TEE integrity
 
-4. **Dual-Key Encryption** (Client SDK & CBS):
-   - Client SDK verifies the attestation to ensure the TEE is legitimate
-   - Client SDK requests a one-time certificate from our CBS
-   - Client SDK performs envelope encryption:
-     - First layer: Data is encrypted with the TEE's verified public key
-     - Second layer: The encrypted data is encrypted again with the one-time certificate from CBS
+4. **Multi-Recipient Hybrid Encryption** (Client SDK & CBS):
+   - Client SDK verifies the attestation to ensure the TEEs are legitimate
+   - Client SDK fetches the public keys of multiple attested TEEs from the CBS
+   - Client SDK encrypts the payload using multi-recipient hybrid encryption to those TEEs
+   - The load balancer can route the encrypted payload to any of the recipient TEEs for reliability
 
 5. **Secondary Verification** (CBS & TEE Registry):
-   - CBS verifies the TEE's identity against our TEE Registry
+   - CBS verifies each TEE's identity against our TEE Registry
    - CBS confirms TEE attestation is valid via Attestation API
-   - CBS verifies TEE is authorized for the tenant's workloads
+   - CBS verifies TEEs are authorized for the tenant's workloads
 
-6. **Secure Certificate Distribution** (CBS & TEE):
-   - Only after both verifications succeed, CBS securely provides the one-time certificate to the verified TEE
+6. **Secure Decryption** (TEE):
+   - Only TEEs that passed both client-side and platform-side verification can decrypt the payload
+   - The load balancer routes the request to an available TEE, which decrypts using its private key
    - TEE can now decrypt the first layer of encryption
 
 7. **Protected Processing** (TEE):
