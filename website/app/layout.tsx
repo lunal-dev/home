@@ -34,7 +34,7 @@ export default function RootLayout({
         <footer className="border-t border-border px-6 py-10 text-center text-xs text-muted tracking-wide">
           <div className="flex items-center justify-center gap-4 mb-3">
             <a
-              href="https://x.com/LunalDotDev"
+              href="https://x.com/Confi_AI"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X (Twitter)"
