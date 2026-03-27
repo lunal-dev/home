@@ -20,7 +20,7 @@ See how [modular adoption](/enterprise.md) works in practice.
 
 - [Component Catalogue](#component-catalogue)
   - [Attestation Service](#attestation-service)
-  - [Key Management Service (KMS)](#key-management-service-kms)
+  - [Certificate Broker Service (CBS)](#certificate-broker-service-cbs)
   - [Build Pipeline](#build-pipeline)
   - [Networking and Application Services](#networking-and-application-services)
   - [Oblivious HTTP Gateway](#oblivious-http-gateway)
@@ -39,22 +39,22 @@ The attestation service generates and verifies TEE attestation reports. It is th
 
 The service supports AMD SEV-SNP (VCEK/VLEK), Intel TDX, and NVIDIA Confidential Computing attestation formats. Each format has different report structures, signature schemes, and certificate chains. The attestation service normalizes them into a single verification flow.
 
-Verification checks the full chain: the report signature chains to the hardware vendor's root certificate, the launch measurement matches a known-good value, the TCB version meets minimum requirements, and the platform configuration is valid. Continuous re-attestation runs on schedule, with automatic key revocation if a measurement deviates from expected values.
+Verification checks the full chain: the report signature chains to the hardware vendor's root certificate, the launch measurement matches a known-good value, the TCB version meets minimum requirements, and the platform configuration is valid. Continuous re-attestation runs on schedule, with automatic certificate revocation if a measurement deviates from expected values.
 
 A public verification API and CLI allow independent verification. You don't take our word for it. You check the attestation yourself.
 
 
-### Key Management Service (KMS)
+### Certificate Broker Service (CBS)
 
 **Problem:** At scale, TEEs need secrets, encryption keys, identity certificates, and a registry of authorized participants. All of this must be gated on attestation.
 
-The KMS is configurable. At its core, it gates secret and key distribution on attestation: workloads prove what they're running before they receive anything sensitive. Beyond that, you enable the capabilities you need.
+The CBS is configurable. At its core, it gates secret and certificate distribution on attestation: workloads prove what they're running before they receive anything sensitive. Beyond that, you enable the capabilities you need.
 
-**Attestation-gated secrets.** Secrets are released only to workloads that pass attestation. Prove what you're running, then get your secrets. For organizations that maintain their own secret stores (e.g. HashiCorp Vault), the KMS handles the attestation gating while your systems hold the secrets.
+**Attestation-gated secrets.** Secrets are released only to workloads that pass attestation. Prove what you're running, then get your secrets. For organizations that maintain their own secret stores (e.g. HashiCorp Vault), the CBS handles the attestation gating while your systems hold the secrets.
 
-**Key distribution.** The KMS distributes encryption keys TEEs use for data in operation. Keys are scoped to specific workloads, rotated on configurable schedules, and revoked immediately on security incidents. Key versioning maintains backward compatibility during rotation.
+**Certificate distribution.** The CBS distributes certificates TEEs use for data in operation. Certificates are scoped to specific workloads, rotated on configurable schedules, and revoked immediately on security incidents. Certificate versioning maintains backward compatibility during rotation.
 
-**Certificate authority (optional).** For deployments where components need to verify each other's identity, the KMS can act as a certificate authority. It issues identity certificates to nodes and workloads that pass attestation. Certificates carry attestation trust forward without requiring re-attestation on every interaction. A typical example is a service mesh in Kubernetes.
+**Certificate authority (optional).** For deployments where components need to verify each other's identity, the CBS can act as a certificate authority. It issues identity certificates to nodes and workloads that pass attestation. Certificates carry attestation trust forward without requiring re-attestation on every interaction. A typical example is a service mesh in Kubernetes.
 
 **TEE registry (optional).** An authoritative record of all legitimate TEEs in a system. Attestation proves "this is a real TEE running expected code." The registry adds a second check: "this TEE belongs to this tenant and is authorized to participate." This is the ultimate source of truth for which TEEs are part of which system.
 
@@ -78,9 +78,9 @@ The concept is new enough that it's worth reading about in depth. See the [attes
 
 All networking and application services run inside TEEs. Traffic never leaves the encrypted boundary.
 
-The API gateway handles request validation, client authentication, and routing. The attesting proxy terminates external TLS inside a TEE and binds the TLS session to an attestation report via Exported Keying Material (EKM). Clients verify the EKM against the attestation report to confirm their connection terminates inside a genuine TEE, not at an intermediary. Firewalls, DDoS protection, rate limiting, and load balancing all run inside TEEs.
+The API gateway handles request validation, client authentication, and routing. TLS terminates at the load balancer, but payloads inside the TLS session are encrypted with multi-recipient hybrid encryption. The Client SDK encrypts each payload to multiple attested TEEs, so the load balancer can route to any of them for reliability without being able to read the content. Only a TEE that passed attestation and holds the corresponding private key can decrypt. Firewalls, DDoS protection, rate limiting, and load balancing all run inside TEEs.
 
-As an example of what this looks like in practice: internal traffic between components uses mTLS with certificates issued by the KMS. Standard mTLS proves a trusted CA issued a certificate. Ours proves the KMS issued a certificate to a workload that passed attestation. The network only ever sees ciphertext between verified peers.
+As an example of what this looks like in practice: internal traffic between components uses mTLS with certificates issued by the CBS. Standard mTLS proves a trusted CA issued a certificate. Ours proves the CBS issued a certificate to a workload that passed attestation. The network only ever sees ciphertext between verified peers.
 
 
 ### Oblivious HTTP Gateway
@@ -121,7 +121,7 @@ The image is measured as part of the TEE launch sequence. Because the image is b
 
 The client and server SDKs handle encryption, attestation verification, and secure communication so you don't build it yourself.
 
-**Client SDK.** Encrypts data for upload, verifies attestation in responses, handles key negotiation with the KMS. On first connection, the SDK bootstraps trust: fetches reference measurements and the CA certificate from the KMS, then caches them locally. Subsequent connections verify against the cache. Attestation overhead is amortized after the first request. EKM verification binds the TLS session to the attestation report, preventing man-in-the-middle attacks.
+**Client SDK.** Encrypts data for upload, verifies attestation in responses, handles certificate negotiation with the CBS. On first connection, the SDK bootstraps trust: fetches reference measurements and the CA certificate from the CBS, then caches them locally. Subsequent connections verify against the cache. Attestation overhead is amortized after the first request. Multi-recipient hybrid encryption ensures payloads can only be decrypted by attested TEEs, even though TLS terminates at the load balancer.
 
 **Server SDK.** Generates attestation reports, manages TEE-side encryption, handles the internal mechanics of running inside a TEE.
 
@@ -134,7 +134,7 @@ Components can be adopted individually. Not everyone needs the full stack.
 Each component has defined interfaces and integrates with existing infrastructure. If you already have pieces of this puzzle, we fill the gaps. Common adoption patterns:
 
 - **Attestation only.** Attestation service + SDKs. For teams adding TEE verification to existing deployments.
-- **Security layer.** Attestation + KMS + build pipeline. For organizations with infrastructure that need the cryptographic verification layer.
+- **Security layer.** Attestation + CBS + build pipeline. For organizations with infrastructure that need the cryptographic verification layer.
 - **Full platform.** All components, end to end. Equivalent to the hosted platform, deployed on your infrastructure.
 
 Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.

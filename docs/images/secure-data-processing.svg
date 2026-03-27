@@ -17,7 +17,7 @@
   <text x="600" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Attestation API</text>
   
   <rect x="700" y="100" width="100" height="550" rx="5" ry="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
-  <text x="750" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">KMS</text>
+  <text x="750" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">CBS</text>
   
   <rect x="850" y="100" width="100" height="550" rx="5" ry="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
   <text x="900" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">TEE</text>
@@ -61,7 +61,7 @@
   
   <line x1="150" y1="390" x2="750" y2="390" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrow)"/>
   <rect x="375" y="365" width="150" height="20" fill="#f9ebea" rx="5" ry="5"/>
-  <text x="450" y="379" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#c0392b">Request one-time key from KMS</text>
+  <text x="450" y="379" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#c0392b">Request one-time key from CBS</text>
   
   <line x1="750" y1="420" x2="150" y2="420" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrow)"/>
   <rect x="375" y="395" width="150" height="20" fill="#f9ebea" rx="5" ry="5"/>
@@ -71,11 +71,11 @@
   <text x="150" y="450" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#922b21">Envelope Encryption:</text>
   <text x="150" y="465" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#922b21">1. Data encrypted with TEE's public key</text>
   <text x="150" y="480" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#922b21">2. Re-encrypted with one-time key</text>
-  <text x="150" y="495" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#922b21">   from KMS</text>
+  <text x="150" y="495" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#922b21">   from CBS</text>
   
   <!-- Step 5: Secondary Verification -->
   <rect x="650" y="430" width="200" height="70" rx="5" ry="5" fill="#e8f8f5" stroke="#a3e4d7" stroke-width="1"/>
-  <text x="750" y="450" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#16a085">KMS Verification:</text>
+  <text x="750" y="450" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#16a085">CBS Verification:</text>
   <text x="750" y="465" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#16a085">1. Verify TEE identity in Registry</text>
   <text x="750" y="480" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#16a085">2. Confirm valid attestation</text>
   <text x="750" y="495" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#16a085">3. Verify TEE authorization</text>
