@@ -36,11 +36,11 @@ Our platform is built with security at its core, we ensure that customer data is
 - Enforces role-based permissions
 - Controls access to TEEs and encryption keys
 
-#### Key Management Service (KMS)
-- Manages the lifecycle of encryption keys
+#### Certificate Broker Service (CBS)
+- Manages the lifecycle of certificates
 - Includes integration with attestation API
-- Automatically rotates keys based on configurable policies
-- Provides secure key storage with HSM protection
+- Automatically rotates certificates based on configurable policies
+- Provides secure certificate storage with HSM protection
 
 #### Attestation Service
 - Verifies TEE authenticity and integrity
@@ -50,7 +50,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 #### TEE Registry
 - Maintains an authoritative list of all legitimate TEEs
-- Is part of our KMS as a KV store
+- Is part of our CBS as a KV store
 - Serves as the source of truth for our TEE ownership validation
 
 #### TEE Infrastructure
@@ -91,7 +91,7 @@ Our platform uses a double envelope encryption approach:
 1. **Client Key:** Each client receives a unique client key that identifies them and secures their communication with our platform
 2. **Double Envelope Encryption:**
    - First Layer: Data is encrypted with the verified TEE's public key and a client key
-   - Second Layer: The already-encrypted data is encrypted again with a one-time key from our KMS and the client's key again.
+   - Second Layer: The already-encrypted data is encrypted again with a one-time certificate from our CBS and the client's key again.
 
 This approach ensures:
 
@@ -153,20 +153,20 @@ Our streamlined security flow ensures data protection throughout the entire proc
      - TEE's unique public key
      - Cryptographic proof of TEE integrity
 
-4. **Dual-Key Encryption** (Client SDK & KMS):
+4. **Dual-Key Encryption** (Client SDK & CBS):
    - Client SDK verifies the attestation to ensure the TEE is legitimate
-   - Client SDK requests a one-time key from our KMS
+   - Client SDK requests a one-time certificate from our CBS
    - Client SDK performs envelope encryption:
      - First layer: Data is encrypted with the TEE's verified public key
-     - Second layer: The encrypted data is encrypted again with the one-time key from KMS
+     - Second layer: The encrypted data is encrypted again with the one-time certificate from CBS
 
-5. **Secondary Verification** (KMS & TEE Registry):
-   - KMS verifies the TEE's identity against our TEE Registry
-   - KMS confirms TEE attestation is valid via Attestation API
-   - KMS verifies TEE is authorized for the tenant's workloads
+5. **Secondary Verification** (CBS & TEE Registry):
+   - CBS verifies the TEE's identity against our TEE Registry
+   - CBS confirms TEE attestation is valid via Attestation API
+   - CBS verifies TEE is authorized for the tenant's workloads
 
-6. **Secure Key Distribution** (KMS & TEE):
-   - Only after both verifications succeed, KMS securely provides the one-time key to the verified TEE
+6. **Secure Certificate Distribution** (CBS & TEE):
+   - Only after both verifications succeed, CBS securely provides the one-time certificate to the verified TEE
    - TEE can now decrypt the first layer of encryption
 
 7. **Protected Processing** (TEE):
@@ -182,9 +182,9 @@ Our streamlined security flow ensures data protection throughout the entire proc
 
 Conf AI's system is designed to withstand various attack scenarios:
 
-- If a gateway is compromised, requests for key material would be rejected by our independent KMS
-- If an attestation service is compromised, our KMS independently verifies TEE identity
-- All keys are protected by our KMS, limiting what can be compromised even in worst-case scenarios
+- If a gateway is compromised, requests for certificate material would be rejected by our independent CBS
+- If an attestation service is compromised, our CBS independently verifies TEE identity
+- All certificates are protected by our CBS, limiting what can be compromised even in worst-case scenarios
 
 ## Integration Tools
 
