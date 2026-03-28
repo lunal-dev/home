@@ -63,7 +63,7 @@ export function Navbar() {
             <div ref={demosRef} className="relative">
               <button
                 onClick={() => setDemosOpen(!demosOpen)}
-                className={`transition-colors hover:text-accent text-muted flex items-center gap-1`}
+                className={`transition-colors hover:text-accent text-muted flex items-center gap-1 cursor-pointer`}
               >
                 demos
                 <svg
@@ -80,7 +80,7 @@ export function Navbar() {
                 </svg>
               </button>
               {demosOpen && (
-                <div className="absolute top-full left-0 mt-2 min-w-[160px] bg-background border border-border rounded-md py-1 shadow-lg">
+                <div className="absolute top-full left-0 mt-2 min-w-[180px] bg-background border border-border rounded-md py-1 shadow-lg whitespace-nowrap">
                   {DEMO_ITEMS.map((item) => (
                     <a
                       key={item.href}
@@ -133,7 +133,7 @@ export function Navbar() {
           ))}
           <button
             onClick={() => setMobileDemosOpen(!mobileDemosOpen)}
-            className="py-2 text-left text-muted hover:text-accent transition-colors flex items-center gap-1"
+            className="py-2 text-left text-muted hover:text-accent transition-colors flex items-center gap-1 cursor-pointer"
           >
             demos
             <svg

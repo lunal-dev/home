@@ -1,2 +1,5 @@
 *~
+bun.lock
+.devcontainer/
 CLAUDE.local.md
+

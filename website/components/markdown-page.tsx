@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 
 function isInternalLink(href: string): boolean {
-  return href.startsWith("/") && !href.startsWith("//");
+  return (href.startsWith("/") && !href.startsWith("//")) || href.startsWith("#");
 }
 
 function MarkdownLink(props: ComponentPropsWithoutRef<"a">) {
