@@ -43,6 +43,13 @@ body {
   font-size: 0.9rem;
 }
 
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 72px;
+}
+
 .prose h1 {
   font-size: 1.75rem;
   font-weight: 600;
@@ -62,14 +69,13 @@ body {
   color: #ffffff;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .prose h3 {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #fff;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -98,6 +104,16 @@ body {
   text-decoration-color: var(--accent) !important;
   text-decoration-thickness: 1px !important;
   text-underline-offset: 3px;
+}
+
+.prose :is(h1, h2, h3, h4) a {
+  color: var(--muted);
+  text-decoration: none !important;
+}
+
+.prose :is(h1, h2, h3, h4) a:hover {
+  color: var(--foreground);
+  text-decoration: none !important;
 }
 
 .prose strong {
