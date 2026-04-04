@@ -32,8 +32,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--background);
+  background: var(--sel-bg, var(--accent));
+  color: var(--sel-color, var(--background));
 }
 
 /* Markdown prose styling */
