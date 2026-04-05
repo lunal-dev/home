@@ -28,6 +28,6 @@ Lunal as a name has worked for us until now: an engineering team solely focused 
 
 Now the name has changed. But the approach hasn't. Same team, same goal, same hellbent desire to ship industry-defining, privacy-preserving products. We've shipped confidential inference, training, fine-tuning, and agents. And now, finally, we got around to shipping a new name and a website.
 
-We are Confidential. We do Confidential AI.
+We are Confidential and we do Confidential AI.
 
 If you build with AI and care about privacy and security, [we should talk](mailto:founders@confidential.ai).
