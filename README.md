@@ -22,9 +22,6 @@ Confidential AI (Conf AI) is the AI confidential compute platform. We run your A
 
 You deploy your code as-is unchanged. You get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
 
-
-[Say hi](mailto:founders@confidential.ai). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
-
 ## Example Use Cases
 
 * You are an **AI inference provider** who needs to guarantee data privacy during inference. You use Conf AI to offer an end-to-end private inference product where customer data is never visible to you or your infrastructure.
@@ -45,7 +42,7 @@ Conf AI solves all of these. We built a set of independent components that each 
 
 See the complete [component catalogue](/components.md).
 
-## How To Use Conf AI
+## How to Use Conf AI
 
 ### Enterprise / Licensed
 
@@ -53,7 +50,7 @@ See the complete [component catalogue](/components.md).
 
 Conf AI's software stack deploys on your infrastructure. Components are modular: use the full platform or integrate specific pieces into your existing architecture.
 
-Start with a pilot to map components onto your stack. Components work end-to-end or individually. On-prem, bare metal, all major clouds.
+Start with a pilot to map components onto your stack. Components work end-to-end or individually across on-prem, bare metal, and all major clouds.
 
 We explain how we work with enterprises in depth [here](/enterprise.md) or [contact us](mailto:founders@confidential.ai).
 
