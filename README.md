@@ -18,9 +18,9 @@
 
 # Confidential AI
 
-Confidential AI (Conf AI) is the AI confidential compute platform. We run your AI workloads (inference, training, agents) inside hardware-encrypted environments called Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
+We are Confidential AI and we do confidential AI. We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while in use. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
 
-You deploy your code as-is unchanged. You get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
+You deploy your code as-is unchanged. You get end-to-end privacy, hardened security, and full verifiability with near-zero performance overhead.
 
 
 [Say hi](mailto:founders@confidential.ai). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
