@@ -6,7 +6,7 @@
 
 Conf AI runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Conf AI. Deploy code unchanged — no performance penalty (~1.5% overhead on CPUs, max 2.08% observed).
 
-**Components:** Attestation service, CBS (attestation-gated secrets), attestable build pipeline (SLSA L3), TEE networking (mTLS + multi-recipient hybrid encryption), OHTTP gateway, control plane (with optional ZK proofs), hardened VM image, client/server SDKs. All modular — use individually or together.
+**Components:** Attestation service, CDS (attestation-gated secrets), attestable build pipeline (SLSA L3), TEE networking (mTLS + multi-recipient hybrid encryption), OHTTP gateway, control plane (with optional ZK proofs), hardened VM image, client/server SDKs. All modular — use individually or together.
 
 **Enterprise model:** Discovery (free) → Pilot (1-4 months, deploy on your infra) → Production. On-prem, bare metal, all major clouds. Also available as a hosted platform.
 
@@ -27,7 +27,7 @@ Conf AI runs AI workloads (inference, training, agents) inside hardware-encrypte
 
 Conf AI is the AI confidential compute platform. We run your AI workloads (inference, training, agents) inside hardware-encrypted environments called Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
 
-You deploy your code as-is unchanged. You get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
+You deploy your code as-is unchanged. You get end-to-end privacy, hardened security, and full verifiability with near-zero performance overhead.
 
 
 [Say hi](mailto:founders@confidential.ai). See [enterprise](/enterprise.md) for licensed deployments, [components](/components.md) for our stack breakdown, or the [docs](/docs/) for technical depth.
@@ -98,7 +98,7 @@ See how [modular adoption](/enterprise.md) works in practice.
 
 - [Component Catalogue](#component-catalogue)
   - [Attestation Service](#attestation-service)
-  - [Certificate Broker Service (CBS)](#certificate-broker-service-cbs)
+  - [Certificate Distribution Service (CDS)](#certificate-distribution-service-cds)
   - [Build Pipeline](#build-pipeline)
   - [Networking and Application Services](#networking-and-application-services)
   - [Oblivious HTTP Gateway](#oblivious-http-gateway)
@@ -122,17 +122,17 @@ Verification checks the full chain: the report signature chains to the hardware 
 A public verification API and CLI allow independent verification. You don't take our word for it. You check the attestation yourself.
 
 
-### Certificate Broker Service (CBS)
+### Certificate Distribution Service (CDS)
 
 **Problem:** At scale, TEEs need secrets, encryption keys, identity certificates, and a registry of authorized participants. All of this must be gated on attestation.
 
-The CBS is configurable. At its core, it gates secret and certificate distribution on attestation: workloads prove what they're running before they receive anything sensitive. Beyond that, you enable the capabilities you need.
+The CDS is configurable. At its core, it gates secret and certificate distribution on attestation: workloads prove what they're running before they receive anything sensitive. Beyond that, you enable the capabilities you need.
 
-**Attestation-gated secrets.** Secrets are released only to workloads that pass attestation. Prove what you're running, then get your secrets. For organizations that maintain their own secret stores (e.g. HashiCorp Vault), the CBS handles the attestation gating while your systems hold the secrets.
+**Attestation-gated secrets.** Secrets are released only to workloads that pass attestation. Prove what you're running, then get your secrets. For organizations that maintain their own secret stores (e.g. HashiCorp Vault), the CDS handles the attestation gating while your systems hold the secrets.
 
-**Certificate distribution.** The CBS distributes certificates TEEs use for data in operation. Certificates are scoped to specific workloads, rotated on configurable schedules, and revoked immediately on security incidents. Certificate versioning maintains backward compatibility during rotation.
+**Certificate distribution.** The CDS distributes certificates TEEs use for data in operation. Certificates are scoped to specific workloads, rotated on configurable schedules, and revoked immediately on security incidents. Certificate versioning maintains backward compatibility during rotation.
 
-**Certificate authority (optional).** For deployments where components need to verify each other's identity, the CBS can act as a certificate authority. It issues identity certificates to nodes and workloads that pass attestation. Certificates carry attestation trust forward without requiring re-attestation on every interaction. A typical example is a service mesh in Kubernetes.
+**Certificate authority (optional).** For deployments where components need to verify each other's identity, the CDS can act as a certificate authority. It issues identity certificates to nodes and workloads that pass attestation. Certificates carry attestation trust forward without requiring re-attestation on every interaction. A typical example is a service mesh in Kubernetes.
 
 **TEE registry (optional).** An authoritative record of all legitimate TEEs in a system. Attestation proves "this is a real TEE running expected code." The registry adds a second check: "this TEE belongs to this tenant and is authorized to participate." This is the ultimate source of truth for which TEEs are part of which system.
 
@@ -158,7 +158,7 @@ All networking and application services run inside TEEs. Traffic never leaves th
 
 The API gateway handles request validation, client authentication, and routing. TLS terminates at the load balancer, but payloads inside the TLS session are encrypted with multi-recipient hybrid encryption. The Client SDK encrypts each payload to multiple attested TEEs, so the load balancer can route to any of them for reliability without being able to read the content. Only a TEE that passed attestation and holds the corresponding private key can decrypt. Firewalls, DDoS protection, rate limiting, and load balancing all run inside TEEs.
 
-As an example of what this looks like in practice: internal traffic between components uses mTLS with certificates issued by the CBS. Standard mTLS proves a trusted CA issued a certificate. Ours proves the CBS issued a certificate to a workload that passed attestation. The network only ever sees ciphertext between verified peers.
+As an example of what this looks like in practice: internal traffic between components uses mTLS with certificates issued by the CDS. Standard mTLS proves a trusted CA issued a certificate. Ours proves the CDS issued a certificate to a workload that passed attestation. The network only ever sees ciphertext between verified peers.
 
 
 ### Oblivious HTTP Gateway
@@ -199,7 +199,7 @@ The image is measured as part of the TEE launch sequence. Because the image is b
 
 The client and server SDKs handle encryption, attestation verification, and secure communication so you don't build it yourself.
 
-**Client SDK.** Encrypts data for upload, verifies attestation in responses, handles certificate negotiation with the CBS. On first connection, the SDK bootstraps trust: fetches reference measurements and the CA certificate from the CBS, then caches them locally. Subsequent connections verify against the cache. Attestation overhead is amortized after the first request. Multi-recipient hybrid encryption ensures payloads can only be decrypted by attested TEEs, even though TLS terminates at the load balancer.
+**Client SDK.** Encrypts data for upload, verifies attestation in responses, handles certificate negotiation with the CDS. On first connection, the SDK bootstraps trust: fetches reference measurements and the CA certificate from the CDS, then caches them locally. Subsequent connections verify against the cache. Attestation overhead is amortized after the first request. Multi-recipient hybrid encryption ensures payloads can only be decrypted by attested TEEs, even though TLS terminates at the load balancer.
 
 **Server SDK.** Generates attestation reports, manages TEE-side encryption, handles the internal mechanics of running inside a TEE.
 
@@ -212,7 +212,7 @@ Components can be adopted individually. Not everyone needs the full stack.
 Each component has defined interfaces and integrates with existing infrastructure. If you already have pieces of this puzzle, we fill the gaps. Common adoption patterns:
 
 - **Attestation only.** Attestation service + SDKs. For teams adding TEE verification to existing deployments.
-- **Security layer.** Attestation + CBS + build pipeline. For organizations with infrastructure that need the cryptographic verification layer.
+- **Security layer.** Attestation + CDS + build pipeline. For organizations with infrastructure that need the cryptographic verification layer.
 - **Full platform.** All components, end to end. Equivalent to the hosted platform, deployed on your infrastructure.
 
 Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.
@@ -4006,7 +4006,7 @@ Our platform is built with security at its core, we ensure that customer data is
 - Enforces role-based permissions
 - Controls access to TEEs and encryption keys
 
-#### Certificate Broker Service (CBS)
+#### Certificate Distribution Service (CDS)
 - Manages the lifecycle of certificates
 - Includes integration with attestation API
 - Automatically rotates certificates based on configurable policies
@@ -4020,7 +4020,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 #### TEE Registry
 - Maintains an authoritative list of all legitimate TEEs
-- Is part of our CBS as a KV store
+- Is part of our CDS as a KV store
 - Serves as the source of truth for our TEE ownership validation
 
 #### TEE Infrastructure
@@ -4122,16 +4122,16 @@ Our streamlined security flow ensures data protection throughout the entire proc
      - TEE's unique public key
      - Cryptographic proof of TEE integrity
 
-4. **Multi-Recipient Hybrid Encryption** (Client SDK & CBS):
+4. **Multi-Recipient Hybrid Encryption** (Client SDK & CDS):
    - Client SDK verifies the attestation to ensure the TEEs are legitimate
-   - Client SDK fetches the public keys of multiple attested TEEs from the CBS
+   - Client SDK fetches the public keys of multiple attested TEEs from the CDS
    - Client SDK encrypts the payload using multi-recipient hybrid encryption to those TEEs
    - The load balancer can route the encrypted payload to any of the recipient TEEs for reliability
 
-5. **Secondary Verification** (CBS & TEE Registry):
-   - CBS verifies each TEE's identity against our TEE Registry
-   - CBS confirms TEE attestation is valid via Attestation API
-   - CBS verifies TEEs are authorized for the tenant's workloads
+5. **Secondary Verification** (CDS & TEE Registry):
+   - CDS verifies each TEE's identity against our TEE Registry
+   - CDS confirms TEE attestation is valid via Attestation API
+   - CDS verifies TEEs are authorized for the tenant's workloads
 
 6. **Secure Decryption** (TEE):
    - Only TEEs that passed both client-side and platform-side verification can decrypt the payload
@@ -4150,9 +4150,9 @@ Our streamlined security flow ensures data protection throughout the entire proc
 
 Conf AI's system is designed to withstand various attack scenarios:
 
-- If a gateway is compromised, requests for certificate material would be rejected by our independent CBS
-- If an attestation service is compromised, our CBS independently verifies TEE identity
-- All certificates are protected by our CBS, limiting what can be compromised even in worst-case scenarios
+- If a gateway is compromised, requests for certificate material would be rejected by our independent CDS
+- If an attestation service is compromised, our CDS independently verifies TEE identity
+- All certificates are protected by our CDS, limiting what can be compromised even in worst-case scenarios
 
 ## Integration Tools
 
