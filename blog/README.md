@@ -10,7 +10,7 @@
   </nav>
 </div>
 
-# Conf AI Blog
+# Confidential Blog
 
 | Date | Post |
 |------|------|

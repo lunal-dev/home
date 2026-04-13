@@ -1,10 +1,10 @@
-# Conf AI — Full Documentation
+# Confidential — Full Documentation
 
 > The AI confidential compute platform. Complete content from all pages.
 
 ## TLDR
 
-Conf AI runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Conf AI. Deploy code unchanged — no performance penalty (~1.5% overhead on CPUs, max 2.08% observed).
+Confidential runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Confidential. Deploy code unchanged — no performance penalty (~1.5% overhead on CPUs, max 2.08% observed).
 
 **Components:** Attestation service, CDS (attestation-gated secrets), attestable build pipeline (SLSA L3), TEE networking (mTLS + multi-recipient hybrid encryption), OHTTP gateway, control plane (with optional ZK proofs), hardened VM image, client/server SDKs. All modular — use individually or together.
 
@@ -23,9 +23,9 @@ Conf AI runs AI workloads (inference, training, agents) inside hardware-encrypte
 
 ---
 
-# Conf AI
+# Confidential
 
-Conf AI is the AI confidential compute platform. We run your AI workloads (inference, training, agents) inside hardware-encrypted environments called Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
+Confidential is the AI confidential compute platform. We run your AI workloads (inference, training, agents) inside hardware-encrypted environments called Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
 
 You deploy your code as-is unchanged. You get end-to-end privacy, hardened security, and full verifiability with near-zero performance overhead.
 
@@ -34,12 +34,12 @@ You deploy your code as-is unchanged. You get end-to-end privacy, hardened secur
 
 ## Example Use Cases
 
-* You are an **AI inference provider** who needs to guarantee data privacy during inference. You use Conf AI to offer an end-to-end private inference product where customer data is never visible to you or your infrastructure.
-* You are an **AI lab** that needs to train on highly sensitive data and prove to customers exactly what data was used during training. You use Conf AI to set up fully confidential training workloads, enabling customers to cryptographically verify training data provenance.
-* You are an **AI lab** that needs to protect proprietary weights from extraction during inference or fine-tuning. You use Conf AI to ensure weights never leave hardware-enforced secure enclaves.
-* You are an **inference provider** serving third-party models and regulators require proof that the audited model is what's actually running in production. You use Conf AI to provide verifiable attestation of model integrity.
-* You are an **AI agent company** whose agents handle credentials and API keys that must never be exposed in plaintext. You use Conf AI to enforce hardware-level isolation so secrets never exist outside the TEE.
-* You are building **multi-agent systems** and agents need to verify each other's identity and code before establishing trust. You use Conf AI to provide cryptographic attestation between agents.
+* You are an **AI inference provider** who needs to guarantee data privacy during inference. You use Confidential to offer an end-to-end private inference product where customer data is never visible to you or your infrastructure.
+* You are an **AI lab** that needs to train on highly sensitive data and prove to customers exactly what data was used during training. You use Confidential to set up fully confidential training workloads, enabling customers to cryptographically verify training data provenance.
+* You are an **AI lab** that needs to protect proprietary weights from extraction during inference or fine-tuning. You use Confidential to ensure weights never leave hardware-enforced secure enclaves.
+* You are an **inference provider** serving third-party models and regulators require proof that the audited model is what's actually running in production. You use Confidential to provide verifiable attestation of model integrity.
+* You are an **AI agent company** whose agents handle credentials and API keys that must never be exposed in plaintext. You use Confidential to enforce hardware-level isolation so secrets never exist outside the TEE.
+* You are building **multi-agent systems** and agents need to verify each other's identity and code before establishing trust. You use Confidential to provide cryptographic attestation between agents.
 
 
 ## What We Solve
@@ -48,17 +48,17 @@ Confidential computing protects data while it's being processed, not just at res
 
 A TEE by itself is just a primitive. Running production workloads inside TEEs and scaling them is a serious engineering challenge. You have to solve attestation, key management, build verifiability, networking, autoscaling, and logging, among others.
 
-Conf AI solves all of these. We built a set of independent components that each address a specific problem. Use them all together or integrate individual pieces into your existing stack. Conf AI is confidential computing that just works, without building the infrastructure yourself.
+Confidential solves all of these. We built a set of independent components that each address a specific problem. Use them all together or integrate individual pieces into your existing stack. Confidential makes confidential computing just work, without building the infrastructure yourself.
 
 See the complete [component catalogue](/components.md).
 
-## How To Use Conf AI
+## How To Use Confidential
 
 ### Enterprise / Licensed
 
 **For AI labs, infrastructure providers, and large organizations with existing hardware/infrastructure.**
 
-Conf AI's software stack deploys on your infrastructure. Components are modular: use the full platform or integrate specific pieces into your existing architecture.
+Confidential's software stack deploys on your infrastructure. Components are modular: use the full platform or integrate specific pieces into your existing architecture.
 
 Start with a pilot to map components onto your stack. Components work end-to-end or individually. On-prem, bare metal, all major clouds.
 
@@ -68,7 +68,7 @@ We explain how we work with enterprises in depth [here](/enterprise.md) or [cont
 
 **For teams that want to run workloads privately without managing TEE infrastructure.**
 
-Bring your workload: inference, training, fine-tuning, any application. Conf AI runs it on TEE-backed infrastructure. You get an endpoint with attestation built in.
+Bring your workload: inference, training, fine-tuning, any application. Confidential runs it on TEE-backed infrastructure. You get an endpoint with attestation built in.
 
 No code changes required. Your existing applications, containers, and models work as-is. The full platform is included: attestation, key management, autoscaling, private networking, CI/CD, encrypted logging. Global deployment.
 
@@ -90,7 +90,7 @@ Agents run inside TEEs with hardware-enforced credential isolation. Tokens and A
 
 # Components
 
-Conf AI is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
+Confidential is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
 
 See how [modular adoption](/enterprise.md) works in practice.
 
@@ -165,7 +165,7 @@ As an example of what this looks like in practice: internal traffic between comp
 
 **Problem:** TLS protects request contents, but infrastructure operators can still observe metadata: which clients connect, when, and how often. For some applications, traffic analysis is itself a privacy concern.
 
-Conf AI provides an OHTTP-compatible gateway that runs inside a TEE. It pairs with a third-party relay to separate identity from content.
+Confidential provides an OHTTP-compatible gateway that runs inside a TEE. It pairs with a third-party relay to separate identity from content.
 
 The client encrypts their request to the attested gateway, then sends it through the relay. The relay sees the client's IP address but cannot read the payload. The gateway decrypts and processes the request but only sees that it came from the relay, not which client sent it. No single party learns both who is asking and what they're asking. Clients verify the gateway's attestation before encrypting requests to it.
 
@@ -186,7 +186,7 @@ Not every deployment uses our control plane. For example, many organizations run
 
 **Problem:** TEEs provide hardware isolation, but the software inside still needs to be locked down. A bloated or misconfigured VM image expands the attack surface inside the TEE.
 
-The hardened VM image is the base operating system all Conf AI workloads run on. It is minimal, hardened, and measured.
+The hardened VM image is the base operating system all Confidential's workloads run on. It is minimal, hardened, and measured.
 
 Minimal means only the components needed to run your workload. No unnecessary services, no debugging tools, no package managers in production. Secure SELinux policies enforce mandatory access control. Seccomp filters block dangerous syscalls. Network isolation is enforced at multiple layers.
 
@@ -227,7 +227,7 @@ This page is dedicated to highlight how we work with large organizations and ent
 
 We know your infrastructure is bespoke. It looks different from everyone else's. It may be difficult or impossible to change your deployment target. The stack you've built over years isn't something you're going to rip out easily for a new vendor.
 
-We built Conf AI with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
+We built Confidential with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
 
 See the full [component catalogue](/components.md).
 
@@ -257,11 +257,11 @@ The outcome is a gap analysis: here is your trust boundary today, here are the c
 
 ### Pilot
 
-The pilot is a paid engagement. The timeline varies depending on the scope but the typical range is 1-4 months. The purpose is to deploy Conf AI components on your infrastructure and get a production ready deployment. At the end, you decide whether to license our stack or walk away. No strings attached.
+The pilot is a paid engagement. The timeline varies depending on the scope but the typical range is 1-4 months. The purpose is to deploy Confidential's components on your infrastructure and get a production ready deployment. At the end, you decide whether to license our stack or walk away. No strings attached.
 
 Every pilot typically follows this sequence:
 
-- **Architectural deep dive.** We go through your stack component by component. How workloads are deployed, how traffic flows, where keys are managed, and so on. The outcome is an integration design: which Conf AI components map where, what the deployment topology looks like, and where the trust boundaries sit.
+- **Architectural deep dive.** We go through your stack component by component. How workloads are deployed, how traffic flows, where keys are managed, and so on. The outcome is an integration design: which Confidential's components map where, what the deployment topology looks like, and where the trust boundaries sit.
 - **Design.** We define a fully end-to-end private architecture for your workloads. If closing the trust boundary requires components that don't exist yet, we build them for you during the pilot. The outcome is a complete design with every gap accounted for.
 - **Deployment.** Components deploy in your environment running real workloads. We iterate until the trust boundary holds end-to-end. The outcome is a working deployment on your infrastructure.
 - **Testing.** We verify the system together. Attestation reports, measurement verification, certificate chain validation. Every claim we make is cryptographically verifiable. You don't take our word for it. The outcome is evidence you can evaluate internally.
@@ -401,7 +401,7 @@ For a detailed technical deep dive into how confidential computing works under t
 
 AI security standards are being developed in real-time as the technology scales from research labs to billions of users. As these models take on more consequential roles in software systems in terms of delegating, making decisions, and acting on our behalf, questions remain about how to effectively secure these systems. In addition, frontier models are increasingly viewed as strategic national assets that require protection from sophisticated threat actors. The intersection of this rapid technological advancement, the scale of deployment, and this new complex threat landscape necessitates an equivalently accelerated effort to develop practical security standards and implement them at production scale.
 
-A core component of these emerging security standards and their implementations is Trusted Execution Environments (TEEs), often referred to as Confidential Computing. TEEs are already referenced in multiple AI security and safety standards. Notably, RAND's ["Securing AI Model Weights"](https://www.rand.org/pubs/research_reports/RRA2849-1.html) report identifies TEEs as essential infrastructure for securing modern AI systems. Anthropic has [started exploring](https://www.anthropic.com/research/confidential-inference-trusted-vms) confidential inference built on top of TEEs. Meta is [evaluating using TEEs](https://ai.meta.com/static-resource/private-processing-technical-whitepaper) to bring private AI processing to WhatsApp. Yet the tooling to make practical use of TEEs for AI infrastructure is nowhere near ready, let alone scalable and production-grade. Conf AI exists to solve that problem: building the tooling and infrastructure that makes deploying secure AI using TEEs easy.
+A core component of these emerging security standards and their implementations is Trusted Execution Environments (TEEs), often referred to as Confidential Computing. TEEs are already referenced in multiple AI security and safety standards. Notably, RAND's ["Securing AI Model Weights"](https://www.rand.org/pubs/research_reports/RRA2849-1.html) report identifies TEEs as essential infrastructure for securing modern AI systems. Anthropic has [started exploring](https://www.anthropic.com/research/confidential-inference-trusted-vms) confidential inference built on top of TEEs. Meta is [evaluating using TEEs](https://ai.meta.com/static-resource/private-processing-technical-whitepaper) to bring private AI processing to WhatsApp. Yet the tooling to make practical use of TEEs for AI infrastructure is nowhere near ready, let alone scalable and production-grade. Confidential exists to solve that problem: building the tooling and infrastructure that makes deploying secure AI using TEEs easy.
 
 ## What Are TEEs?
 
@@ -441,7 +441,7 @@ Content policy enforcement gains similar verifiability. When safety filters are 
 
 Model version control becomes tamper-proof when implemented in TEEs. Organizations can prove exactly which model weights were used for specific inferences, creating audit trails that cannot be forged or modified after the fact.
 
-## Conf AI: Making TEEs Production-Ready
+## Confidential: Making TEEs Production-Ready
 
 TEEs represent an extremely valuable primitive for securing AI systems. The hardware is already deployed: the latest generation CPUs and GPUs from Intel, AMD, and NVIDIA all ship with TEE capabilities built in, sitting in data centers right now waiting to be leveraged.
 
@@ -459,7 +459,7 @@ Using TEEs doesn't require changing or rebuilding your stack. Your existing appl
 
 There's no cohesive platform that handles the full stack of TEE deployment concerns while maintaining compatibility with existing development workflows.
 
-Conf AI exists to solve this. We're building the standards, tooling, and infrastructure necessary to make using TEEs simple and seamless.
+Confidential exists to solve this. We're building the standards, tooling, and infrastructure necessary to make using TEEs simple and seamless.
 
 ## Conclusion
 
@@ -467,7 +467,7 @@ The rapid deployment of AI systems at scale has created an urgent need for robus
 
 However, the gap between TEE capabilities and production-ready tooling remains substantial. While the underlying hardware is already deployed across modern data centers, the complex requirements around attestation workflows, reproducible builds, key management, and infrastructure compatibility remain unsolved and prevent potential adoption.
 
-Conf AI is bridging this gap by building the comprehensive tooling and infrastructure stack needed to make TEE deployment seamless for AI workloads. As AI systems become increasingly critical to business operations and national security, the ability to provide cryptographic guarantees about model security and data privacy will transition from a competitive advantage to a fundamental requirement.
+Confidential is bridging this gap by building the comprehensive tooling and infrastructure stack needed to make TEE deployment seamless for AI workloads. As AI systems become increasingly critical to business operations and national security, the ability to provide cryptographic guarantees about model security and data privacy will transition from a competitive advantage to a fundamental requirement.
 
 ---
 
@@ -585,7 +585,7 @@ This table shows the final verification phase where generated proofs are validat
 
 # Confidential Computing Primer
 
-This is a six-part series explaining confidential computing, the technology behind Conf AI. Conf AI uses Trusted Execution Environments (TEEs) to provide secure, private, verifiable AI. This series explains how TEEs work under the hood.
+This is a six-part series explaining confidential computing, the technology behind Confidential. Confidential uses Trusted Execution Environments (TEEs) to provide secure, private, verifiable AI. This series explains how TEEs work under the hood.
 
 We will be using AMD SEV-SNP as the reference for CPU based confidential computing. The concepts here (threat models, attestation, measurement) apply broadly to TEE technologies, while the implementation details are AMD-specific.
 
@@ -597,11 +597,11 @@ This series is for people who want to understand what's happening beneath the su
 
 After reading this series, you'll be able to:
 
-- Explain what Conf AI's TEE infrastructure protects against and what it doesn't
+- Explain what Confidential's TEE infrastructure protects against and what it doesn't
 - Trace how memory encryption and integrity protection work at the hardware level
 - Understand how workloads communicate safely with an untrusted hypervisor
 - Verify attestation reports and reason about what they prove
-- Understand how Conf AI extends trust from hardware measurement to your application code
+- Understand how Confidential extends trust from hardware measurement to your application code
 
 ## The Documents
 
@@ -639,7 +639,7 @@ If you're short on time: read Document 1 for the security model, skim Document 2
 
 # Threat Model & Security Boundaries
 
-This threat model is the main driver behind Conf AI's architecture. We designed our platform around the principle that even our own infrastructure shouldn't be able to see customer data.
+This threat model is the main driver behind Confidential's architecture. We designed our platform around the principle that even our own infrastructure shouldn't be able to see customer data.
 
 This document explains what confidential computing protects against and what it doesn't. After reading it, you'll understand where the trust boundaries lie, what an attacker with hypervisor control can and cannot do, and which guarantees you actually get from the hardware. This assumes you're comfortable with basic virtualization concepts (VMs, hypervisors, memory) but doesn't require any prior knowledge of confidential computing.
 
@@ -766,7 +766,7 @@ The boundaries are precise. You get strong confidentiality and integrity for dat
 
 Understanding these boundaries is essential for reasoning about what confidential computing actually gives you. The following documents explain how the hardware enforces these boundaries: how encryption works, how the RMP provides integrity, how guests communicate with the hypervisor safely, and how attestation lets you verify the whole thing.
 
-Conf AI's platform is built on this threat model. Our infrastructure services—firewalls, load balancers, routing—run in TEEs themselves. We can't see your data, and you don't have to trust that we won't look. The hardware enforces it.
+Confidential's platform is built on this threat model. Our infrastructure services—firewalls, load balancers, routing—run in TEEs themselves. We can't see your data, and you don't have to trust that we won't look. The hardware enforces it.
 
 ---
 
@@ -1637,7 +1637,7 @@ The RMP provides strong integrity guarantees, but some attacks remain possible:
 
 # Privilege & Communication
 
-Conf AI's privacy-preserving infrastructure services—firewalls, DDoS protection, routing, load balancing—run in their own TEE-protected layer. This document explains the mechanisms that make this possible: privilege separation within TEEs and secure communication with untrusted components.
+Confidential's privacy-preserving infrastructure services—firewalls, DDoS protection, routing, load balancing—run in their own TEE-protected layer. This document explains the mechanisms that make this possible: privilege separation within TEEs and secure communication with untrusted components.
 
 After reading this, you'll understand VMPLs (the privilege hierarchy inside the guest), how CPU state is protected, and the GHCB protocol (safe guest-hypervisor communication). This assumes familiarity with basic virtualization concepts and the RMP from [Document 3](03-memory-integrity.md).
 
@@ -2127,7 +2127,7 @@ The guest must:
 
 # Attestation & Verification
 
-Attestation is central to what Conf AI enables. Every request-response flow can include cryptographic proof of what code is running, on what hardware, with what configuration. This document explains how that works under the hood.
+Attestation is central to what Confidential enables. Every request-response flow can include cryptographic proof of what code is running, on what hardware, with what configuration. This document explains how that works under the hood.
 
 After reading this, you'll understand how measurements are computed at launch, what attestation reports contain, how the certificate chain works, and how to verify a report. This assumes familiarity with the concepts from [Documents 1-4](01-threat-model.md), particularly the RMP, VMPLs, and the role of the PSP (Platform Security Processor).
 
@@ -2139,7 +2139,7 @@ Maybe you're running their code unencrypted and just claiming otherwise. Maybe y
 
 Attestation provides that proof. The hardware itself measures what code was loaded, and AMD's keys (fused into the silicon at manufacturing) sign a statement about that measurement. A customer can verify: "This signature is valid and chains to AMD's root key. The measurement matches what I expected. Therefore, AMD's hardware is asserting that my code is running."
 
-This is the problem Conf AI solves. We make attestation accessible such that you don't need to implement the verification flow yourself, but understanding it helps you reason about what guarantees you're actually getting.
+This is the problem Confidential solves. We make attestation accessible such that you don't need to implement the verification flow yourself, but understanding it helps you reason about what guarantees you're actually getting.
 
 ## What Gets Measured
 
@@ -2322,7 +2322,7 @@ The attestation report is a structured data blob (currently version 5) with seve
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-Conf AI enables these attestation reports to be attached to any request-response flow. The integration approach depends on your architecture—attestation on every request, on session establishment, or on-demand.
+Confidential enables these attestation reports to be attached to any request-response flow. The integration approach depends on your architecture—attestation on every request, on session establishment, or on-demand.
 
 ### The REPORT_DATA Field
 
@@ -2699,7 +2699,7 @@ All checks pass → trust that this is the expected code on genuine AMD hardware
 
 We provide SDKs that handle this verification flow. You don't need to implement certificate fetching, chain validation, or signature verification yourself—though you can if you want to verify independently.
 
-## Attestation on Conf AI
+## Attestation on Confidential
 
 We enable attestation on every request-response flow. How you integrate is up to you:
 
@@ -2729,7 +2729,7 @@ We enable attestation on every request-response flow. How you integrate is up to
 
 # Measurement Strategies
 
-This document explains the measurement problem and how we approach it at Conf AI. The gap between what hardware measures at launch and what you actually run is fundamental to confidential computing—and bridging that gap is core to what we do.
+This document explains the measurement problem and how we approach it at Confidential. The gap between what hardware measures at launch and what you actually run is fundamental to confidential computing—and bridging that gap is core to what we do.
 
 After reading this, you'll understand the measurement gap, two common approaches to bridge it (initramfs and dm-verity), and how SVSM can provide isolated services like a vTPM for key sealing. This assumes familiarity with [Document 5: Attestation](05-attestation.md), particularly how launch measurements work and what LAUNCH_DIGEST contains.
 
@@ -2767,7 +2767,7 @@ Consider a typical deployment: you have a Python service with dependencies. At l
 
 This isn't a flaw in SEV-SNP. The hardware can only measure what's in memory at launch. It has no way to measure a disk image that will be mounted later. The question is: how do you extend trust from the PSP measurement to your runtime code?
 
-This is the measurement gap we bridge. When you deploy on Conf AI, your application code becomes part of an attestable measurement chain—you don't need to manage IGVM files, initramfs builds, or dm-verity setup yourself.
+This is the measurement gap we bridge. When you deploy on Confidential, your application code becomes part of an attestable measurement chain—you don't need to manage IGVM files, initramfs builds, or dm-verity setup yourself.
 
 ## Background: Key Concepts
 
@@ -3193,7 +3193,7 @@ Expected LAUNCH_DIGEST (tied to your commit)
 Attestation report (signed by hardware)
 ```
 
-**Verifying a deployment:** Every deployment on Conf AI can produce an attestation report. That report contains the LAUNCH_DIGEST, which you can trace back to the git commit that produced it. If you want to verify that a deployment matches your source code, you can:
+**Verifying a deployment:** Every deployment on Confidential can produce an attestation report. That report contains the LAUNCH_DIGEST, which you can trace back to the git commit that produced it. If you want to verify that a deployment matches your source code, you can:
 
 1. Get the attestation report from the running deployment
 2. Check that the MEASUREMENT matches the expected value for your commit
@@ -3308,9 +3308,9 @@ This document explains the architecture and mechanics of attestable builds. Afte
 
 We assume you've read [What Are Attestable Builds?](README.md) and understand the core concept: attestable builds prove that specific inputs were used to produce specific outputs in a verified environment. This document shows exactly how that works.
 
-## Kettle: Conf AI's Implementation
+## Kettle: Confidential's Implementation
 
-Kettle is Conf AI's implementation of attestable builds. It handles the entire pipeline: input verification, manifest generation, TEE orchestration, build execution, and provenance signing. When we describe "how attestable builds work" in this document, we're describing how Kettle works.
+Kettle is Confidential's implementation of attestable builds. It handles the entire pipeline: input verification, manifest generation, TEE orchestration, build execution, and provenance signing. When we describe "how attestable builds work" in this document, we're describing how Kettle works.
 
 Kettle will be open source and audited.
 
@@ -3980,7 +3980,7 @@ The trust model shifts from trusting infrastructure to trusting hardware vendors
 
 ---
 
-# Conf AI's Security Architecture
+# Confidential's Security Architecture
 
 ## Table of Contents
 
@@ -4035,7 +4035,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 ## Security Overview
 
-Conf AI's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
+Confidential's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
 
 ### Zero Trust Architecture
 
@@ -4065,7 +4065,7 @@ This approach ensures:
 
 - The load balancer can route requests to any of several TEEs for reliability without being able to read the payload.
 - The client independently verifies TEE attestation before encrypting to those TEEs.
-- Our platform independently verifies that each TEE is a legitimate Conf AI TEE that is part of our registry.
+- Our platform independently verifies that each TEE is a legitimate Confidential TEE that is part of our registry.
 - For data to be accessed by any TEE, both client-side and platform-side verifications are required.
 
 ### Certificate Rotation and Lifecycle Management
@@ -4079,7 +4079,7 @@ Security is maintained through comprehensive certificate management:
 
 ### Continuous Attestation and Ephemeral Data
 
-Security doesn't stop after initial verification. Conf AI's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
+Security doesn't stop after initial verification. Confidential's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
 
 ### Continuous Attestation
 - Every TEE undergoes periodic re-attestation to verify its integrity
@@ -4148,7 +4148,7 @@ Our streamlined security flow ensures data protection throughout the entire proc
 
 ### Fail-Safe Design
 
-Conf AI's system is designed to withstand various attack scenarios:
+Confidential's system is designed to withstand various attack scenarios:
 
 - If a gateway is compromised, requests for certificate material would be rejected by our independent CDS
 - If an attestation service is compromised, our CDS independently verifies TEE identity
@@ -4187,7 +4187,7 @@ That's it! Our SDK handles all the complex security operations behind the scenes
 
 ### Verification API
 
-For developers who need programmatic verification of TEE attestations, Conf AI provides a dedicated Verification API:
+For developers who need programmatic verification of TEE attestations, Confidential provides a dedicated Verification API:
 
 ```bash
 # Verify a TEE attestation using the API
@@ -4235,7 +4235,7 @@ Our Verification API enables:
 
 ### Verification CLI
 
-For security teams and administrators, Conf AI offers a simple command-line interface for TEE verification:
+For security teams and administrators, Confidential offers a simple command-line interface for TEE verification:
 
 ```bash
 # Verify the attestation via CLI
@@ -4281,13 +4281,13 @@ The Verification CLI provides:
 
 ---
 
-# **Zero-Knowledge Proofs at Conf AI**
+# **Zero-Knowledge Proofs at Confidential**
 
 ## **Overview**
 
-Conf AI uses zero-knowledge (ZK) proofs to complement TEE attestations and prove that Conf AI's infrastructure operates correctly while preserving customer privacy. This documentation explains our rationale for using ZK and the specific use cases we've implemented.
+Confidential uses zero-knowledge (ZK) proofs to complement TEE attestations and prove that Confidential's infrastructure operates correctly while preserving customer privacy. This documentation explains our rationale for using ZK and the specific use cases we've implemented.
 
-## **Why Conf AI Uses ZK**
+## **Why Confidential Uses ZK**
 
 ### **The Fundamental Limitation of Attestation**
 
@@ -4297,20 +4297,20 @@ A TEE attestation cryptographically answers: "What software was loaded?" It does
 
 This distinction matters enormously when things go wrong. When things security is breached, debugging, incident response, and security audits all ultimately require inspecting behavior: What did the system actually do? What data did it process? What decisions did it make? Attestation alone cannot answer these questions. It can only confirm that the right code was present when the system started.
 
-### **The Trust Challenge in Conf AI's Architecture**
+### **The Trust Challenge in Confidential's Architecture**
 
-This limitation is particularly acute in Conf AI's architecture. Conf AI TEEs run two distinct types of software:
+This limitation is particularly acute in Confidential's architecture. Confidential's TEEs run two distinct types of software:
 
 1. **Customer applications**: software that customers load and run inside the TEE
-2. **Conf AI software**: software that Conf AI runs inside the customer's TEE for operations such as attestation, performance monitoring, and autoscaling
+2. **Confidential's software**: software that Confidential runs inside the customer's TEE for operations such as attestation, performance monitoring, and autoscaling
 
-Both become part of the TEE's trusted boundary. While customers maintain full control over their own applications, they must extend trust to Conf AI's software running alongside their workloads. Even though Conf AI's software is open source and externally audited, this still requires customers to trust that the software behaves as documented every time it runs.
+Both become part of the TEE's trusted boundary. While customers maintain full control over their own applications, they must extend trust to Confidential's software running alongside their workloads. Even though Confidential's software is open source and externally audited, this still requires customers to trust that the software behaves as documented every time it runs.
 
 ### **From Trust to Proof**
 
 ZK is the nuclear option for proving behavior. Unlike attestation (which proves identity) or logging (which can be forged), ZK proofs are cryptographically bounded. They mathematically guarantee that a specific computation occurred correctly, with no room for tampering or misrepresentation.
 
-With ZK, instead of asking customers to trust that Conf AI's software behaves correctly, we can prove it every time the software runs.
+With ZK, instead of asking customers to trust that Confidential's software behaves correctly, we can prove it every time the software runs.
 
 ### **What Are Zero-Knowledge Proofs?**
 
@@ -4343,7 +4343,7 @@ This means ZK must be deployed strategically at high-value chokepoints rather th
 
 #### **The Challenge**
 
-Conf AI needs to measure system metrics for autoscaling decisions, but hypervisors have limited visibility into guest VMs:
+Confidential needs to measure system metrics for autoscaling decisions, but hypervisors have limited visibility into guest VMs:
 
 | Metric      | Hypervisor Visibility | Limitation                                |
 | ----------- | --------------------- | ----------------------------------------- |
@@ -4354,7 +4354,7 @@ Conf AI needs to measure system metrics for autoscaling decisions, but hyperviso
 
 #### **The Solution**
 
-Conf AI runs telemetry extraction software inside the TEE and uses ZK proofs to verify autoscaling decisions without exposing sensitive process data.
+Confidential runs telemetry extraction software inside the TEE and uses ZK proofs to verify autoscaling decisions without exposing sensitive process data.
 
 #### **Example: Memory-Based Autoscaling**
 
@@ -4380,12 +4380,12 @@ The proof verifies the scaling logic executed correctly without revealing which 
 ```
 Private Inputs:
 - Per-process CPU usage
-- Process ownership (Conf AI vs. customer)
+- Process ownership (Confidential vs. customer)
 
 Public Outputs:
 - Aggregate utilization band (e.g., "70-80%")
 - Scaling decision
-- Conf AI overhead confirmation (< 10%)
+- Confidential's overhead confirmation (< 10%)
 
 ZK Constraints:
 IF customer_process_cpu_p95 > 80%
@@ -4394,7 +4394,7 @@ THEN trigger_scale_out = true
 AND lunal_overhead < 10% of total_cpu
 ```
 
-This proves that scaling decisions are based on actual customer workload needs, not Conf AI's own overhead.
+This proves that scaling decisions are based on actual customer workload needs, not Confidential's own overhead.
 
 #### **Example: Disk-Based Autoscaling**
 
@@ -4420,11 +4420,11 @@ THEN performance_issue = true
 
 #### **The Challenge**
 
-When customers license Conf AI software for on-premise deployment, they run it alongside proprietary applications Conf AI cannot access. TEEs provide a single measurement hash for all software, but since Conf AI cannot reproduce measurements that include customer software, we have no way to verify which Conf AI components were actually included.
+When customers license Confidential's software for on-premise deployment, they run it alongside proprietary applications Confidential cannot access. TEEs provide a single measurement hash for all software, but since Confidential cannot reproduce measurements that include customer software, we have no way to verify which of Confidential's components were actually included.
 
 #### **The Solution**
 
-Conf AI uses Merkle trees to generate inclusion proofs that verify specific software components were loaded correctly.
+Confidential uses Merkle trees to generate inclusion proofs that verify specific software components were loaded correctly.
 
 #### **How It Works**
 
@@ -4432,8 +4432,8 @@ Conf AI uses Merkle trees to generate inclusion proofs that verify specific soft
 Deployment Structure:
 ├── Customer Application A (proprietary)
 ├── Customer Application B (proprietary)
-├── Conf AI Component X (can prove this)
-├── Conf AI Component Y (can prove this)
+├── Confidential's Component X (can prove this)
+├── Confidential's Component Y (can prove this)
 └── Customer Application C (proprietary)
 
 Merkle Tree:
@@ -4455,7 +4455,7 @@ ZK Inclusion Proof:
 
 #### **The Challenge**
 
-Conf AI runs application services (load balancers, API gateways, proxies) inside TEEs to maintain privacy guarantees. We need to monitor these services for operational health and SLA compliance without exposing customer request data or traffic patterns.
+Confidential runs application services (load balancers, API gateways, proxies) inside TEEs to maintain privacy guarantees. We need to monitor these services for operational health and SLA compliance without exposing customer request data or traffic patterns.
 
 #### **The Solution**
 
@@ -4505,7 +4505,7 @@ sample_size > 10,000 requests
 
 #### **Example: Percentile Calculation Without Data Exposure**
 
-Conf AI calculates latency percentiles for internal performance improvements:
+Confidential calculates latency percentiles for internal performance improvements:
 
 ```
 Private Inputs:
@@ -4525,13 +4525,13 @@ Verifies correct percentile calculation without revealing:
 - Customer-specific performance characteristics
 ```
 
-This allows Conf AI to optimize platform performance while maintaining complete customer privacy.
+This allows Confidential to optimize platform performance while maintaining complete customer privacy.
 
 ## **Caveats and Limitations**
 
 ### **Performance Constraints**
 
-Most ZK proofs cannot be used in the hot path of customer requests due to performance overhead. All Conf AI ZK use cases operate asynchronously and out-of-band from customer traffic. Therefore, Conf AI's usage of ZK is limited to background processes where proving times on the order of magnitude of seconds are acceptable. The verification of such proofs take order of magnitude 10s of ms.
+Most ZK proofs cannot be used in the hot path of customer requests due to performance overhead. All Confidential ZK use cases operate asynchronously and out-of-band from customer traffic. Therefore, Confidential's usage of ZK is limited to background processes where proving times on the order of magnitude of seconds are acceptable. The verification of such proofs take order of magnitude 10s of ms.
 
 ### **Arithmetic Circuit Limitations**
 
@@ -4544,13 +4544,13 @@ System interactions that cannot be represented as arithmetic circuits:
 * **File system I/O**: Disk reads, writes, and operations
 * **Hardware modules**: HSM operations, TPM interactions
 
-In practice, this means Conf AI's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Conf AI can prove "given these CPU usage measurements, Conf AI's autoscaling logic correctly determined scaling was needed" but cannot prove "these CPU usage measurements were collected correctly from the system." The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.
+In practice, this means Confidential's ZK proofs verify the processing and analysis of data rather than the collection of that data itself. Confidential can prove "given these CPU usage measurements, Confidential's autoscaling logic correctly determined scaling was needed" but cannot prove "these CPU usage measurements were collected correctly from the system." The data collection would still occur under the trust boundary of the TEE though, which provides acceptable guarantees.
 
 ---
 
-# Careers at Conf AI
+# Careers at Confidential
 
-At Conf AI, we wake up every day to secure the world's data with secure, private AI.
+At Confidential, we wake up every day to secure the world's data with secure, private AI.
 
 We believe a small, tenacious team can outrun, outmaneuver, and outperform giants. We live it. To build that team, we're looking for people with grit that get things done and want to be pivotal in an ascendant startup.
 
@@ -4565,15 +4565,15 @@ We're looking for relentless minds. Interested? Email us at [founders@confidenti
 
 ## 🧱 Software Engineer
 
-Conf AI is growing. Fast. And we're looking for software engineers to build the foundations of private, secure, and verifiable compute.
+Confidential is growing. Fast. And we're looking for software engineers to build the foundations of private, secure, and verifiable compute.
 
 Our team is small, so it’s important you're excited to own large pieces of the whole puzzle.
 
 ### What You'll Work on:
 
-As an engineer at Conf AI, you'll design distributed systems, deploy infrastructure globally, and ship software daily.
+As an engineer at Confidential, you'll design distributed systems, deploy infrastructure globally, and ship software daily.
 
-Here are a few examples of the hard problems you'll work on at Conf AI:
+Here are a few examples of the hard problems you'll work on at Confidential:
 
 - Build software for end-to-end private, secure AI inference, training, and fine-tuning.
 - Publish open source industry standards for TEEs and TEE attestations.
@@ -4586,7 +4586,7 @@ Here are a few examples of the hard problems you'll work on at Conf AI:
 
 ### Requirements
 
-Conf AI values these traits above all others:
+Confidential values these traits above all others:
 
 - Consistent: You ship daily.
 - Relentless: You find a way or make a way.
@@ -4616,4 +4616,4 @@ It's a bonus, not a requirement, if you have experience with any of the followin
 
 Don't see the right opening for you? [Email us](mailto:founders@confidential.ai). We'd love to hear from you.
 
-Conf AI is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.
+Confidential is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.

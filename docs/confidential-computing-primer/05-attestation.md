@@ -1,6 +1,6 @@
 # Attestation & Verification
 
-Attestation is central to what Conf AI enables. Every request-response flow can include cryptographic proof of what code is running, on what hardware, with what configuration. This document explains how that works under the hood.
+Attestation is central to what Confidential enables. Every request-response flow can include cryptographic proof of what code is running, on what hardware, with what configuration. This document explains how that works under the hood.
 
 After reading this, you'll understand how measurements are computed at launch, what attestation reports contain, how the certificate chain works, and how to verify a report. This assumes familiarity with the concepts from [Documents 1-4](01-threat-model.md), particularly the RMP, VMPLs, and the role of the PSP (Platform Security Processor).
 
@@ -12,7 +12,7 @@ Maybe you're running their code unencrypted and just claiming otherwise. Maybe y
 
 Attestation provides that proof. The hardware itself measures what code was loaded, and AMD's keys (fused into the silicon at manufacturing) sign a statement about that measurement. A customer can verify: "This signature is valid and chains to AMD's root key. The measurement matches what I expected. Therefore, AMD's hardware is asserting that my code is running."
 
-This is the problem Conf AI solves. We make attestation accessible such that you don't need to implement the verification flow yourself, but understanding it helps you reason about what guarantees you're actually getting.
+This is the problem Confidential solves. We make attestation accessible such that you don't need to implement the verification flow yourself, but understanding it helps you reason about what guarantees you're actually getting.
 
 ## What Gets Measured
 
@@ -195,7 +195,7 @@ The attestation report is a structured data blob (currently version 5) with seve
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-Conf AI enables these attestation reports to be attached to any request-response flow. The integration approach depends on your architecture—attestation on every request, on session establishment, or on-demand.
+Confidential enables these attestation reports to be attached to any request-response flow. The integration approach depends on your architecture—attestation on every request, on session establishment, or on-demand.
 
 ### The REPORT_DATA Field
 
@@ -572,7 +572,7 @@ All checks pass → trust that this is the expected code on genuine AMD hardware
 
 We provide SDKs that handle this verification flow. You don't need to implement certificate fetching, chain validation, or signature verification yourself—though you can if you want to verify independently.
 
-## Attestation on Conf AI
+## Attestation on Confidential
 
 We enable attestation on every request-response flow. How you integrate is up to you:
 
