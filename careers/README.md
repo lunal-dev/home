@@ -10,9 +10,9 @@
   </nav>
 </div>
 
-# Careers at Conf AI
+# Careers at Confidential
 
-At Conf AI, we wake up every day to secure the world's data with secure, private AI.
+At Confidential, we wake up every day to secure the world's data with secure, private AI.
 
 We believe a small, tenacious team can outrun, outmaneuver, and outperform giants. We live it. To build that team, we're looking for people with grit that get things done and want to be pivotal in an ascendant startup.
 
@@ -27,15 +27,15 @@ We're looking for relentless minds. Interested? Email us at [founders@confidenti
 
 ## 🧱 Software Engineer
 
-Conf AI is growing. Fast. And we're looking for software engineers to build the foundations of private, secure, and verifiable compute.
+Confidential is growing. Fast. And we're looking for software engineers to build the foundations of private, secure, and verifiable compute.
 
 Our team is small, so it’s important you're excited to own large pieces of the whole puzzle.
 
 ### What You'll Work on:
 
-As an engineer at Conf AI, you'll design distributed systems, deploy infrastructure globally, and ship software daily.
+As an engineer at Confidential, you'll design distributed systems, deploy infrastructure globally, and ship software daily.
 
-Here are a few examples of the hard problems you'll work on at Conf AI:
+Here are a few examples of the hard problems you'll work on at Confidential:
 
 - Build software for end-to-end private, secure AI inference, training, and fine-tuning.
 - Publish open source industry standards for TEEs and TEE attestations.
@@ -48,7 +48,7 @@ Here are a few examples of the hard problems you'll work on at Conf AI:
 
 ### Requirements
 
-Conf AI values these traits above all others:
+Confidential values these traits above all others:
 
 - Consistent: You ship daily.
 - Relentless: You find a way or make a way.
@@ -78,4 +78,4 @@ It's a bonus, not a requirement, if you have experience with any of the followin
 
 Don't see the right opening for you? [Email us](mailto:founders@confidential.ai). We'd love to hear from you.
 
-Conf AI is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.
+Confidential is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.

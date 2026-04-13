@@ -1,6 +1,6 @@
 # Measurement Strategies
 
-This document explains the measurement problem and how we approach it at Conf AI. The gap between what hardware measures at launch and what you actually run is fundamental to confidential computing—and bridging that gap is core to what we do.
+This document explains the measurement problem and how we approach it at Confidential. The gap between what hardware measures at launch and what you actually run is fundamental to confidential computing—and bridging that gap is core to what we do.
 
 After reading this, you'll understand the measurement gap, two common approaches to bridge it (initramfs and dm-verity), and how SVSM can provide isolated services like a vTPM for key sealing. This assumes familiarity with [Document 5: Attestation](05-attestation.md), particularly how launch measurements work and what LAUNCH_DIGEST contains.
 
@@ -38,7 +38,7 @@ Consider a typical deployment: you have a Python service with dependencies. At l
 
 This isn't a flaw in SEV-SNP. The hardware can only measure what's in memory at launch. It has no way to measure a disk image that will be mounted later. The question is: how do you extend trust from the PSP measurement to your runtime code?
 
-This is the measurement gap we bridge. When you deploy on Conf AI, your application code becomes part of an attestable measurement chain—you don't need to manage IGVM files, initramfs builds, or dm-verity setup yourself.
+This is the measurement gap we bridge. When you deploy on Confidential, your application code becomes part of an attestable measurement chain—you don't need to manage IGVM files, initramfs builds, or dm-verity setup yourself.
 
 ## Background: Key Concepts
 
@@ -464,7 +464,7 @@ Expected LAUNCH_DIGEST (tied to your commit)
 Attestation report (signed by hardware)
 ```
 
-**Verifying a deployment:** Every deployment on Conf AI can produce an attestation report. That report contains the LAUNCH_DIGEST, which you can trace back to the git commit that produced it. If you want to verify that a deployment matches your source code, you can:
+**Verifying a deployment:** Every deployment on Confidential can produce an attestation report. That report contains the LAUNCH_DIGEST, which you can trace back to the git commit that produced it. If you want to verify that a deployment matches your source code, you can:
 
 1. Get the attestation report from the running deployment
 2. Check that the MEASUREMENT matches the expected value for your commit

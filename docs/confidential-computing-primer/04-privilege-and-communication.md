@@ -1,6 +1,6 @@
 # Privilege & Communication
 
-Conf AI's privacy-preserving infrastructure services—firewalls, DDoS protection, routing, load balancing—run in their own TEE-protected layer. This document explains the mechanisms that make this possible: privilege separation within TEEs and secure communication with untrusted components.
+Confidential's privacy-preserving infrastructure services—firewalls, DDoS protection, routing, load balancing—run in their own TEE-protected layer. This document explains the mechanisms that make this possible: privilege separation within TEEs and secure communication with untrusted components.
 
 After reading this, you'll understand VMPLs (the privilege hierarchy inside the guest), how CPU state is protected, and the GHCB protocol (safe guest-hypervisor communication). This assumes familiarity with basic virtualization concepts and the RMP from [Document 3](03-memory-integrity.md).
 

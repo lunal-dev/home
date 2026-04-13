@@ -1,8 +1,8 @@
-# Conf AI
+# Confidential
 
 > The AI confidential compute platform.
 
-Conf AI runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Conf AI.
+Confidential runs AI workloads (inference, training, agents) inside hardware-encrypted Trusted Execution Environments (TEEs). Data and code stay private during processing, can't be tampered with, and both claims are cryptographically verifiable without trusting Confidential.
 
 Deploy code unchanged. Get end-to-end privacy, enhanced security, and full verifiability with negligible performance overhead.
 
@@ -32,7 +32,7 @@ Full benchmark details: [TEE Performance on CPUs](https://confidential.ai/blog/t
 
 ## Components
 
-Conf AI is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack.
+Confidential is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack.
 
 - **Attestation Service** — Generates and verifies TEE attestation reports. Trust anchor for the platform. Supports AMD SEV-SNP (VCEK/VLEK), Intel TDX, and NVIDIA CC. Continuous re-attestation with automatic certificate revocation. Public verification API and CLI.
 - **Certificate Distribution Service (CDS)** — Gates secret and certificate distribution on attestation. Workloads prove what they're running before receiving secrets. Optional certificate authority and TEE registry. Integrates with existing secret stores (e.g. HashiCorp Vault).
@@ -51,17 +51,17 @@ Conf AI is a set of independent, composable components. Use them all or integrat
 
 ## Enterprise
 
-Conf AI works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure.
+Confidential works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure.
 
 **Three-phase engagement:**
 1. **Discovery** (free) — Understand your architecture and threat model. Outcome: gap analysis and pilot scope.
 2. **Pilot** (1-4 months) — Deploy components on your infrastructure. Architectural deep dive, integration design, deployment, cryptographic verification. If closing the trust boundary requires components that don't exist yet, we build them. No strings attached — license or walk away.
 3. **Production** — Full deployment with ongoing support. On-prem, bare metal, all major clouds.
 
-## How To Use Conf AI
+## How To Use Confidential
 
-- **Enterprise / Licensed:** Deploy Conf AI's software stack on your infrastructure. Components are modular — use the full platform or specific pieces. [Enterprise details](https://confidential.ai/enterprise)
-- **Hosted Platform:** Bring your workload, Conf AI runs it on TEE-backed infrastructure. No code changes. Full platform included. [Contact us](mailto:founders@confidential.ai)
+- **Enterprise / Licensed:** Deploy Confidential's software stack on your infrastructure. Components are modular — use the full platform or specific pieces. [Enterprise details](https://confidential.ai/enterprise)
+- **Hosted Platform:** Bring your workload, Confidential runs it on TEE-backed infrastructure. No code changes. Full platform included. [Contact us](mailto:founders@confidential.ai)
 - **AI Agents:** Agents run inside TEEs with hardware-enforced credential isolation. Multi-agent attestation built in. [Contact us](mailto:founders@confidential.ai)
 
 ## Documentation
@@ -79,7 +79,7 @@ Conf AI works with AI labs and infrastructure providers. Components are modular 
   - [Provenance & Standards](https://confidential.ai/docs/attestable-builds/provenance-standards)
   - [Threat Model](https://confidential.ai/docs/attestable-builds/threat-model)
 - [Security Architecture](https://confidential.ai/docs/security): Verification API, CLI, and security model
-- [Zero-Knowledge Proofs](https://confidential.ai/docs/zk): How Conf AI uses ZK proofs to complement TEE attestations
+- [Zero-Knowledge Proofs](https://confidential.ai/docs/zk): How Confidential uses ZK proofs to complement TEE attestations
 
 ## Blog
 
@@ -88,7 +88,7 @@ Conf AI works with AI labs and infrastructure providers. Components are modular 
 
 ## Contact
 
-- [Careers](https://confidential.ai/careers): Open positions at Conf AI
+- [Careers](https://confidential.ai/careers): Open positions at Confidential
 - [Email](mailto:founders@confidential.ai): founders@confidential.ai
 
 ## Full Documentation

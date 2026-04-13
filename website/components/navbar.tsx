@@ -44,7 +44,7 @@ export function Navbar() {
             href="/"
             className="text-accent tracking-wider hover:opacity-70 transition-opacity"
           >
-            confidential ai
+            confidential
           </Link>
           <div className="hidden sm:flex items-center gap-5">
             {NAV_ITEMS.map((item) => (

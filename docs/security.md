@@ -10,7 +10,7 @@
   </nav>
 </div>
 
-# Conf AI's Security Architecture
+# Confidential's Security Architecture
 
 ## Table of Contents
 
@@ -65,7 +65,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 ## Security Overview
 
-Conf AI's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
+Confidential's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
 
 ### Zero Trust Architecture
 
@@ -95,7 +95,7 @@ This approach ensures:
 
 - The load balancer can route requests to any of several TEEs for reliability without being able to read the payload.
 - The client independently verifies TEE attestation before encrypting to those TEEs.
-- Our platform independently verifies that each TEE is a legitimate Conf AI TEE that is part of our registry.
+- Our platform independently verifies that each TEE is a legitimate Confidential TEE that is part of our registry.
 - For data to be accessed by any TEE, both client-side and platform-side verifications are required.
 
 ### Certificate Rotation and Lifecycle Management
@@ -109,7 +109,7 @@ Security is maintained through comprehensive certificate management:
 
 ### Continuous Attestation and Ephemeral Data
 
-Security doesn't stop after initial verification. Conf AI's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
+Security doesn't stop after initial verification. Confidential's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
 
 ### Continuous Attestation
 - Every TEE undergoes periodic re-attestation to verify its integrity
@@ -179,7 +179,7 @@ Our streamlined security flow ensures data protection throughout the entire proc
 
 ### Fail-Safe Design
 
-Conf AI's system is designed to withstand various attack scenarios:
+Confidential's system is designed to withstand various attack scenarios:
 
 - If a gateway is compromised, requests for certificate material would be rejected by our independent CDS
 - If an attestation service is compromised, our CDS independently verifies TEE identity
@@ -218,7 +218,7 @@ That's it! Our SDK handles all the complex security operations behind the scenes
 
 ### Verification API
 
-For developers who need programmatic verification of TEE attestations, Conf AI provides a dedicated Verification API:
+For developers who need programmatic verification of TEE attestations, Confidential provides a dedicated Verification API:
 
 ```bash
 # Verify a TEE attestation using the API
@@ -266,7 +266,7 @@ Our Verification API enables:
 
 ### Verification CLI
 
-For security teams and administrators, Conf AI offers a simple command-line interface for TEE verification:
+For security teams and administrators, Confidential offers a simple command-line interface for TEE verification:
 
 ```bash
 # Verify the attestation via CLI
