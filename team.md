@@ -19,7 +19,7 @@
     </td>
     <td>
       <strong>Ansgar Grunseid</strong><br>
-      CEO &amp; Founder<br><br>
+      Cofounder &amp; CEO<br><br>
       <a href="https://github.com/gruns">GitHub</a> &middot;
       <a href="https://www.linkedin.com/in/ansgargrunseid/">LinkedIn</a>
     </td>
@@ -33,7 +33,7 @@
     </td>
     <td>
       <strong>Amean Asad</strong><br>
-      CTO<br><br>
+      Cofounder &amp; CTO<br><br>
       <a href="https://github.com/AmeanAsad">GitHub</a> &middot;
       <a href="https://www.linkedin.com/in/ameanasad/">LinkedIn</a>
     </td>

@@ -15,8 +15,8 @@ const NAV_ITEMS = [
 ];
 
 const DEMO_ITEMS = [
-  { label: "private inference", href: "https://private-inference-demo.lunal.dev/" },
   { label: "simulator", href: "https://simulator.lunal.dev/" },
+  { label: "private inference", href: "https://private-inference-demo.lunal.dev/" },
 ];
 
 export function Navbar() {
@@ -44,7 +44,7 @@ export function Navbar() {
             href="/"
             className="text-accent tracking-wider hover:opacity-70 transition-opacity"
           >
-            confidential ai
+            confidential
           </Link>
           <div className="hidden sm:flex items-center gap-5">
             {NAV_ITEMS.map((item) => (

@@ -10,7 +10,7 @@
   </nav>
 </div>
 
-# Conf AI's Security Architecture
+# Confidential's Security Architecture
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ Our platform is built with security at its core, we ensure that customer data is
 - Enforces role-based permissions
 - Controls access to TEEs and encryption keys
 
-#### Certificate Broker Service (CBS)
+#### Certificate Distribution Service (CDS)
 - Manages the lifecycle of certificates
 - Includes integration with attestation API
 - Automatically rotates certificates based on configurable policies
@@ -50,7 +50,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 #### TEE Registry
 - Maintains an authoritative list of all legitimate TEEs
-- Is part of our CBS as a KV store
+- Is part of our CDS as a KV store
 - Serves as the source of truth for our TEE ownership validation
 
 #### TEE Infrastructure
@@ -65,7 +65,7 @@ Our platform is built with security at its core, we ensure that customer data is
 
 ## Security Overview
 
-Conf AI's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
+Confidential's platform employs multiple independent security layers that work together to ensure your sensitive information remains protected at all times.
 
 ### Zero Trust Architecture
 
@@ -95,7 +95,7 @@ This approach ensures:
 
 - The load balancer can route requests to any of several TEEs for reliability without being able to read the payload.
 - The client independently verifies TEE attestation before encrypting to those TEEs.
-- Our platform independently verifies that each TEE is a legitimate Conf AI TEE that is part of our registry.
+- Our platform independently verifies that each TEE is a legitimate Confidential TEE that is part of our registry.
 - For data to be accessed by any TEE, both client-side and platform-side verifications are required.
 
 ### Certificate Rotation and Lifecycle Management
@@ -109,7 +109,7 @@ Security is maintained through comprehensive certificate management:
 
 ### Continuous Attestation and Ephemeral Data
 
-Security doesn't stop after initial verification. Conf AI's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
+Security doesn't stop after initial verification. Confidential's platform continuously monitors and re-attests all TEEs to ensure ongoing integrity:
 
 ### Continuous Attestation
 - Every TEE undergoes periodic re-attestation to verify its integrity
@@ -152,16 +152,16 @@ Our streamlined security flow ensures data protection throughout the entire proc
      - TEE's unique public key
      - Cryptographic proof of TEE integrity
 
-4. **Multi-Recipient Hybrid Encryption** (Client SDK & CBS):
+4. **Multi-Recipient Hybrid Encryption** (Client SDK & CDS):
    - Client SDK verifies the attestation to ensure the TEEs are legitimate
-   - Client SDK fetches the public keys of multiple attested TEEs from the CBS
+   - Client SDK fetches the public keys of multiple attested TEEs from the CDS
    - Client SDK encrypts the payload using multi-recipient hybrid encryption to those TEEs
    - The load balancer can route the encrypted payload to any of the recipient TEEs for reliability
 
-5. **Secondary Verification** (CBS & TEE Registry):
-   - CBS verifies each TEE's identity against our TEE Registry
-   - CBS confirms TEE attestation is valid via Attestation API
-   - CBS verifies TEEs are authorized for the tenant's workloads
+5. **Secondary Verification** (CDS & TEE Registry):
+   - CDS verifies each TEE's identity against our TEE Registry
+   - CDS confirms TEE attestation is valid via Attestation API
+   - CDS verifies TEEs are authorized for the tenant's workloads
 
 6. **Secure Decryption** (TEE):
    - Only TEEs that passed both client-side and platform-side verification can decrypt the payload
@@ -179,11 +179,11 @@ Our streamlined security flow ensures data protection throughout the entire proc
 
 ### Fail-Safe Design
 
-Conf AI's system is designed to withstand various attack scenarios:
+Confidential's system is designed to withstand various attack scenarios:
 
-- If a gateway is compromised, requests for certificate material would be rejected by our independent CBS
-- If an attestation service is compromised, our CBS independently verifies TEE identity
-- All certificates are protected by our CBS, limiting what can be compromised even in worst-case scenarios
+- If a gateway is compromised, requests for certificate material would be rejected by our independent CDS
+- If an attestation service is compromised, our CDS independently verifies TEE identity
+- All certificates are protected by our CDS, limiting what can be compromised even in worst-case scenarios
 
 ## Integration Tools
 
@@ -218,7 +218,7 @@ That's it! Our SDK handles all the complex security operations behind the scenes
 
 ### Verification API
 
-For developers who need programmatic verification of TEE attestations, Conf AI provides a dedicated Verification API:
+For developers who need programmatic verification of TEE attestations, Confidential provides a dedicated Verification API:
 
 ```bash
 # Verify a TEE attestation using the API
@@ -266,7 +266,7 @@ Our Verification API enables:
 
 ### Verification CLI
 
-For security teams and administrators, Conf AI offers a simple command-line interface for TEE verification:
+For security teams and administrators, Confidential offers a simple command-line interface for TEE verification:
 
 ```bash
 # Verify the attestation via CLI

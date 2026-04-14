@@ -16,9 +16,9 @@ This document explains the architecture and mechanics of attestable builds. Afte
 
 We assume you've read [What Are Attestable Builds?](README.md) and understand the core concept: attestable builds prove that specific inputs were used to produce specific outputs in a verified environment. This document shows exactly how that works.
 
-## Kettle: Conf AI's Implementation
+## Kettle: Confidential's Implementation
 
-Kettle is Conf AI's implementation of attestable builds. It handles the entire pipeline: input verification, manifest generation, TEE orchestration, build execution, and provenance signing. When we describe "how attestable builds work" in this document, we're describing how Kettle works.
+Kettle is Confidential's implementation of attestable builds. It handles the entire pipeline: input verification, manifest generation, TEE orchestration, build execution, and provenance signing. When we describe "how attestable builds work" in this document, we're describing how Kettle works.
 
 Kettle will be open source and audited.
 
