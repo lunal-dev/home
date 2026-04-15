@@ -24,9 +24,6 @@
       <a href="https://www.linkedin.com/in/ansgargrunseid/">LinkedIn</a>
     </td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td width="150">
       <img src="https://avatars.githubusercontent.com/u/43304401?s=200&v=4" width="130" alt="Amean Asad">
@@ -38,9 +35,6 @@
       <a href="https://www.linkedin.com/in/ameanasad/">LinkedIn</a>
     </td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td width="150">
       <img src="https://avatars.githubusercontent.com/u/91056047?s=200&v=4" width="130" alt="Patrick Woodhead">
@@ -52,9 +46,17 @@
       <a href="https://www.linkedin.com/in/patrick-woodhead/">LinkedIn</a>
     </td>
   </tr>
-</table>
-
-<table>
+  <tr>
+    <td width="150">
+      <img src="https://avatars.githubusercontent.com/u/10077203?s=130&v=4" width="130" alt="Yolan Romailler">
+    </td>
+    <td>
+      <strong>Yolan Romailler</strong><br>
+      Head of Security<br><br>
+      <a href="https://github.com/AnomalRoil">GitHub</a> &middot;
+      <a href="https://www.linkedin.com/in/anomalroil/">LinkedIn</a>
+    </td>
+  </tr>
   <tr>
     <td width="150">
       <img src="https://avatars.githubusercontent.com/u/78?s=200&v=4" width="130" alt="André Arko">
@@ -66,9 +68,6 @@
       <a href="https://www.linkedin.com/in/andrearko/">LinkedIn</a>
     </td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td width="150">
       <img src="https://avatars.githubusercontent.com/u/7892721?s=200&v=4" width="130" alt="Aamir Rasheed">
@@ -80,9 +79,6 @@
       <a href="https://www.linkedin.com/in/aamir1rasheed/">LinkedIn</a>
     </td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td width="150">
       <img src="https://avatars.githubusercontent.com/u/659718?s=200&v=4" width="130" alt="João Sousa Andrade">
@@ -94,9 +90,6 @@
       <a href="https://www.linkedin.com/in/thejoaosa/">LinkedIn</a>
     </td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td width="150">
       <img src="https://avatars.githubusercontent.com/u/3749956?s=200&v=4" width="130" alt="Patrick McClurg">
