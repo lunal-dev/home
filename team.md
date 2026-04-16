@@ -48,7 +48,7 @@
   </tr>
   <tr>
     <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/10077203?s=130&v=4" width="130" alt="Yolan Romailler">
+      <img src="/assets/yolan.png" width="130" alt="Yolan Romailler">
     </td>
     <td>
       <strong>Yolan Romailler</strong><br>
