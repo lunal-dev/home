@@ -2,15 +2,15 @@
   <nav>
     <a href="/README.md">Home</a>&nbsp;&nbsp;
     <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/enterprise.md">Enterprise</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>&nbsp;&nbsp;
-    <a href="/blog/">Blog</a>&nbsp;&nbsp;
-    <a href="/careers/">Careers</a>&nbsp;&nbsp;
-    <a href="/team.md">Team</a>
+    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
+    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
+    <a href="/docs/">Docs</a>
   </nav>
 </div>
 
 # Components
+
+This page is for organizations that want to deploy confidential compute on their own infrastructure. If you'd rather run on ours, see [Cloud](/cloud.md).
 
 Confidential is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
 

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
-import { RenameBanner } from "@/components/rename-banner";
 
 export const metadata: Metadata = {
   title: "Confidential AI",
@@ -25,14 +24,17 @@ export default function RootLayout({
           {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`}
         </Script>
       </head>
-      <body className="antialiased">
+      <body className="antialiased min-h-screen flex flex-col">
         <Navbar />
-        <RenameBanner />
-        <main className="px-4 md:px-10 py-12 max-w-[860px] mx-auto">
+        <main className="px-4 md:px-10 py-12 max-w-[860px] mx-auto flex-1">
           {children}
         </main>
         <footer className="border-t border-border px-6 py-10 text-center text-xs text-muted tracking-wide">
           <div className="flex items-center justify-center gap-4 mb-3">
+            <a href="/enterprise" className="text-muted hover:text-foreground transition-colors">enterprise</a>
+            <a href="/blog" className="text-muted hover:text-foreground transition-colors">blog</a>
+            <a href="/team" className="text-muted hover:text-foreground transition-colors">team</a>
+            <a href="/careers" className="text-muted hover:text-foreground transition-colors">careers</a>
             <a
               href="https://www.linkedin.com/company/confi-ai"
               target="_blank"
