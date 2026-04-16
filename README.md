@@ -10,9 +10,7 @@
 
 # Confidential AI
 
-We are Confidential AI and we do confidential AI. We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while in use. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
-
-You deploy your code as-is unchanged. You get end-to-end privacy, hardened security, and full verifiability with near-zero performance overhead.
+Confidential is confidential computing software you run on your hardware for private, secure AI. It runs your AI workloads in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us. Also available as a hosted offering: the Confidential Cloud.
 
 ## Use Cases
 
