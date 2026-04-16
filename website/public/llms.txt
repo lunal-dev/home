@@ -60,9 +60,16 @@ Confidential works with AI labs and infrastructure providers. Components are mod
 
 ## How To Use Confidential
 
+- **Confidential Cloud:** Hosted TEE-backed infrastructure. On-demand inference, GPUs, vCPUs, and attested CI/CD builds. No code changes. [Cloud](https://confidential.ai/cloud) · [Pricing](https://confidential.ai/pricing)
 - **Enterprise / Licensed:** Deploy Confidential's software stack on your infrastructure. Components are modular — use the full platform or specific pieces. [Enterprise details](https://confidential.ai/enterprise)
-- **Hosted Platform:** Bring your workload, Confidential runs it on TEE-backed infrastructure. No code changes. Full platform included. [Contact us](mailto:founders@confidential.ai)
 - **AI Agents:** Agents run inside TEEs with hardware-enforced credential isolation. Multi-agent attestation built in. [Contact us](mailto:founders@confidential.ai)
+
+## Confidential Cloud Services
+
+- **Confidential Inference** — Pay-per-token private inference. OpenAI-compatible API. Models: GLM 5.1, Qwen 3.5 35B, DeepSeek V3.2. <5% latency overhead vs non-confidential.
+- **Confidential VMs (GPU)** — Dedicated TEE-backed GPU VMs, billed per GPU-hour. RTX PRO 6000 ($1.50/hr, AMD SEV-SNP), H100 ($2.00/hr, AMD SEV-SNP or Intel TDX), B200 ($5.00/hr, Intel TDX). Single-GPU pass-through on all; protected PCIe mode on H100; multi-GPU pass-through with encrypted NVLink on B200.
+- **Confidential VMs (CPU)** — TEE-backed vCPUs for general-purpose workloads. AMD SEV-SNP or Intel TDX, $0.05/core-hour plus $0.012/GB-hour of RAM.
+- **Attestable Builds (Kettle)** — Attested CI/CD inside TEEs with cryptographic provenance. SLSA Build L3. Base rate $0.008/vCPU-minute; runners from $0.016/min (Standard, 2 vCPU/8 GB) to $0.128/min (XL, 16 vCPU/64 GB). GitHub integration.
 
 ## Documentation
 
@@ -93,4 +100,4 @@ Confidential works with AI labs and infrastructure providers. Components are mod
 
 ## Full Documentation
 
-- [llms-full.txt](https://confidential.ai/llms-full.txt): Complete content from all pages — entire docs site in one file (4600+ lines)
+- [llms-full.txt](https://confidential.ai/llms-full.txt): Complete content from all pages — entire docs site in one file (4700+ lines)

@@ -221,6 +221,122 @@ Talk to us about [what fits your stack](mailto:founders@confidential.ai) or see 
 
 ---
 
+# Confidential Cloud
+
+Run AI workloads on TEE-backed infrastructure with end to end attestations of hardware-enforced integrity, privacy and verifiability. No code changes. No TEE expertise required.
+
+If you'd rather deploy on your own infrastructure, see [Components](/components.md). For detailed rates, see [Pricing](/pricing.md). For licensed on-prem deployments, see [Enterprise](/enterprise.md).
+
+## Confidential Inference
+
+Private inference as an API. Pay per token.
+
+Send requests to open-weight models running inside TEEs on our cloud. Your prompts, responses, and model interactions are never visible to us or our infrastructure. Every response includes an attestation proof.
+
+OpenAI-compatible API. Drop-in replacement for existing inference providers. Switch your base URL and get hardware-enforced privacy with no other code changes.
+
+| Model | Best for |
+|---|---|
+| GLM 5.1 | Reasoning, multilingual |
+| Qwen 3.5 35B | General purpose |
+| DeepSeek V3.2 | General purpose, coding, long context |
+
+Less than 5% latency overhead versus non-confidential inference. See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [founders@confidential.ai](mailto:founders@confidential.ai).
+
+## Confidential VMs
+
+Dedicated VMs on our cloud, running inside TEEs. You rent the VM, we run the infrastructure.
+
+**GPU VMs.** Single-GPU and multi-GPU configurations for inference, training, fine-tuning, and containers.
+
+| GPU | VRAM | Host CPU TEE | Best for |
+|---|---|---|---|
+| RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | Large-model inference, high VRAM capacity |
+| H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | Training, fine-tuning, latency-sensitive inference |
+| B200 | 192 GB HBM3e | Intel TDX | Frontier training, maximum performance |
+
+**Configurations.** Three confidential computing deployment modes, depending on GPU and workload:
+
+| Mode | What it is | RTX PRO 6000 | H100 | B200 |
+|---|---|---|---|---|
+| Single GPU pass-through | One GPU attached to one Confidential VM | ✓ | ✓ | ✓ |
+| Protected PCIe mode | Multiple GPUs share one confidential domain over PCIe | x | ✓ | x |
+| Multi-GPU pass-through | Multiple GPUs attached to one Confidential VM, each independently attested | x | x | ✓ |
+
+In Protected PCIe mode, GPU-GPU communications over the NVLink or NVSwitch interconnect are not encrypted. For Multi-GPU pass-through, GPUs that are part of the same CVM can communicate peer-to-peer over encrypted NVLink connections.
+
+**CPU VMs.** TEE-backed vCPUs for general-purpose confidential workloads. AMD SEV-SNP and Intel TDX available.
+
+See [Confidential VM pricing](/pricing.md#confidential-vms) for per-GPU-hour and per-core-hour rates.
+
+## Attestable Builds
+
+Cryptographic proof of what was built and from which source. Kettle, our attestable build service, runs your build process inside a TEE and emits a signed [attestable build](/docs/attestable-builds/) linking the git commit to the final artifact — no deterministic compilers required.
+
+Every build produces a verifiable, tamper-evident chain of custody: signed attestation of the build environment, provenance for every input, and a hardware-rooted measurement of the output. Downstream consumers can verify the artifact came from the claimed source, built with the claimed toolchain, without needing to trust anyone.
+
+Hardware enforcement of the build pipeline: MAC policies, seccomp filters, and process isolation keep the build environment unchanged between source checkout and artifact emission. Achieves SLSA Build L3.
+
+Connects to your GitHub repo. On every commit: checkout, build inside TEE, signed provenance.
+
+See [build pricing](/pricing.md#attestable-builds) for per-minute rates.
+
+---
+
+# Pricing
+
+All prices include hardware-enforced integrity, privacy and verifiability by TEEs.
+
+On-demand usage. Pay for what you use.
+
+Up to 80% cheaper than confidential computing on hyperscaler clouds.
+
+For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.md).
+
+## Confidential Inference
+
+| Model | Input (per 1M tokens) | Output (per 1M tokens) |
+|---|---|---|
+| GLM 5.1 | $1.00 | $3.50 |
+| Qwen 3.5 35B | $0.25 | $2.00 |
+| DeepSeek V3.2 | $0.40 | $0.60 |
+
+Additional models available on request: [founders@confidential.ai](mailto:founders@confidential.ai).
+
+## Confidential VMs
+
+**GPU VMs** — billed per GPU-hour.
+
+| GPU | VRAM | Host CPU TEE | Per GPU-Hour |
+|---|---|---|---|
+| RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | $1.50 |
+| H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | $2.00 |
+| B200 | 192 GB HBM3e | Intel TDX | $5.00 |
+
+**CPU VMs** — billed per vCPU core-hour, plus per GB-hour of RAM.
+
+| TEE Backend | Per Core-Hour | Per GB-Hour (RAM) |
+|---|---|---|
+| AMD SEV-SNP | $0.05 | $0.012 |
+| Intel TDX | $0.05 | $0.012 |
+
+## Attestable Builds
+
+Base rate: $0.008 per vCPU-minute. Runners scale linearly.
+
+| Runner | Specs | Per Minute |
+|---|---|---|
+| Standard | 2 vCPU, 8 GB | $0.016 |
+| Medium | 4 vCPU, 16 GB | $0.032 |
+| Large | 8 vCPU, 32 GB | $0.064 |
+| XL | 16 vCPU, 64 GB | $0.128 |
+
+## Getting Started
+
+Let us know what you need: [founders@confidential.ai](mailto:founders@confidential.ai).
+
+---
+
 # Enterprise
 
 This page is dedicated to highlight how we work with large organizations and enterprises. Typically, this is for engagements with AI labs and/or infrastructure providers.

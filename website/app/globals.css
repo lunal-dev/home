@@ -220,8 +220,8 @@ body {
 
 .prose thead th {
   text-align: left;
-  font-weight: normal;
-  color: var(--accent);
+  font-weight: 700;
+  color: #ffffff;
   border-bottom: 1px solid var(--border);
   padding: 0.5rem 0.75rem 0.5rem 0;
   font-size: 0.8rem;

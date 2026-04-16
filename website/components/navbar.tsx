@@ -2,39 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { GitHubStars } from "./github-stars";
 
 const NAV_ITEMS = [
   { label: "components", href: "/components" },
-  { label: "enterprise", href: "/enterprise" },
+  { label: "cloud", href: "/cloud" },
+  { label: "pricing", href: "/pricing" },
   { label: "docs", href: "/docs" },
-  { label: "blog", href: "/blog" },
-  { label: "careers", href: "/careers" },
-  { label: "team", href: "/team" },
 ];
 
 const DEMO_ITEMS = [
-  { label: "simulator", href: "https://simulator.lunal.dev/" },
-  { label: "private inference", href: "https://private-inference-demo.lunal.dev/" },
+  { label: "simulator", href: "https://simulator.confidential.ai/" },
+  { label: "private inference", href: "https://private-inference-demo.confidential.ai/" },
+];
+
+const BOTTOM_NAV_ITEMS = [
+  { label: "enterprise", href: "/enterprise" },
+  { label: "blog", href: "/blog" },
+  { label: "team", href: "/team" },
+  { label: "careers", href: "/careers" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [demosOpen, setDemosOpen] = useState(false);
-  const [mobileDemosOpen, setMobileDemosOpen] = useState(false);
-  const demosRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (demosRef.current && !demosRef.current.contains(e.target as Node)) {
-        setDemosOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  const [demoOpen, setDemoOpen] = useState(false);
 
   return (
     <header className="border-b border-border sticky top-0 bg-background z-50">
@@ -42,9 +35,9 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Link
             href="/"
-            className="text-accent tracking-wider hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity"
           >
-            confidential
+            <img src="/assets/logo.png" alt="Confidential" width={28} height={28} />
           </Link>
           <div className="hidden sm:flex items-center gap-5">
             {NAV_ITEMS.map((item) => (
@@ -60,45 +53,42 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <div ref={demosRef} className="relative">
-              <button
-                onClick={() => setDemosOpen(!demosOpen)}
-                className={`transition-colors hover:text-accent text-muted flex items-center gap-1 cursor-pointer`}
-              >
-                demos
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  width="12"
-                  height="12"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className={`transition-transform ${demosOpen ? "rotate-180" : ""}`}
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-              {demosOpen && (
-                <div className="absolute top-full left-0 mt-2 min-w-[180px] bg-background border border-border rounded-md py-1 shadow-lg whitespace-nowrap">
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div
+            className="hidden sm:block relative"
+            onMouseEnter={() => setDemoOpen(true)}
+            onMouseLeave={() => setDemoOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setDemoOpen((v) => !v)}
+              className="flex items-center gap-1 text-muted transition-colors hover:text-accent"
+            >
+              demos
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            {demoOpen && (
+              <div className="absolute right-0 top-full pt-2">
+                <div className="min-w-[180px] border border-border bg-background rounded-md py-1 shadow-lg">
                   {DEMO_ITEMS.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => setDemosOpen(false)}
-                      className="block px-3 py-2 text-muted hover:text-accent hover:bg-border/30 transition-colors"
+                      className="block px-3 py-2 text-muted hover:text-accent hover:bg-border/40 transition-colors"
                     >
                       {item.label}
                     </a>
                   ))}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="flex items-center gap-3">
           <GitHubStars />
           <button
             onClick={() => setOpen(!open)}
@@ -117,7 +107,7 @@ export function Navbar() {
       </nav>
       {open && (
         <div className="sm:hidden border-t border-border px-4 py-4 flex flex-col gap-1">
-          {[{ label: "home", href: "/" }, ...NAV_ITEMS].map((item) => (
+          {[{ label: "home", href: "/" }, ...NAV_ITEMS, ...BOTTOM_NAV_ITEMS].map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -131,40 +121,18 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <button
-            onClick={() => setMobileDemosOpen(!mobileDemosOpen)}
-            className="py-2 text-left text-muted hover:text-accent transition-colors flex items-center gap-1 cursor-pointer"
-          >
-            demos
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              width="12"
-              height="12"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className={`transition-transform ${mobileDemosOpen ? "rotate-180" : ""}`}
+          {DEMO_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="py-2 text-muted hover:text-accent transition-colors"
             >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-          {mobileDemosOpen && (
-            <div className="pl-4 flex flex-col gap-1">
-              {DEMO_ITEMS.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => { setOpen(false); setMobileDemosOpen(false); }}
-                  className="py-2 text-muted hover:text-accent transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          )}
+              {item.label}
+            </a>
+          ))}
         </div>
       )}
     </header>
