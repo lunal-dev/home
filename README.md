@@ -22,4 +22,4 @@ Confidential is confidential computing software you run on your hardware for pri
 
 ## Get Started
 
-To add privacy to your existing infra, see [components](/components.md). To run workloads on our infrastructure, see [cloud](/cloud.md). Or [contact us](mailto:founders@confidential.ai).
+To add privacy to your existing infra, see [components](/components.md). To run workloads on our infra, see [cloud](/cloud.md). Or [contact us](mailto:founders@confidential.ai).
