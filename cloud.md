@@ -10,7 +10,7 @@
 
 # Confidential Cloud
 
-Run AI workloads on TEE-backed infrastructure with end to end attestations of hardware-enforced integrity, privacy and verifiability. No code changes. No TEE expertise required.
+Run AI workloads on TEE-backed infrastructure with end-to-end attestations of hardware-enforced integrity, privacy and verifiability. No code changes. No TEE expertise required.
 
 If you'd rather deploy on your own infrastructure, see [Components](/components.md). For detailed rates, see [Pricing](/pricing.md). For licensed on-prem deployments, see [Enterprise](/enterprise.md).
 
