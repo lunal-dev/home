@@ -25,3 +25,7 @@ Also available as a hosted offering: the [Confidential Cloud](/cloud).
 ## Get Started
 
 To add privacy to your existing infra, see [components](/components.md). To run workloads on our infra, see [cloud](/cloud.md). Or [contact us](mailto:founders@confidential.ai).
+
+## License
+
+This project is licensed under the [MIT License](/LICENSE).
