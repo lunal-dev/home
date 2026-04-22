@@ -27,7 +27,7 @@ We're looking for relentless minds. Interested? Email us at [founders@confidenti
 
 Confidential is growing. Fast. And we're looking for software engineers to build the foundations of private, secure, and verifiable compute.
 
-Our team is small, so it’s important you're excited to own large pieces of the whole puzzle.
+Our [team](/team) is small, so it’s important you’re excited to own large pieces of the whole puzzle.
 
 ### What You'll Work on:
 
