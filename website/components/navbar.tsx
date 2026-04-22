@@ -6,7 +6,7 @@ import { useState } from "react";
 import { GitHubStars } from "./github-stars";
 
 const NAV_ITEMS = [
-  { label: "components", href: "/components" },
+  { label: "enterprise", href: "/enterprise" },
   { label: "cloud", href: "/cloud" },
   { label: "pricing", href: "/pricing" },
   { label: "docs", href: "/docs" },
@@ -17,8 +17,14 @@ const DEMO_ITEMS = [
   { label: "private inference", href: "https://private-inference-demo.confidential.ai/" },
 ];
 
+const COMPANY_ITEMS = [
+  { label: "team", href: "/team" },
+  { label: "careers", href: "/careers" },
+  { label: "blog", href: "/blog" },
+];
+
 const BOTTOM_NAV_ITEMS = [
-  { label: "enterprise", href: "/enterprise" },
+  { label: "components", href: "/components" },
   { label: "blog", href: "/blog" },
   { label: "team", href: "/team" },
   { label: "careers", href: "/careers" },
@@ -28,6 +34,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
 
   return (
     <header className="border-b border-border sticky top-0 bg-background z-50">
@@ -56,6 +63,41 @@ export function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <div
+            className="hidden sm:block relative"
+            onMouseEnter={() => setCompanyOpen(true)}
+            onMouseLeave={() => setCompanyOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setCompanyOpen((v) => !v)}
+              className="flex items-center gap-1 text-muted transition-colors hover:text-accent"
+            >
+              company
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            {companyOpen && (
+              <div className="absolute right-0 top-full pt-2">
+                <div className="min-w-[180px] border border-border bg-background rounded-md py-1 shadow-lg">
+                  {COMPANY_ITEMS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`block px-3 py-2 hover:text-accent hover:bg-border/40 transition-colors ${
+                        pathname === item.href || pathname.startsWith(item.href + "/")
+                          ? "text-heading"
+                          : "text-muted"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
           <div
             className="hidden sm:block relative"
             onMouseEnter={() => setDemoOpen(true)}
