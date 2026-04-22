@@ -34,7 +34,7 @@ OpenAI-compatible API. Drop-in replacement for existing inference providers. Swi
 | Qwen 3.5 35B | General purpose |
 | DeepSeek V3.2 | General purpose, coding, long context |
 
-Less than 5% latency overhead versus non-confidential inference. See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [founders@confidential.ai](mailto:founders@confidential.ai).
+See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [founders@confidential.ai](mailto:founders@confidential.ai). Confidential inference vs non-confidential inference: 5-7% lower token throughput, negligible impact on Time to First Token (TTFT).
 
 
 ## Confidential VMs
