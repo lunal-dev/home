@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import Link from "next/link";
-import type { ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 function isInternalLink(href: string): boolean {
   return (href.startsWith("/") && !href.startsWith("//")) || href.startsWith("#");
@@ -54,6 +54,16 @@ function makeHeading(Tag: "h1" | "h2" | "h3" | "h4") {
   };
 }
 
+function getTextContent(node: ReactNode): string {
+  if (typeof node === "string") return node;
+  if (typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(getTextContent).join("");
+  if (node && typeof node === "object" && "props" in node) {
+    return getTextContent((node as { props: { children?: ReactNode } }).props.children);
+  }
+  return "";
+}
+
 export function MarkdownPage({ content }: { content: string }) {
   return (
     <article className="prose">
@@ -66,6 +76,11 @@ export function MarkdownPage({ content }: { content: string }) {
           h2: makeHeading("h2"),
           h3: makeHeading("h3"),
           h4: makeHeading("h4"),
+          pre: ({ children, ...rest }) => {
+            const text = getTextContent(children);
+            const isDiagram = /[┌┐└┘├┤┬┴┼│─═║╔╗╚╝╠╣╦╩╬]/.test(text);
+            return <pre {...rest} className={isDiagram ? "mx-auto w-fit" : undefined}>{children}</pre>;
+          },
         }}
       >
         {content}
