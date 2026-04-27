@@ -16,7 +16,7 @@ That's true for almost every hosted agent on the market. A provider runs the VM.
 
 For some workloads, that's fine. For proprietary code, patient data, financial docs, or anything legal, it's a problem.
 
-PrivateClaw fixes it. And it runs on Confidential's stack.
+[PrivateClaw](https://privateclaw.dev) fixes it. And it runs on Confidential's stack.
 
 ## What it is
 
