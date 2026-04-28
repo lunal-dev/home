@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getMarkdownContent } from "@/lib/markdown";
 import { MarkdownPageWithToc } from "@/components/markdown-page-with-toc";
 import { notFound } from "next/navigation";
@@ -59,6 +60,15 @@ export function generateStaticParams() {
 
   walk(DOCS_ROOT, []);
   return params;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const docPath = resolveDocPath(slug);
+  if (!docPath) return {};
+  const raw = fs.readFileSync(path.resolve(process.cwd(), "..", docPath), "utf-8");
+  const match = raw.match(/^#\s+(.+)$/m);
+  return match ? { title: match[1].trim() } : {};
 }
 
 export default async function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {

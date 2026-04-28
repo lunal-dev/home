@@ -10,7 +10,10 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Confidential AI",
+  title: {
+    default: "Confidential AI",
+    template: "Confidential AI ･ %s",
+  },
   description: "The AI confidential compute platform.",
 };
 
