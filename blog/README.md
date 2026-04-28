@@ -12,6 +12,7 @@
 
 | Date | Post |
 |------|------|
+| 28 Apr 2026 | [Announcing C8s: Confidential Kubernetes](/blog/c8s-launch.md) |
 | 27 Apr 2026 | [Introducing PrivateClaw: E2e Private AI Agents](/blog/privateclaw-launch.md) |
 | 27 Mar 2026 | [Lunal Becomes Confidential AI](/blog/lunal-becomes-confidential.md) |
 | 19 Mar 2026 | [Kettle: Attested Builds from a TEE](/blog/kettle-attested-builds.md) |
