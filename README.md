@@ -12,7 +12,7 @@
 
 Confidential computing software you run on your hardware for private, secure AI. It runs your AI workloads in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
 
-Also available as a hosted offering: the [Confidential Cloud](/cloud).
+Also available as a hosted offering: the [Confidential Cloud](/cloud.md).
 
 ## Use Cases
 
