@@ -1,7 +1,7 @@
 import { getMarkdownContent } from "@/lib/markdown";
-import { MarkdownPage } from "@/components/markdown-page";
+import { MarkdownPageWithToc } from "@/components/markdown-page-with-toc";
 
 export default function DocsPage() {
   const content = getMarkdownContent("docs/README.md");
-  return <MarkdownPage content={content} />;
+  return <MarkdownPageWithToc content={content} />;
 }

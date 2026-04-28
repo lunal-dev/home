@@ -21,7 +21,7 @@ Welcome to the Confidential documentation! Choose a topic below to get started w
 - **[Attestable Builds](attestable-builds/)** - Learn what attestable builds are, why they matter, and how TEEs make software verification possible.
 - **[Security](security.md)** - Understand Confidential's security architecture and best practices.
 - **[Zero Knowledge](zk.md)** - Learn about zero-knowledge (ZK) proofs and their applications.
-
+- **[C8s](c8s-whitepaper.md)** - Learn about C8s, our confidential Kuberneteres architecture.
 ---
 
 ## Quick Start
