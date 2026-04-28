@@ -25,9 +25,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -39,8 +39,8 @@ body {
 /* Markdown prose styling */
 .prose {
   max-width: none;
-  line-height: 1.6;
-  font-size: 0.9rem;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
 .prose h1,
@@ -240,6 +240,20 @@ body {
 .prose img {
   max-width: 100%;
   height: auto;
+}
+
+/* Table of contents scrollbar */
+nav[aria-label="Table of contents"]::-webkit-scrollbar {
+  width: 3px;
+}
+
+nav[aria-label="Table of contents"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+nav[aria-label="Table of contents"]::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
 }
 
 /* Hide the GitHub nav header from markdown files (contains <nav>) */

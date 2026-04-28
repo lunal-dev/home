@@ -1,5 +1,5 @@
 import { getMarkdownContent } from "@/lib/markdown";
-import { MarkdownPage } from "@/components/markdown-page";
+import { MarkdownPageWithToc } from "@/components/markdown-page-with-toc";
 import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
@@ -70,5 +70,5 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   }
 
   const content = getMarkdownContent(docPath);
-  return <MarkdownPage content={content} />;
+  return <MarkdownPageWithToc content={content} />;
 }
