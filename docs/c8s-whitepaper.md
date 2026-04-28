@@ -10,6 +10,8 @@
 
 # C8s: A Confidential Kubernetes Architecture
 
+<a href="/docs/papers/c8s.pdf" target="_blank">Download PDF version</a>
+
 **March 2026**
 
 ---
