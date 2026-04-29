@@ -13,7 +13,6 @@ const SECTIONS: { title: string; href: string; file: string }[] = [
   { title: "Confidential Computing Primer", href: "/docs/confidential-computing-primer", file: "confidential-computing-primer/README.md" },
   { title: "C8s: Confidential Kubernetes", href: "/docs/c8s-whitepaper", file: "c8s-whitepaper.md" },
   { title: "Attestable Builds", href: "/docs/attestable-builds", file: "attestable-builds/README.md" },
-  { title: "Security", href: "/docs/security", file: "security.md" },
   { title: "Zero Knowledge", href: "/docs/zk", file: "zk.md" },
 ];
 
