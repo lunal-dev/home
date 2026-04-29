@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { GitHubStars } from "./github-stars";
+
 
 const NAV_ITEMS = [
   { label: "enterprise", href: "/enterprise" },
@@ -131,7 +131,6 @@ export function Navbar() {
               </div>
             )}
           </div>
-          <GitHubStars />
           <button
             onClick={() => setOpen(!open)}
             className="sm:hidden text-muted hover:text-accent transition-colors"
