@@ -29,13 +29,35 @@ function extractHeadings(markdown: string): TocItem[] {
   return items;
 }
 
-export function MarkdownPageWithToc({ content }: { content: string }) {
+export function MarkdownPageWithToc({
+  content,
+  extraTocItems,
+  insertAfterId,
+}: {
+  content: string;
+  extraTocItems?: TocItem[];
+  /** When set, splice extraTocItems into the heading list immediately after the heading with this id. Otherwise extras are appended. */
+  insertAfterId?: string;
+}) {
   const headings = extractHeadings(content);
+  let items: TocItem[] = headings;
+  if (extraTocItems && extraTocItems.length > 0) {
+    if (insertAfterId) {
+      const idx = headings.findIndex((h) => h.id === insertAfterId);
+      items = idx >= 0
+        ? [...headings.slice(0, idx + 1), ...extraTocItems, ...headings.slice(idx + 1)]
+        : [...headings, ...extraTocItems];
+    } else {
+      items = [...headings, ...extraTocItems];
+    }
+  }
 
   return (
     <>
-      {headings.length > 0 && <TableOfContents items={headings} />}
+      {items.length > 0 && <TableOfContents items={items} />}
       <MarkdownPage content={content} />
     </>
   );
 }
+
+export { extractHeadings };

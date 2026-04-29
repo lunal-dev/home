@@ -6,6 +6,8 @@ export interface TocItem {
   id: string;
   text: string;
   level: number;
+  /** Optional path for cross-page links. When set, the entry links to `${href}#${id}` (or just `${href}` if id is empty) and is excluded from in-page scrollspy. */
+  href?: string;
 }
 
 export function TableOfContents({ items }: { items: TocItem[] }) {
@@ -14,6 +16,7 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
 
   useEffect(() => {
     const headings = items
+      .filter((item) => !item.href)
       .map((item) => document.getElementById(item.id))
       .filter(Boolean) as HTMLElement[];
 
@@ -58,23 +61,28 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
       className="hidden xl:block fixed top-24 left-6 w-64 max-h-[calc(100vh-8rem)] overflow-y-auto text-xs leading-relaxed"
     >
       <ul className="flex flex-col gap-0.5 border-l border-border pl-3">
-        {items.map((item) => (
-          <li key={item.id}>
-            <a
-              href={`#${item.id}`}
-              onClick={(e) => handleClick(e, item.id)}
-              className={`block py-0.5 transition-colors no-underline hover:text-foreground ${
-                item.level === 3 ? "pl-3" : ""
-              } ${
-                activeId === item.id
-                  ? "text-accent"
-                  : item.level === 2 ? "text-heading" : "text-muted"
-              }`}
-            >
-              {item.text}
-            </a>
-          </li>
-        ))}
+        {items.map((item, idx) => {
+          const isCrossPage = Boolean(item.href);
+          const href = isCrossPage
+            ? `${item.href}${item.id ? `#${item.id}` : ""}`
+            : `#${item.id}`;
+          const indent = item.level === 3 ? "pl-3" : item.level === 4 ? "pl-6" : "";
+          return (
+            <li key={`${item.href ?? ""}#${item.id}-${idx}`}>
+              <a
+                href={href}
+                onClick={isCrossPage ? undefined : (e) => handleClick(e, item.id)}
+                className={`block py-0.5 transition-colors no-underline hover:text-foreground ${indent} ${
+                  !isCrossPage && activeId === item.id
+                    ? "text-accent"
+                    : item.level === 2 ? "text-heading" : "text-muted"
+                }`}
+              >
+                {item.text}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

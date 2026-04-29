@@ -12,7 +12,7 @@
 
 This document explains the architecture and mechanics of attestable builds. After reading it, you'll understand each phase of the build process, how cryptographic binding works at every step, and how verification closes the loop from source to running code.
 
-We assume you've read [What Are Attestable Builds?](README.md) and understand the core concept: attestable builds prove that specific inputs were used to produce specific outputs in a verified environment. This document shows exactly how that works.
+We assume you've read [What Are Attestable Builds?](what-are-attestable-builds.md) and understand the core concept: attestable builds prove that specific inputs were used to produce specific outputs in a verified environment. This document shows exactly how that works.
 
 ## Kettle: Confidential's Implementation
 

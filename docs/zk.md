@@ -10,22 +10,18 @@
 
 # **Zero-Knowledge Proofs at Confidential**
 
-## **Overview**
-
+## Overview
 Confidential uses zero-knowledge (ZK) proofs to complement TEE attestations and prove that Confidential's infrastructure operates correctly while preserving customer privacy. This documentation explains our rationale for using ZK and the specific use cases we've implemented.
 
-## **Why Confidential Uses ZK**
-
-### **The Fundamental Limitation of Attestation**
-
+## Why Confidential Uses ZK
+### The Fundamental Limitation of Attestation
 Confidential computing attestation proves **identity**, not **behavior**.
 
 A TEE attestation cryptographically answers: "What software was loaded?" It does not answer: "Did that software behave correctly?" Behavior can be *implied* from identity. If you know exactly what code was loaded and trust that code, you can reason about what it *should* do. But implication is not proof. The attestation itself says nothing about what actually happened at runtime.
 
 This distinction matters enormously when things go wrong. When things security is breached, debugging, incident response, and security audits all ultimately require inspecting behavior: What did the system actually do? What data did it process? What decisions did it make? Attestation alone cannot answer these questions. It can only confirm that the right code was present when the system started.
 
-### **The Trust Challenge in Confidential's Architecture**
-
+### The Trust Challenge in Confidential's Architecture
 This limitation is particularly acute in Confidential's architecture. Confidential's TEEs run two distinct types of software:
 
 1. **Customer applications**: software that customers load and run inside the TEE
@@ -33,14 +29,12 @@ This limitation is particularly acute in Confidential's architecture. Confidenti
 
 Both become part of the TEE's trusted boundary. While customers maintain full control over their own applications, they must extend trust to Confidential's software running alongside their workloads. Even though Confidential's software is open source and externally audited, this still requires customers to trust that the software behaves as documented every time it runs.
 
-### **From Trust to Proof**
-
+### From Trust to Proof
 ZK is the nuclear option for proving behavior. Unlike attestation (which proves identity) or logging (which can be forged), ZK proofs are cryptographically bounded. They mathematically guarantee that a specific computation occurred correctly, with no room for tampering or misrepresentation.
 
 With ZK, instead of asking customers to trust that Confidential's software behaves correctly, we can prove it every time the software runs.
 
-### **What Are Zero-Knowledge Proofs?**
-
+### What Are Zero-Knowledge Proofs?
 A zero-knowledge proof (ZKP) is a cryptographic protocol that allows one party (the prover) to prove to another party (the verifier) that a statement is true, without revealing any information beyond the validity of the statement itself.
 
 Imagine you want to prove you know the solution to a Sudoku puzzle without revealing the solution. With a ZKP, you could mathematically demonstrate that you possess a valid solution, and the verifier would be cryptographically certain you're telling the truth, yet they'd learn nothing about the actual numbers in your grid.
@@ -52,8 +46,7 @@ ZK proofs satisfy three properties:
 
 3. **Zero-Knowledge**: If the statement is true, the verifier learns nothing beyond that fact. No information about the underlying data leaks.
 
-### **The Cost of Cryptographic Certainty**
-
+### The Cost of Cryptographic Certainty
 However, ZK is not a general-purpose solution. If your security architecture is a castle, ZK is a super expensive precision cannon: devastatingly effective where deployed, but extremely expensive to fire and limited in ammunition.
 
 **Integration complexity.** ZK requires representing computations as arithmetic circuits. This is a fundamentally different programming model that requires specialized expertise and significant engineering investment.
@@ -64,12 +57,9 @@ However, ZK is not a general-purpose solution. If your security architecture is 
 
 This means ZK must be deployed strategically at high-value chokepoints rather than comprehensively across an entire system.
 
-## **Use Cases**
-
-### **1\. Autoscaling Metrics Extraction**
-
-#### **The Challenge**
-
+## Use Cases
+### 1\. Autoscaling Metrics Extraction
+#### The Challenge
 Confidential needs to measure system metrics for autoscaling decisions, but hypervisors have limited visibility into guest VMs:
 
 | Metric      | Hypervisor Visibility | Limitation                                |
@@ -79,12 +69,10 @@ Confidential needs to measure system metrics for autoscaling decisions, but hype
 | **Disk**    | Storage allocation    | Blind to filesystem utilization           |
 | **Network** | Packet flow           | Cannot see application-level metrics      |
 
-#### **The Solution**
-
+#### The Solution
 Confidential runs telemetry extraction software inside the TEE and uses ZK proofs to verify autoscaling decisions without exposing sensitive process data.
 
-#### **Example: Memory-Based Autoscaling**
-
+#### Example: Memory-Based Autoscaling
 ```
 Private Inputs:
 - Per-process memory usage
@@ -102,8 +90,7 @@ THEN scaling_out_required = true
 
 The proof verifies the scaling logic executed correctly without revealing which processes are running or their individual memory consumption.
 
-#### **Example: CPU-Based Autoscaling**
-
+#### Example: CPU-Based Autoscaling
 ```
 Private Inputs:
 - Per-process CPU usage
@@ -123,8 +110,7 @@ AND lunal_overhead < 10% of total_cpu
 
 This proves that scaling decisions are based on actual customer workload needs, not Confidential's own overhead.
 
-#### **Example: Disk-Based Autoscaling**
-
+#### Example: Disk-Based Autoscaling
 ```
 Private Inputs:
 - Filesystem usage per mount point
@@ -143,18 +129,14 @@ IF io_queue_depth > threshold
 THEN performance_issue = true
 ```
 
-### **2\. Software Inclusion Proofs**
-
-#### **The Challenge**
-
+### 2\. Software Inclusion Proofs
+#### The Challenge
 When customers license Confidential's software for on-premise deployment, they run it alongside proprietary applications Confidential cannot access. TEEs provide a single measurement hash for all software, but since Confidential cannot reproduce measurements that include customer software, we have no way to verify which of Confidential's components were actually included.
 
-#### **The Solution**
-
+#### The Solution
 Confidential uses Merkle trees to generate inclusion proofs that verify specific software components were loaded correctly.
 
-#### **How It Works**
-
+#### How It Works
 ```
 Deployment Structure:
 ├── Customer Application A (proprietary)
@@ -178,18 +160,14 @@ ZK Inclusion Proof:
 
 **Important Note**: Proving software was loaded correctly does not prove the software ran correctly. It only verifies the initial state.
 
-### **3\. Performance Monitoring and SLAs**
-
-#### **The Challenge**
-
+### 3\. Performance Monitoring and SLAs
+#### The Challenge
 Confidential runs application services (load balancers, API gateways, proxies) inside TEEs to maintain privacy guarantees. We need to monitor these services for operational health and SLA compliance without exposing customer request data or traffic patterns.
 
-#### **The Solution**
-
+#### The Solution
 ZK proofs verify service performance and SLA compliance with zero visibility into actual customer traffic.
 
-#### **Example: API Gateway Health Monitoring**
-
+#### Example: API Gateway Health Monitoring
 ```
 Private Inputs:
 - HTTP status codes per request
@@ -211,8 +189,7 @@ rate_limit_violations = 0
 
 The proof confirms the gateway is healthy and meeting SLAs without revealing which endpoints were called, request payloads, or customer identifiers.
 
-#### **Example: Latency SLA Verification**
-
+#### Example: Latency SLA Verification
 ```
 Private Inputs:
 - Request latencies (array of timestamps)
@@ -230,8 +207,7 @@ p99_latency < 500ms (ceiling limit)
 sample_size > 10,000 requests
 ```
 
-#### **Example: Percentile Calculation Without Data Exposure**
-
+#### Example: Percentile Calculation Without Data Exposure
 Confidential calculates latency percentiles for internal performance improvements:
 
 ```
@@ -254,14 +230,11 @@ Verifies correct percentile calculation without revealing:
 
 This allows Confidential to optimize platform performance while maintaining complete customer privacy.
 
-## **Caveats and Limitations**
-
-### **Performance Constraints**
-
+## Caveats and Limitations
+### Performance Constraints
 Most ZK proofs cannot be used in the hot path of customer requests due to performance overhead. All Confidential ZK use cases operate asynchronously and out-of-band from customer traffic. Therefore, Confidential's usage of ZK is limited to background processes where proving times on the order of magnitude of seconds are acceptable. The verification of such proofs take order of magnitude 10s of ms.
 
-### **Arithmetic Circuit Limitations**
-
+### Arithmetic Circuit Limitations
 ZK can only prove operations that can be represented as arithmetic circuits. This creates fundamental constraints on what we can verify.
 
 System interactions that cannot be represented as arithmetic circuits:

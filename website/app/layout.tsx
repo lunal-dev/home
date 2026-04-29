@@ -42,33 +42,33 @@ export default function RootLayout({
           <div className="max-w-[860px] mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
               <div>
-                <h4 className="text-heading font-medium mb-3">resources</h4>
+                <h4 className="text-heading font-medium mb-3">Resources</h4>
                 <ul className="flex flex-col gap-2">
-                  <li><a href="/enterprise" className="text-muted hover:text-foreground transition-colors">enterprise</a></li>
-                  <li><a href="/components" className="text-muted hover:text-foreground transition-colors">components</a></li>
-                  <li><a href="/docs" className="text-muted hover:text-foreground transition-colors">docs</a></li>
+                  <li><a href="/enterprise" className="text-muted hover:text-foreground transition-colors">Enterprise</a></li>
+                  <li><a href="/components" className="text-muted hover:text-foreground transition-colors">Components</a></li>
+                  <li><a href="/docs" className="text-muted hover:text-foreground transition-colors">Docs</a></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-heading font-medium mb-3">platform</h4>
+                <h4 className="text-heading font-medium mb-3">Platform</h4>
                 <ul className="flex flex-col gap-2">
-                  <li><a href="/cloud" className="text-muted hover:text-foreground transition-colors">cloud</a></li>
-                  <li><a href="/pricing" className="text-muted hover:text-foreground transition-colors">pricing</a></li>
+                  <li><a href="/cloud" className="text-muted hover:text-foreground transition-colors">Cloud</a></li>
+                  <li><a href="/pricing" className="text-muted hover:text-foreground transition-colors">Pricing</a></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-heading font-medium mb-3">company</h4>
+                <h4 className="text-heading font-medium mb-3">Company</h4>
                 <ul className="flex flex-col gap-2">
-                  <li><a href="/team" className="text-muted hover:text-foreground transition-colors">team</a></li>
-                  <li><a href="/careers" className="text-muted hover:text-foreground transition-colors">careers</a></li>
-                  <li><a href="/blog" className="text-muted hover:text-foreground transition-colors">blog</a></li>
+                  <li><a href="/team" className="text-muted hover:text-foreground transition-colors">Team</a></li>
+                  <li><a href="/careers" className="text-muted hover:text-foreground transition-colors">Careers</a></li>
+                  <li><a href="/blog" className="text-muted hover:text-foreground transition-colors">Blog</a></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-heading font-medium mb-3">demos</h4>
+                <h4 className="text-heading font-medium mb-3">Demos</h4>
                 <ul className="flex flex-col gap-2">
-                  <li><a href="https://simulator.confidential.ai/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">simulator</a></li>
-                  <li><a href="https://private-inference-demo.confidential.ai/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">private inference</a></li>
+                  <li><a href="https://simulator.confidential.ai/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">Simulator</a></li>
+                  <li><a href="https://private-inference-demo.confidential.ai/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">Private Inference</a></li>
                 </ul>
               </div>
             </div>

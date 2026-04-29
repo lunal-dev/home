@@ -7,6 +7,7 @@
   --border: #333333;
   --accent: #58a6ff;
   --heading: #d6d6d6;
+  --code: #d2a8ff;
 }
 
 @theme inline {
@@ -106,12 +107,12 @@ body {
   text-underline-offset: 3px;
 }
 
-.prose :is(h1, h2, h3, h4) a {
+.prose :is(h1, h2, h3, h4) a[aria-label="Link to section"] {
   color: var(--muted);
   text-decoration: none !important;
 }
 
-.prose :is(h1, h2, h3, h4) a:hover {
+.prose :is(h1, h2, h3, h4) a[aria-label="Link to section"]:hover {
   color: var(--foreground);
   text-decoration: none !important;
 }
@@ -186,9 +187,13 @@ body {
 .prose code {
   font-family: inherit;
   font-size: 0.875em;
-  color: var(--accent);
+  color: var(--code);
   background: none;
   padding: 0;
+}
+
+.prose a code {
+  color: inherit;
 }
 
 .prose pre {

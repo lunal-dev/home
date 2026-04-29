@@ -6,28 +6,28 @@ import { useState } from "react";
 
 
 const NAV_ITEMS = [
-  { label: "enterprise", href: "/enterprise" },
-  { label: "cloud", href: "/cloud" },
-  { label: "pricing", href: "/pricing" },
-  { label: "docs", href: "/docs" },
+  { label: "Enterprise", href: "/enterprise" },
+  { label: "Cloud", href: "/cloud" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Docs", href: "/docs" },
 ];
 
 const DEMO_ITEMS = [
-  { label: "simulator", href: "https://simulator.confidential.ai/" },
-  { label: "private inference", href: "https://private-inference-demo.confidential.ai/" },
+  { label: "Simulator", href: "https://simulator.confidential.ai/" },
+  { label: "Private Inference", href: "https://private-inference-demo.confidential.ai/" },
 ];
 
 const COMPANY_ITEMS = [
-  { label: "team", href: "/team" },
-  { label: "careers", href: "/careers" },
-  { label: "blog", href: "/blog" },
+  { label: "Team", href: "/team" },
+  { label: "Careers", href: "/careers" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const BOTTOM_NAV_ITEMS = [
-  { label: "components", href: "/components" },
-  { label: "blog", href: "/blog" },
-  { label: "team", href: "/team" },
-  { label: "careers", href: "/careers" },
+  { label: "Components", href: "/components" },
+  { label: "Blog", href: "/blog" },
+  { label: "Team", href: "/team" },
+  { label: "Careers", href: "/careers" },
 ];
 
 export function Navbar() {
@@ -73,7 +73,7 @@ export function Navbar() {
               onClick={() => setCompanyOpen((v) => !v)}
               className="flex items-center gap-1 text-muted transition-colors hover:text-accent"
             >
-              company
+              Company
               <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M6 9l6 6 6-6" />
               </svg>
@@ -108,7 +108,7 @@ export function Navbar() {
               onClick={() => setDemoOpen((v) => !v)}
               className="flex items-center gap-1 text-muted transition-colors hover:text-accent"
             >
-              demos
+              Demos
               <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M6 9l6 6 6-6" />
               </svg>
@@ -148,7 +148,7 @@ export function Navbar() {
       </nav>
       {open && (
         <div className="sm:hidden border-t border-border px-4 py-4 flex flex-col gap-1">
-          {[{ label: "home", href: "/" }, ...NAV_ITEMS, ...BOTTOM_NAV_ITEMS].map((item) => (
+          {[{ label: "Home", href: "/" }, ...NAV_ITEMS, ...BOTTOM_NAV_ITEMS].map((item) => (
             <Link
               key={item.href}
               href={item.href}
