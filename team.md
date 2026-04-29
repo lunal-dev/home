@@ -10,93 +10,26 @@
 
 # Team
 
-<table>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/1041265?s=200&v=4" width="130" alt="Ansgar Grunseid">
-    </td>
-    <td>
-      <strong>Ansgar Grunseid</strong><br>
-      Cofounder &amp; CEO<br><br>
-      <a href="https://github.com/gruns">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/ansgargrunseid/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/43304401?s=200&v=4" width="130" alt="Amean Asad">
-    </td>
-    <td>
-      <strong>Amean Asad</strong><br>
-      Cofounder &amp; CTO<br><br>
-      <a href="https://github.com/AmeanAsad">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/ameanasad/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/91056047?s=200&v=4" width="130" alt="Patrick Woodhead">
-    </td>
-    <td>
-      <strong>Patrick Woodhead</strong><br>
-      Head of Product<br><br>
-      <a href="https://github.com/geomatrick">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/patrick-woodhead/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="/assets/yolan.png" width="130" alt="Yolan Romailler">
-    </td>
-    <td>
-      <strong>Yolan Romailler</strong><br>
-      Head of Security<br><br>
-      <a href="https://github.com/AnomalRoil">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/anomalroil/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/78?s=200&v=4" width="130" alt="André Arko">
-    </td>
-    <td>
-      <strong>André Arko</strong><br>
-      Software Engineer<br><br>
-      <a href="https://github.com/indirect">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/andrearko/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/7892721?s=200&v=4" width="130" alt="Aamir Rasheed">
-    </td>
-    <td>
-      <strong>Aamir Rasheed</strong><br>
-      Software Engineer<br><br>
-      <a href="https://github.com/aamirrasheed">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/aamir1rasheed/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/659718?s=200&v=4" width="130" alt="João Sousa Andrade">
-    </td>
-    <td>
-      <strong>João Sousa Andrade</strong><br>
-      Software Engineer<br><br>
-      <a href="https://github.com/joaosa">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/thejoaosa/">LinkedIn</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="150">
-      <img src="https://avatars.githubusercontent.com/u/3749956?s=200&v=4" width="130" alt="Patrick McClurg">
-    </td>
-    <td>
-      <strong>Patrick McClurg</strong><br>
-      Software Engineer<br><br>
-      <a href="https://github.com/CluEleSsUK">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/patrickmcclurg/">LinkedIn</a>
-    </td>
-  </tr>
-</table>
+**Ansgar Grunseid** — Cofounder & CEO
+· [GitHub](https://github.com/gruns) · [LinkedIn](https://www.linkedin.com/in/ansgargrunseid/)
+
+**Amean Asad** — Cofounder & CTO
+· [GitHub](https://github.com/AmeanAsad) · [LinkedIn](https://www.linkedin.com/in/ameanasad/)
+
+**Patrick Woodhead** — Head of Product
+· [GitHub](https://github.com/geomatrick) · [LinkedIn](https://www.linkedin.com/in/patrick-woodhead/)
+
+**Yolan Romailler** — Head of Security
+· [GitHub](https://github.com/AnomalRoil) · [LinkedIn](https://www.linkedin.com/in/anomalroil/)
+
+**André Arko** — Software Engineer
+· [GitHub](https://github.com/indirect) · [LinkedIn](https://www.linkedin.com/in/andrearko/)
+
+**Aamir Rasheed** — Software Engineer
+· [GitHub](https://github.com/aamirrasheed) · [LinkedIn](https://www.linkedin.com/in/aamir1rasheed/)
+
+**João Sousa Andrade** — Software Engineer
+· [GitHub](https://github.com/joaosa) · [LinkedIn](https://www.linkedin.com/in/thejoaosa/)
+
+**Patrick McClurg** — Software Engineer
+· [GitHub](https://github.com/CluEleSsUK) · [LinkedIn](https://www.linkedin.com/in/patrickmcclurg/)
