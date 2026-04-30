@@ -10,7 +10,7 @@
 
 # Careers at Confidential
 
-At Confidential, we wake up every day to secure the world's data with secure, private AI.
+At Confidential, we wake up every day to protect the world's data with secure, private, verifiable AI.
 
 We believe a small, tenacious team can outrun, outmaneuver, and outperform giants. We live it. To build that team, we're looking for people with grit that get things done and want to be pivotal in an ascendant startup.
 
