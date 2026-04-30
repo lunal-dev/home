@@ -10,9 +10,9 @@
 
 # Confidential AI
 
-Confidential is the AI confidential compute platform. We run your AI workloads (inference, training, agents) inside hardware-encrypted environments called Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
+Confidential is the confidential computing stack. We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
 
-You can run the Confidential stack on your hardware or host your workload on the [Confidential Cloud](/cloud.md).
+You can run the Confidential stack on your hardware. Or host your workload on our [Confidential Cloud](/cloud.md).
 
 ## Use Cases
 
