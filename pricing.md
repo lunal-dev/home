@@ -16,6 +16,8 @@ On-demand usage. Pay for what you use.
 
 Up to 80% cheaper than confidential computing on hyperscaler clouds.
 
+Custom pricing is available for high-volume deals — [get in touch](mailto:founders@confidential.ai).
+
 For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.md).
 
 ## Confidential Inference
