@@ -14,8 +14,6 @@ All prices include hardware-enforced integrity, privacy and verifiability by TEE
 
 On-demand usage. Pay for what you use.
 
-Up to 80% cheaper than confidential computing on hyperscaler clouds.
-
 Custom pricing is available for high-volume deals — [get in touch](mailto:founders@confidential.ai).
 
 For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.md).
@@ -26,7 +24,10 @@ For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.m
 |---|---|---|
 | GLM 5.1 | $1.00 | $3.50 |
 | Qwen 3.5 35B | $0.25 | $2.00 |
-| DeepSeek V3.2 | $0.40 | $0.60 |
+| Qwen3.6 27B | $0.30 | $2.00 |
+| DeepSeek V4-Flash | $0.20 | $0.40 |
+| DeepSeek V4-Pro | $2.50 | $5.00 |
+
 
 Additional models available on request: [founders@confidential.ai](mailto:founders@confidential.ai).
 
