@@ -51,15 +51,7 @@ Dedicated VMs on our cloud, running inside TEEs. You rent the VM, we run the inf
 | H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | Training, fine-tuning, latency-sensitive inference |
 | B200 | 192 GB HBM3e | Intel TDX | Frontier training, maximum performance |
 
-**Configurations.** Three confidential computing deployment modes, depending on GPU and workload:
-
-| Mode | What it is | RTX PRO 6000 | H100 | B200 |
-|---|---|---|---|---|
-| Single GPU pass-through | One GPU attached to one Confidential VM | ✓ | ✓ | ✓ |
-| Protected PCIe mode | Multiple GPUs share one confidential domain over PCIe | x | ✓ | x |
-| Multi-GPU pass-through | Multiple GPUs attached to one Confidential VM, each independently attested | x | x | ✓ |
-
-In Protected PCIe mode, GPU-GPU communications over the NVLink or NVSwitch interconnect are not encrypted. For Multi-GPU pass-through, GPUs that are part of the same CVM can communicate peer-to-peer over encrypted NVLink connections. 
+Configurations: Three confidential computing deployment modes are available, depending on GPU and workload. Single GPU pass-through attaches one GPU to one Confidential VM and is supported on all listed GPUs. Protected PCIe lets multiple GPUs share one confidential domain over PCIe, though GPU-GPU traffic over NVLink and NVSwitch is not encrypted. This mode is supported on H100 only. Multi-GPU pass-through attaches multiple independently attested GPUs to one VM with encrypted NVLink between them. This mode is supported on B200 only.
 
 **CPU VMs.** TEE-backed vCPUs for general-purpose confidential workloads. AMD SEV-SNP and Intel TDX available.
 
