@@ -12,11 +12,11 @@
 
 The Confidential Agents API provisions and manages per-tenant confidential VM (CVM) instances that run packaged agents such as OpenClaw. Each instance is a hardware-isolated workload running inside a Trusted Execution Environment, addressable over SSH and uniquely named under your tenant subdomain.
 
-## Quick Start
+## Quickstart
 
 This walkthrough creates an instance, waits until it is ready, reads its instance record, and deletes it. The examples use `curl` and `jq`.
 
-### 1. Obtain credentials
+#### 1. Obtain credentials
 
 Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:founders@confidential.ai).
 
@@ -33,7 +33,7 @@ export TENANT_SLUG="acme"
 export CA_API_KEY="confai_live_replace_with_your_key"
 ```
 
-### 2. Test your API key
+#### 2. Test your API key
 
 Call the usage endpoint. A successful response returns a `data.pricing` object and a `data.usage` object for the current billing cycle.
 
@@ -43,7 +43,7 @@ curl -sS "$API_BASE/v1/usage" \
   | jq .
 ```
 
-### 3. Create an instance
+#### 3. Create an instance
 
 Use an ed25519 or ecdsa SSH public key. `ssh-rsa` keys are rejected.
 
@@ -71,7 +71,7 @@ export INSTANCE_HOSTNAME="$(echo "$CREATE_RESPONSE" | jq -r '.data.hostname')"
 
 The create response is `202 Accepted`. The instance starts in `provisioning`.
 
-### 4. Get instance info
+#### 4. Get instance info
 
 ```bash
 curl -sS "$API_BASE/v1/instances/$INSTANCE_NAME" \
@@ -81,7 +81,7 @@ curl -sS "$API_BASE/v1/instances/$INSTANCE_NAME" \
 
 The response includes fields such as `name`, `status`, `agent`, `hostname`, `inference_mode`, `created_at`, and `ready_at`.
 
-### 5. Poll until the instance is ready
+#### 5. Poll until the instance is ready
 
 There are no webhooks for instance state changes. Poll `GET /v1/instances/{name}` until `status` becomes `ready`.
 
@@ -117,7 +117,7 @@ Once the instance is ready, connect over SSH with the private key that matches t
 ssh -i ~/.ssh/id_ed25519 "$INSTANCE_HOSTNAME"
 ```
 
-### 6. Delete the instance
+#### 6. Delete the instance
 
 When you are done, delete the instance. The response is `202 Accepted`; teardown may complete immediately with `status: "terminated"` or briefly report `terminating`.
 
