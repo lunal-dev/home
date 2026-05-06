@@ -21,7 +21,7 @@ New to TEEs? Start with the **[Introduction to TEEs](intro-to-tees.md)** for a h
 - **[C8s: Confidential Kubernetes](c8s-whitepaper.md)**: Learn about C8s, our confidential Kubernetes architecture.
 - **[Attestable Builds](attestable-builds/)**: Learn what attestable builds are, why they matter, and how TEEs make software verification possible.
 - **[Zero Knowledge](zk.md)**: Learn about zero-knowledge (ZK) proofs and their applications.
-- **[Confidential Agents API](confidential-agents-api/)**: Reference for the public REST API that provisions and manages confidential VM instances.
+- **[Confidential Agents API](confidential-agents-api/)**: REST API to provision and manage confidential agents in CVMs.
 
 ## Need Help?
 
