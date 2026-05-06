@@ -34,10 +34,10 @@ There are no webhooks for instance state changes — poll this endpoint instead.
     "name": "4k9p2xq7",
     "status": "ready",
     "agent": "openclaw",
-    "claim_path": "cold",
     "hostname": "4k9p2xq7.acme.confidential.ai",
     "inference_mode": "default_gateway",
     "inference_model": "<model-id>",
+    "custom_inference_endpoint": null,
     "egress_limit_bytes": 5368709120,
     "failure_code": null,
     "failure_message": null,
@@ -62,6 +62,10 @@ There are no webhooks for instance state changes — poll this endpoint instead.
 ## Egress
 
 Each instance has a hard 5 GB egress limit per its lifetime. The platform monitors per-VM network egress and enforces the limit at the instance firewall layer once the threshold is observed. `egress_limit_bytes` is reported on every instance record.
+
+## Inference fields
+
+`inference_mode` is `default_gateway` for Confidential-hosted inference and `custom` for customer-supplied inference. When `inference_mode` is `custom`, `custom_inference_endpoint` contains the configured endpoint URL. Custom API keys are never returned.
 
 ## Errors
 

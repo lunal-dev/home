@@ -14,6 +14,7 @@ const SECTIONS: { title: string; href: string; file: string }[] = [
   { title: "C8s: Confidential Kubernetes", href: "/docs/c8s-whitepaper", file: "c8s-whitepaper.md" },
   { title: "Attestable Builds", href: "/docs/attestable-builds", file: "attestable-builds/README.md" },
   { title: "Zero Knowledge", href: "/docs/zk", file: "zk.md" },
+  { title: "Confidential Agents API", href: "/docs/confidential-agents-api", file: "confidential-agents-api/README.md" },
 ];
 
 function buildDocsToc(): TocItem[] {

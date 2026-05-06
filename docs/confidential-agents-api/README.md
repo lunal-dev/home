@@ -26,6 +26,7 @@ All endpoints are versioned under `/v1`.
 2. **[Conventions](conventions.md)** — Response envelope, request and correlation IDs, error codes, and tenant subdomain layout.
 3. **Create your first instance** — `POST /v1/instances` with an SSH public key. See [Create Instance](create-instance.md).
 4. **SSH in** — Once the instance reports `ready`, connect with `ssh <hostname>` using the matching private key.
+5. **Verify OpenClaw** — Run a quick in-instance prompt before using the workspace. See [Verify OpenClaw over SSH](openclaw-ssh-testing.md).
 
 ## Endpoints
 
