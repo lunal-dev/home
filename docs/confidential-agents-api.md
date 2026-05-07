@@ -14,7 +14,7 @@ The Confidential Agents API provisions and manages per-tenant confidential VM (C
 
 ## Quickstart
 
-This walkthrough creates an instance, waits until it is ready, reads its instance record, and deletes it. The examples use `curl` and `jq`.
+This walkthrough creates an instance, waits until it is ready, reads its instance record, and deletes it. The examples use [curl](https://curl.se/) and [jq](https://jqlang.org/).
 
 #### 1. Obtain credentials
 
