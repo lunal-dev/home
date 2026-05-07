@@ -18,7 +18,7 @@ This walkthrough creates an instance, waits until it is ready, reads its instanc
 
 #### 1. Obtain credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:founders@confidential.ai).
+Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:aamir@confidential.ai).
 
 When your tenant is created, you receive:
 
@@ -49,13 +49,11 @@ Use an ed25519 or ecdsa SSH public key. `ssh-rsa` keys are rejected.
 
 ```bash
 export SSH_PUBLIC_KEY="$(cat ~/.ssh/id_ed25519.pub)"
-export IDEMPOTENCY_KEY="$(uuidgen)"
 
 CREATE_RESPONSE="$(
   curl -sS -X POST "$API_BASE/v1/instances" \
     -H "Authorization: Bearer $CA_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "Idempotency-Key: $IDEMPOTENCY_KEY" \
     --data "$(jq -n --arg public_key "$SSH_PUBLIC_KEY" '{
       public_key: $public_key,
       agent: "openclaw",
@@ -435,7 +433,7 @@ Authorization: Bearer ca_<8 char lowercase alphanumeric>_<18 char lowercase alph
 
 #### Obtaining credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:founders@confidential.ai). Self-service signup through the public API is not currently available.
+Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:aamir@confidential.ai). Self-service signup through the public API is not currently available.
 
 When your tenant is created, you receive:
 
@@ -548,4 +546,4 @@ Instances are identified by an auto-generated `name` scoped to your tenant.
 
 ## Need help?
 
-[Contact us](mailto:founders@confidential.ai) for access, support, or feature requests.
+[Contact us](mailto:aamir@confidential.ai) for access, support, or feature requests.
