@@ -115,9 +115,29 @@ Once the instance is ready, connect over SSH with the private key that matches t
 ssh -i ~/.ssh/id_ed25519 "$INSTANCE_HOSTNAME"
 ```
 
-#### 6. Delete the instance
+#### 6. Verify the CVM attestation
 
-When you are done, delete the instance. The response is `202 Accepted`; teardown may complete immediately with `status: "terminated"` or briefly report `terminating`.
+`ccvm` is a CLI that runs inside the CVM and validates the hardware attestation, TPM measurements, host-key fingerprints, and inference gateway attestation chain — confirming the CVM is what it claims to be and is connected to the expected gateway. Run it from within the SSH session immediately after claiming the instance.
+
+```bash
+ccvm verify
+```
+
+Example output:
+
+```
+[1/5] SEV-SNP Hardware              PASS
+[2/5] TPM Attestation               PASS
+[3/5] Host Key Binding              PASS
+[4/5] Inference Provider            PASS
+[5/5] External Access Lockout       PASS  (FAIL on staging — debug SSH access intentional)
+```
+
+The tool is open source: [github.com/lunal-dev/confidential-cvm-cli](https://github.com/lunal-dev/confidential-cvm-cli).
+
+#### 7. Delete the instance
+
+When you are done, delete the instance. The response is 202 Accepted with status: `terminating`. The instance reaches `terminated` asynchronously once Azure resources are cleaned up.
 
 ```bash
 curl -sS -X DELETE "$API_BASE/v1/instances/$INSTANCE_NAME" \
@@ -303,7 +323,7 @@ There are no webhooks for instance state changes — poll this endpoint instead.
 | `provisioning` | Instance is being claimed or cold-started. |
 | `ready` | SSH is reachable and claim-time setup has completed. Run in-CVM verification to confirm attestation before trusting the workload. |
 | `failed` | Provisioning failed terminally. `failure_code` and `failure_message` may be populated. |
-| `terminating` | Delete is in progress. |
+| `terminating` | `DELETE /v1/instances/{name}` has been accepted and resource teardown is in progress. The instance transitions to `terminated` once Azure resources are fully released. |
 | `terminated` | Resources have been released. The record and name reservation are retained for at least 30 days. |
 
 #### Egress
@@ -325,7 +345,7 @@ DELETE /v1/instances/{name}
 
 Tears down the CVM and removes its DNS record. The database row is retained with a terminal status, and the name remains reserved for at least 30 days.
 
-Returns `202 Accepted`. Teardown may complete synchronously, in which case the response shows `status: "terminated"`. In other cases the instance briefly reports `terminating` and reaches `terminated` on subsequent retrieval.
+Returns `202 Accepted` with status: `terminating`. Azure resource teardown completes asynchronously; the instance transitions to `terminated` once cleanup finishes. Poll `GET /v1/instances/{name}` until status is `terminated` if you need confirmation that resources have been released.
 
 #### Path parameters
 
@@ -341,7 +361,7 @@ Returns `202 Accepted`. Teardown may complete synchronously, in which case the r
   "correlation_id": null,
   "data": {
     "name": "4k9p2xq7",
-    "status": "terminated",
+    "status": "terminating",
     "agent": "openclaw",
     "hostname": "4k9p2xq7.acme.confidential.ai",
     "public_key": "ssh-ed25519 AAAAC3... user@example",
@@ -353,7 +373,7 @@ Returns `202 Accepted`. Teardown may complete synchronously, in which case the r
     "terminated_reason": "deleted_via_api",
     "created_at": "2026-05-01T20:14:22Z",
     "ready_at": "2026-05-01T20:18:33Z",
-    "terminated_at": "2026-05-01T20:24:22Z"
+    "terminated_at": null
   }
 }
 ```
