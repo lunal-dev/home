@@ -200,7 +200,7 @@ ssh <hostname>
 If your SSH client requires an explicit user or key path:
 
 ```bash
-ssh -i <private-key-path> azureuser@<hostname>
+ssh -i <private-key-path> <hostname>
 ```
 
 #### Errors
