@@ -12,7 +12,7 @@
 
 New to Confidential? Start with our [Product APIs](#product-apis).
 
-New to Confidential Computing at large? Start with the [Confidential Computing Primer](/docs/confidential-computing-primer).
+New to confidential computing at large? Start with the [Confidential Computing Primer](/docs/confidential-computing-primer).
 
 ## Product APIs
 
