@@ -45,7 +45,7 @@ curl -sS "$API_BASE/v1/usage" \
 
 #### 3. Create an instance
 
-Use an ed25519 or ecdsa SSH public key. `ssh-rsa` keys are rejected.
+Use any valid OpenSSH public key (`ssh-ed25519`, `ssh-rsa`, `ecdsa-sha2-*`, etc.). We recommend `ssh-ed25519` for new keys; `ssh-rsa` is supported for backwards compatibility but should be at least 2048 bits.
 
 ```bash
 export SSH_PUBLIC_KEY="$(cat ~/.ssh/id_ed25519.pub)"
@@ -186,7 +186,7 @@ Provisions a new confidential VM under your tenant. Returns `202 Accepted` with 
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `public_key` | string | yes | OpenSSH-formatted public key. Must be `ssh-ed25519` or `ecdsa-sha2-*`. `ssh-rsa` is rejected. |
+| `public_key` | string | yes | OpenSSH-formatted public key (`ssh-rsa`, `ssh-ed25519`, `ecdsa-sha2-*`, etc.). We recommend `ssh-ed25519` for new keys; `ssh-rsa` is accepted for backwards compatibility. |
 | `agent` | string | no | Packaged agent to install. Defaults to `openclaw`. Currently `openclaw` is the only supported value. |
 | `inference_mode` | string | no | Inference routing mode. If omitted, the platform selects one for you. Currently `default_gateway` is the only supported value. |
 | `inference_model` | string | no | Model identifier to use through the default inference gateway. **If omitted, the platform selects a model for you and returns the chosen identifier in every subsequent response for this instance.** Specify this field only if you need a particular model. |
@@ -227,7 +227,7 @@ ssh -i <private-key-path> <hostname>
 
 | Code | HTTP | When |
 | --- | --- | --- |
-| `invalid_request` | `400` | `public_key` is missing or not an ed25519/ecdsa OpenSSH key, or an unsupported `agent` or `inference_mode` was supplied. |
+| `invalid_request` | `400` | `public_key` is missing or not a valid OpenSSH public key, or an unsupported `agent` or `inference_mode` was supplied. |
 | `unauthenticated` | `401` | Missing or invalid Bearer token. |
 | `conflict` | `409` | The same `Idempotency-Key` was reused with a different request body. |
 
@@ -499,7 +499,7 @@ On error:
   "correlation_id": null,
   "error": {
     "code": "invalid_request",
-    "message": "public_key must be an ed25519 or ecdsa OpenSSH public key",
+    "message": "public_key is not a valid OpenSSH public key: ...",
     "param": "public_key"
   }
 }
