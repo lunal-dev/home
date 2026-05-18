@@ -18,7 +18,7 @@ This walkthrough creates an instance, waits until it is ready, reads its instanc
 
 #### 1. Obtain credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:aamir@confidential.ai).
+Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai).
 
 When your tenant is created, you receive:
 
@@ -453,7 +453,7 @@ Authorization: Bearer ca_<8 char lowercase alphanumeric>_<18 char lowercase alph
 
 #### Obtaining credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:aamir@confidential.ai). Self-service signup through the public API is not currently available.
+Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai). Self-service signup through the public API is not currently available.
 
 When your tenant is created, you receive:
 
@@ -566,4 +566,4 @@ Instances are identified by an auto-generated `name` scoped to your tenant.
 
 ## Need help?
 
-[Contact us](mailto:aamir@confidential.ai) for access, support, or feature requests.
+[Contact us](mailto:hello@confidential.ai) for access, support, or feature requests.
