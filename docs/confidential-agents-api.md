@@ -10,7 +10,7 @@
 
 # Confidential Agents API
 
-The Confidential Agents API provisions and manages per-tenant confidential VM (CVM) instances that run packaged agents such as OpenClaw. Each instance is a hardware-isolated workload running inside a Trusted Execution Environment, addressable over SSH and uniquely named under your tenant subdomain.
+The Confidential Agents API provisions and manages per-organization confidential VM (CVM) instances that run packaged agents such as OpenClaw. Each instance is a hardware-isolated workload running inside a Trusted Execution Environment, addressable over SSH and uniquely named under your organization subdomain.
 
 ## Quickstart
 
@@ -18,18 +18,18 @@ This walkthrough creates an instance, waits until it is ready, reads its instanc
 
 #### 1. Obtain credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai).
+Organizations and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai).
 
-When your tenant is created, you receive:
+When your organization is created, you receive:
 
-- A tenant slug, used in instance hostnames such as `{instance-name}.{tenant-slug}.confidential.ai`.
+- An organization slug, used in instance hostnames such as `{instance-name}.{organization-slug}.confidential.ai`.
 - An API key, used as a Bearer token for API requests.
 
 Export both values before running the examples:
 
 ```bash
 export API_BASE="https://api.confidential.ai"
-export TENANT_SLUG="acme"
+export ORG_SLUG="acme"
 export CA_API_KEY="confai_live_replace_with_your_key"
 ```
 
@@ -155,7 +155,7 @@ All endpoints are served from `https://api.confidential.ai` and versioned under 
 POST /v1/instances
 ```
 
-Provisions a new confidential VM under your tenant. Returns `202 Accepted` with the generated instance `name`. Provisioning typically completes within a few minutes; poll the Retrieve Instance endpoint until `status` flips from `provisioning` to `ready`.
+Provisions a new confidential VM under your organization. Returns `202 Accepted` with the generated instance `name`. Provisioning typically completes within a few minutes; poll the Retrieve Instance endpoint until `status` flips from `provisioning` to `ready`.
 
 #### Headers
 
@@ -237,7 +237,7 @@ ssh -i <private-key-path> <hostname>
 GET /v1/instances
 ```
 
-Returns all instances belonging to your tenant, including terminated instances retained for the 30-day name-reservation window.
+Returns all instances belonging to your organization, including terminated instances retained for the 30-day name-reservation window.
 
 #### Response — `200 OK`
 
@@ -334,7 +334,7 @@ Each instance has a hard 5 GB egress limit per its lifetime. The platform monito
 
 | Code | HTTP | When |
 | --- | --- | --- |
-| `not_found` | `404` | Instance does not exist or belongs to another tenant. |
+| `not_found` | `404` | Instance does not exist or belongs to another organization. |
 | `unauthenticated` | `401` | Missing or invalid Bearer token. |
 
 ### Delete Instance
@@ -382,7 +382,7 @@ Returns `202 Accepted` with status: `terminating`. Azure resource teardown compl
 
 | Code | HTTP | When |
 | --- | --- | --- |
-| `not_found` | `404` | Instance does not exist or belongs to another tenant. |
+| `not_found` | `404` | Instance does not exist or belongs to another organization. |
 | `unauthenticated` | `401` | Missing or invalid Bearer token. |
 
 ### Get Usage
@@ -391,7 +391,7 @@ Returns `202 Accepted` with status: `terminating`. Azure resource teardown compl
 GET /v1/usage
 ```
 
-Returns the current billing-cycle consumption summary for your tenant — the same numbers that drive your invoice.
+Returns the current billing-cycle consumption summary for your organization — the same numbers that drive your invoice.
 
 #### Response — `200 OK`
 
@@ -424,7 +424,7 @@ Returns the current billing-cycle consumption summary for your tenant — the sa
 
 | Field | Description |
 | --- | --- |
-| `period_start`, `period_end` | Start and end of the current billing window (ISO 8601). The window is anchored to your tenant's signup time, not to calendar months. |
+| `period_start`, `period_end` | Start and end of the current billing window (ISO 8601). The window is anchored to your organization's signup time, not to calendar months. |
 | `subscription_cost_usd` | Base subscription cost for the period. |
 | `instance_hours_included` | Instance-hours included in the base subscription. |
 | `overage_per_hour_usd` | Cost per instance-hour beyond the included amount. |
@@ -453,12 +453,12 @@ Authorization: Bearer ca_<8 char lowercase alphanumeric>_<18 char lowercase alph
 
 #### Obtaining credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai). Self-service signup through the public API is not currently available.
+Organizations and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai). Self-service signup through the public API is not currently available.
 
-When your tenant is created, you receive:
+When your organization is created, you receive:
 
-- A **tenant slug** (e.g. `acme`), which is used in your per-tenant subdomain (`{instance-name}.acme.confidential.ai`).
-- One or more **API keys** of the form `ca_<prefix>_<secret>`, where `prefix` and `secret` are lowercase alphanumeric strings (8 and 18 characters respectively). Treat these as secrets — anyone with the key can provision and delete instances against your tenant.
+- An **organization slug** (e.g. `acme`), which is used in your per-organization subdomain (`{instance-name}.acme.confidential.ai`).
+- One or more **API keys** of the form `ca_<prefix>_<secret>`, where `prefix` and `secret` are lowercase alphanumeric strings (8 and 18 characters respectively). Treat these as secrets — anyone with the key can provision and delete instances against your organization.
 
 #### Authentication errors
 
@@ -475,7 +475,7 @@ A missing, malformed, or unknown token returns:
 }
 ```
 
-A valid token used against a tenant or resource it is not authorized for returns `forbidden` (`403`). See the error code table under Conventions below.
+A valid token used against an organization or resource it is not authorized for returns `forbidden` (`403`). See the error code table under Conventions below.
 
 ## Conventions
 
@@ -530,14 +530,14 @@ Correlation IDs are not required to be unique and the server does not enforce a 
 | --- | --- | --- |
 | `invalid_request` | `400` | Malformed or invalid input. |
 | `unauthenticated` | `401` | Missing or invalid Bearer token. |
-| `forbidden` | `403` | Token is valid but not allowed for this tenant or resource. |
-| `not_found` | `404` | Resource does not exist, or belongs to another tenant. |
+| `forbidden` | `403` | Token is valid but not allowed for this organization or resource. |
+| `not_found` | `404` | Resource does not exist, or belongs to another organization. |
 | `conflict` | `409` | State or idempotency conflict. |
 | `internal_error` | `500` | Unexpected server error. Quote `request_id` when reporting. |
 
-#### Per-tenant subdomain
+#### Per-organization subdomain
 
-Each tenant is assigned a slug at onboarding and gets a dedicated subdomain:
+Each organization is assigned a slug at onboarding and gets a dedicated subdomain:
 
 ```
 {customer-slug}.confidential.ai
@@ -557,10 +557,10 @@ Example:
 
 #### Instance names
 
-Instances are identified by an auto-generated `name` scoped to your tenant.
+Instances are identified by an auto-generated `name` scoped to your organization.
 
 - **Format:** 8-character lowercase alphanumeric string (e.g. `4k9p2xq7`).
-- **Uniqueness:** Names are unique within a tenant.
+- **Uniqueness:** Names are unique within an organization.
 - **Reuse:** Names are not reused for at least 30 days after termination, so a stored reference cannot silently point at a different instance.
 - **Custom names:** Customer-supplied instance names are not currently supported.
 

@@ -4223,7 +4223,7 @@ Our streamlined security flow ensures data protection throughout the entire proc
 ![Data Processing Flow Diagram](images/secure-data-processing.svg)
 
 1. **Authentication** (API Gateway & IAM):
-   - Client connects with their tenant ID and optional API key
+   - Client connects with their organization ID and optional API key
    - API Gateway validates the request format
    - IAM verifies client credentials and permissions
 
@@ -4247,7 +4247,7 @@ Our streamlined security flow ensures data protection throughout the entire proc
 5. **Secondary Verification** (CDS & TEE Registry):
    - CDS verifies each TEE's identity against our TEE Registry
    - CDS confirms TEE attestation is valid via Attestation API
-   - CDS verifies TEEs are authorized for the tenant's workloads
+   - CDS verifies TEEs are authorized for the organization's workloads
 
 6. **Secure Decryption** (TEE):
    - Only TEEs that passed both client-side and platform-side verification can decrypt the payload
@@ -4277,10 +4277,10 @@ Confidential's system is designed to withstand various attack scenarios:
 We've designed our system for easy integration with your applications:
 
 ```javascript
-// 1. Initialize the luna client with your tenant ID
+// 1. Initialize the luna client with your organization ID
 // This ID is provided when you sign up for our service
 const lunaClient = new LunaClient({
-  tenantId: 'your-tenant-id',
+  organizationId: 'your-organization-id',
   apiKey: 'your-optional-api-key' // Optional for authenticated requests
 });
 
@@ -4295,8 +4295,8 @@ const result = await lunaClient.request({
 
 That's it! Our SDK handles all the complex security operations behind the scenes:
 
-- Authentication using your tenant ID and optional API key
-- TEE selection based on your tenant relationship
+- Authentication using your organization ID and optional API key
+- TEE selection based on your organization relationship
 - Automatic attestation verification to ensure the TEE is legitimate
 - Envelope encryption using the TEE's public key and one-time keys
 - Secure communication with the TEE
