@@ -29,7 +29,7 @@ Export both values before running the examples:
 
 ```bash
 export API_BASE="https://api.confidential.ai"
-export ORG_SLUG="acme"
+export ORGANIZATION_SLUG="acme"
 export CA_API_KEY="confai_live_replace_with_your_key"
 ```
 
