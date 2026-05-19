@@ -10,19 +10,19 @@
 
 # Confidential Agents API
 
-An API for provisioning isolated, TEE-backed VMs preloaded with an AI agent runtime. Each instance is dedicated to one organization, hardware-attested, and addressable over SSH.
+Spin up a private, isolated environment for your AI agent in under 15 seconds. Each instance comes preloaded with an agent runtime and inference, ready over SSH — and is completely invisible to everyone except you, including us.
 
-For the full endpoint surface, see the [Agents API reference](/docs/confidential-agents-api). For raw confidential VMs without the agent runtime, see [Cloud](/cloud.md).
+## Up and running in under 15 seconds
 
-## Isolated agent environments
+Call the API and you're SSH'd into a ready environment in under fifteen seconds. No waiting, no manual provisioning. Treat agent environments as disposable — spin one up for every task, run it, throw it away.
 
-Each instance is a dedicated Confidential VM running on AMD SEV-SNP or Intel TDX. Code, data, and agent state inside the VM are invisible to us and to other organizations on the platform. The instance hostname is unique to your organization and addressable over SSH using a key pair you control.
+## Completely private, even from us
 
-OpenClaw is the default packaged agent. Additional agents are available on request.
+Each instance runs inside a Confidential VM with hardware-enforced memory encryption. The code, data, and agent state inside are invisible to us, to other customers, and to the infrastructure operators we run on. You hold the SSH key; we have no way to look inside.
 
-## Warm-pool provisioning
+## OpenClaw, preloaded
 
-Typical create requests hit a warm pool of pre-attested VMs and return a `ready` instance in around five seconds. When the pool is empty, requests fall back to cold provisioning. Egress is monitored and capped per instance lifetime to enforce isolation guarantees.
+Every instance launches with the OpenClaw agent runtime installed and ready to go. Additional agents available on request.
 
 ## Confidential inference, included
 
@@ -37,4 +37,4 @@ Each instance can call a bundled OpenAI-compatible inference gateway that serves
 
 ## Get access
 
-API keys are issued per organization. [Contact us](mailto:hello@confidential.ai) to request access.
+API keys are issued per organization. [Contact us](mailto:hello@confidential.ai) to request access, and see the [Agents API reference](/docs/confidential-agents-api) for the full endpoint surface.
