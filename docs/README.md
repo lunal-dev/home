@@ -10,19 +10,27 @@
 
 # Confidential Documentation
 
-## Quick Start
+New to Confidential? Start with our [Product APIs](#product-apis).
 
-New to TEEs? Start with the **[Introduction to TEEs](intro-to-tees.md)** for a high-level overview.
+New to confidential computing at large? Start with the [Confidential Computing Primer](/docs/confidential-computing-primer).
 
-## Documentation Sections
+## Product APIs
 
-- **[Introduction to TEEs](intro-to-tees.md)**: A high-level introduction to Trusted Execution Environments: what they are, how they work, and their limitations.
-- **[Confidential Computing Primer](confidential-computing-primer/)**: A comprehensive guide on Confidential Computing and how it works underneath the hood.
+- **[Confidential Agents API](confidential-agents-api/)**: REST API to provision and manage confidential agents in CVMs.
+
+## Whitepapers
+
 - **[C8s: Confidential Kubernetes](c8s-whitepaper.md)**: Learn about C8s, our confidential Kubernetes architecture.
+- **[Kettle: Attested Builds](kettle-whitepaper.md)**: Learn about Kettle, our attested build system for verifiable software provenance.
+
+## Guides
+
+- **[Confidential Computing Primer](confidential-computing-primer/)**: A comprehensive guide on Confidential Computing and how it works underneath the hood.
+- **[Introduction to TEEs](intro-to-tees.md)**: A high-level introduction to Trusted Execution Environments: what they are, how they work, and their limitations.
 - **[Attestable Builds](attestable-builds/)**: Learn what attestable builds are, why they matter, and how TEEs make software verification possible.
 - **[Zero Knowledge](zk.md)**: Learn about zero-knowledge (ZK) proofs and their applications.
 - **[Confidential Agents API](confidential-agents-api/)**: Reference for the public REST API that provisions and manages confidential VM instances.
 
 ## Need Help?
 
-Can't find what you're looking for? [Contact us](mailto:founders@confidential.ai) and we'll help you get up and running.
+Don't see what you're looking for? [Contact us](mailto:founders@confidential.ai). We're here to help.

@@ -8,7 +8,7 @@
   </nav>
 </div>
 
-# Introducing PrivateClaw: E2E Private AI Agents
+# PrivateClaw launches on Confidential: E2E Private AI Agents
 
 Your OpenClaw host can read every conversation you have with your AI agent.
 
@@ -52,7 +52,7 @@ PrivateClaw is what the Confidential platform is built for. The components doing
 - **Networking inside TEEs** keeps the path from VM to inference endpoint inside the encrypted boundary the whole way.
 - **Hardened VM image** is the base OS. Minimal, measured, no debugging tools in production.
 
-Overhead is negligible. Our [benchmarks](https://confidential.ai/blog/tee-performance-cpus) on SEV-SNP show ~1.3% across CPU-heavy workloads, and ~5-7% token throughput overhead for inference.
+Overhead is negligible. Our [benchmarks](/blog/tee-performance-cpus) on SEV-SNP show ~1.3% across CPU-heavy workloads, and ~5-7% token throughput overhead for inference.
 
 ## Why this is the start, not the end
 
@@ -60,7 +60,7 @@ OpenClaw is the first hosted agent. Qwen is the first model. More of both are co
 
 The pattern generalizes. Any agent that handles sensitive context wants the same thing: hardware-isolated execution, attested inference, credentials that never exist in plaintext outside the TEE. The Confidential stack provides all of it.
 
-If you're building agents and the trust boundary matters, the same components are available to you. [Read the docs](https://confidential.ai/docs/intro-to-tees) or [get in touch](mailto:founders@confidential.ai).
+If you're building agents and the trust boundary matters, the same components are available to you. [Read the docs](/docs/confidential-agents-api) or [get in touch](mailto:founders@confidential.ai).
 
 ## Try it
 
@@ -68,4 +68,4 @@ If you're building agents and the trust boundary matters, the same components ar
 $ ssh privateclaw.dev
 ```
 
-Free tier is live. Especially interested in feedback from the skeptics.
+Free tier available.

@@ -16,7 +16,7 @@ Dedicated VMs on our cloud, running inside TEEs. You rent the VM, we run the inf
 
 | GPU | VRAM | Host CPU TEE | Best for |
 |---|---|---|---|
-| RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | Large-model inference, high VRAM capacity |
+| RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | Low cost, high performance for single GPU models |
 | H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | Training, fine-tuning, latency-sensitive inference |
 | B200 | 192 GB HBM3e | Intel TDX | Frontier training, maximum performance |
 
