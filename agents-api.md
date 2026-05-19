@@ -20,7 +20,7 @@ Call the API and you're SSH'd into a ready environment in under fifteen seconds.
 
 Each instance runs inside a Confidential VM with hardware-enforced memory encryption. The code, data, and agent state inside are invisible to us, to other customers, and to the infrastructure operators we run on. You hold the SSH key; we have no way to look inside.
 
-## OpenClaw, preloaded
+## Agents, preloaded
 
 Every instance launches with the OpenClaw agent runtime installed and ready to go. Additional agents available soon.
 
