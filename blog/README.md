@@ -12,6 +12,7 @@
 
 | Date | Post |
 |------|------|
+| 19 May 2026 | [A New Mark for Confidential](/blog/new-logo.md) |
 | 28 Apr 2026 | [Announcing C8s: Confidential Kubernetes](/blog/c8s-launch.md) |
 | 27 Apr 2026 | [PrivateClaw launches on Confidential: E2E Private AI Agents](/blog/privateclaw-launch.md) |
 | 27 Mar 2026 | [Lunal Becomes Confidential AI](/blog/lunal-becomes-confidential.md) |
