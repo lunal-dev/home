@@ -22,7 +22,7 @@ Each instance runs inside a Confidential VM with hardware-enforced memory encryp
 
 ## OpenClaw, preloaded
 
-Every instance launches with the OpenClaw agent runtime installed and ready to go. Additional agents available on request.
+Every instance launches with the OpenClaw agent runtime installed and ready to go. Additional agents available soon.
 
 ## Confidential inference, included
 
