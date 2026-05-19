@@ -5,9 +5,21 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 
-const NAV_ITEMS = [
+type NavLink = { label: string; href: string };
+type NavDropdown = { label: string; items: NavLink[] };
+type NavItem = NavLink | NavDropdown;
+
+const NAV_ITEMS: NavItem[] = [
   { label: "Enterprise", href: "/enterprise" },
-  { label: "Cloud", href: "/cloud" },
+  {
+    label: "Cloud",
+    items: [
+      { label: "Confidential Inference", href: "/confidential-inference" },
+      { label: "Confidential VMs", href: "/confidential-vms" },
+      { label: "Attestable Builds", href: "/attestable-builds" },
+      { label: "Confidential Agents API", href: "/agents-api" },
+    ],
+  },
   { label: "Pricing", href: "/pricing" },
   { label: "Docs", href: "/docs" },
 ];
@@ -30,11 +42,16 @@ const BOTTOM_NAV_ITEMS = [
   { label: "Careers", href: "/careers" },
 ];
 
+const FLAT_NAV_LINKS: NavLink[] = NAV_ITEMS.flatMap((item) =>
+  "href" in item ? [item] : item.items
+);
+
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
+  const [cloudOpen, setCloudOpen] = useState(false);
 
   return (
     <header className="border-b border-border sticky top-0 bg-background z-50">
@@ -47,19 +64,66 @@ export function Navbar() {
             <img src="/assets/logo.png" alt="Confidential" width={28} height={28} />
           </Link>
           <div className="hidden sm:flex items-center gap-5">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`transition-colors hover:text-accent ${
-                  pathname === item.href || pathname.startsWith(item.href + "/")
-                    ? "text-heading"
-                    : "text-muted"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              if ("href" in item) {
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`transition-colors hover:text-accent ${
+                      pathname === item.href || pathname.startsWith(item.href + "/")
+                        ? "text-heading"
+                        : "text-muted"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+              const isActive = item.items.some(
+                (sub) => pathname === sub.href || pathname.startsWith(sub.href + "/")
+              );
+              return (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => setCloudOpen(true)}
+                  onMouseLeave={() => setCloudOpen(false)}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setCloudOpen((v) => !v)}
+                    className={`flex items-center gap-1 transition-colors hover:text-accent ${
+                      isActive ? "text-heading" : "text-muted"
+                    }`}
+                  >
+                    {item.label}
+                    <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                  {cloudOpen && (
+                    <div className="absolute left-0 top-full pt-2">
+                      <div className="min-w-[220px] border border-border bg-background rounded-md py-1 shadow-lg">
+                        {item.items.map((sub) => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            className={`block px-3 py-2 hover:text-accent hover:bg-border/40 transition-colors ${
+                              pathname === sub.href || pathname.startsWith(sub.href + "/")
+                                ? "text-heading"
+                                : "text-muted"
+                            }`}
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -148,7 +212,7 @@ export function Navbar() {
       </nav>
       {open && (
         <div className="sm:hidden border-t border-border px-4 py-4 flex flex-col gap-1">
-          {[{ label: "Home", href: "/" }, ...NAV_ITEMS, ...BOTTOM_NAV_ITEMS].map((item) => (
+          {[{ label: "Home", href: "/" }, ...FLAT_NAV_LINKS, ...BOTTOM_NAV_ITEMS].map((item) => (
             <Link
               key={item.href}
               href={item.href}
