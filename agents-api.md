@@ -37,4 +37,4 @@ Each instance can call a bundled OpenAI-compatible inference gateway that serves
 
 ## Get access
 
-API keys are issued per organization. [Contact us](mailto:founders@confidential.ai) to request access.
+API keys are issued per organization. [Contact us](mailto:hello@confidential.ai) to request access.

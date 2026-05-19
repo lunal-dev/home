@@ -18,7 +18,7 @@ This walkthrough creates an instance, waits until it is ready, reads its instanc
 
 ### 1. Obtain credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:founders@confidential.ai).
+Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai).
 
 When your tenant is created, you receive:
 

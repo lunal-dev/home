@@ -18,7 +18,7 @@ Authorization: Bearer confai_live_<32 url-safe random bytes>
 
 ## Obtaining credentials
 
-Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:founders@confidential.ai). Self-service signup through the public API is not currently available.
+Tenants and API keys are provisioned by Confidential. To request access, [contact us](mailto:hello@confidential.ai). Self-service signup through the public API is not currently available.
 
 When your tenant is created, you receive:
 
