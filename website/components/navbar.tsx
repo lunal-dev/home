@@ -61,7 +61,7 @@ export function Navbar() {
             href="/"
             className="hover:opacity-70 transition-opacity"
           >
-            <img src="/assets/logo.png" alt="Confidential" width={28} height={28} />
+            <img src="/assets/white-logo-mid-width.svg" alt="Confidential" height={24} style={{ height: 24, width: "auto" }} />
           </Link>
           <div className="hidden sm:flex items-center gap-5">
             {NAV_ITEMS.map((item) => {
