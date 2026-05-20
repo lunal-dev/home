@@ -443,6 +443,48 @@ Returns the current billing-cycle consumption summary for your organization — 
 
 Per-day and per-instance usage breakdowns are not currently exposed through the API.
 
+## Firewall
+
+> **Coming soon** — this section describes the UFW firewall model shipping with the Project 1 security hardening release. It does not apply to currently provisioned instances.
+
+Each CVM runs UFW (Uncomplicated Firewall) as its host-level firewall. The network security group that wraps the instance passes all inbound traffic, so UFW is the effective gatekeeper for what reaches your workload.
+
+**Default rules:** SSH (port 22) is open so you can always reach your instance. All other inbound ports are blocked until you explicitly allow them.
+
+**You are root inside your CVM.** That means you decide what is exposed — not the platform. If you want to receive traffic on a port from outside the instance, you need to open it yourself.
+
+#### Open a port for all sources
+
+```bash
+sudo ufw allow 8443/tcp
+```
+
+#### Open a port only from a specific IP
+
+```bash
+sudo ufw allow from 203.0.113.45 to any port 8443 proto tcp
+```
+
+#### Allow ICMP (ping) from a specific IP
+
+```bash
+sudo ufw allow from 203.0.113.45 proto icmp
+```
+
+#### Check current rules
+
+```bash
+sudo ufw status
+```
+
+#### Remove a rule
+
+```bash
+sudo ufw delete allow 8443/tcp
+```
+
+To wipe all custom rules and restore defaults, use `sudo ufw reset` — this re-blocks everything except SSH.
+
 ## Authentication
 
 All endpoints require a Bearer token in the `Authorization` header:
