@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Confidential Agents API
 
 The Confidential Agents API provisions and manages per-organization confidential VM (CVM) instances that run packaged agents such as OpenClaw. Each instance is a hardware-isolated workload running inside a Trusted Execution Environment, addressable over SSH and uniquely named under your organization subdomain.

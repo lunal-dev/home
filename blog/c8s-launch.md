@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # C8s: Kubernetes, Made Confidential
 
 Today we're publishing the C8s architecture whitepaper. C8s is confidential computing for Kubernetes.
@@ -50,5 +40,5 @@ The full architecture is in the paper. Threat model, trust boundary, component d
 
 If you want to run private inference, protect model weights, train on sensitive data, or deploy private agents, this is the substrate.
 
-[Get in touch](mailto:founders@confidential.ai).
+[Get in touch](mailto:hello@confidential.ai).
 

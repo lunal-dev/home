@@ -1,14 +1,4 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
-# Confidential Agents API
+# Confidential Agents
 
 Spin up a private, isolated environment for your AI agent in under 15 seconds. Each instance comes preloaded with an agent runtime and inference, ready over SSH — and is completely invisible to everyone except you, including us.
 

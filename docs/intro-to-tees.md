@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Introduction to Trusted Execution Environments
 
 This document is a high-level introduction to what TEEs are, how they work, and what their limitations are. For a detailed technical deep dive, see the [Confidential Computing Primer](/docs/confidential-computing-primer/).

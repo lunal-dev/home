@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # What Are Attestable Builds?
 
 This document explains what attestable builds are, why they matter, and how they solve the software verification problem. After reading it, you'll understand the core insight behind attestable builds and why Trusted Execution Environments make them possible now.

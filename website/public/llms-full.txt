@@ -23,7 +23,7 @@ Confidential runs AI workloads (inference, training, agents) inside hardware-enc
 | CPU Utilization  | 26.61%  | 26.23%  | +1.45%     |
 | Memory Usage     | 19.02 GB | 18.87 GB | +0.80%   |
 
-**Contact:** [founders@confidential.ai](mailto:founders@confidential.ai)
+**Contact:** [hello@confidential.ai](mailto:hello@confidential.ai)
 
 
 ---
@@ -44,142 +44,7 @@ You can run the Confidential stack on your hardware. Or host your workload on ou
 
 ## Get Started
 
-To add privacy to your existing infra, see [components](/components.md). To run workloads on our infra, see [cloud](/cloud.md). Or [contact us](mailto:founders@confidential.ai).
-
----
-
-# Components
-
-This page is for organizations that want to deploy confidential compute on their own infrastructure. If you'd rather run on ours, see [Cloud](/cloud.md).
-
-Confidential is built as a set of independent components that compose into a complete confidential compute platform. Each component solves a specific problem. Use them all together, or integrate individual pieces into your existing stack.
-
-See how [modular adoption](/enterprise.md) works in practice.
-
-### Table of Contents
-
-- [Component Catalogue](#component-catalogue)
-  - [Attestation Service](#attestation-service)
-  - [Certificate Distribution Service (CDS)](#certificate-distribution-service-cds)
-  - [Build Pipeline](#build-pipeline)
-  - [Networking and Application Services](#networking-and-application-services)
-  - [Oblivious HTTP Gateway](#oblivious-http-gateway)
-  - [Control Plane](#control-plane)
-  - [Hardened VM Image](#hardened-vm-image)
-  - [SDKs (Client and Server)](#sdks-client-and-server)
-- [Modularity](#modularity)
-
-## Component Catalogue
-
-### Attestation Service
-
-**Problem:** Proving what's running inside a TEE requires verifying cryptographic reports across hardware vendors, firmware versions, and certificate chains.
-
-The attestation service generates and verifies TEE attestation reports. It is the trust anchor for the entire platform. Nothing else works without it.
-
-The service supports AMD SEV-SNP (VCEK/VLEK), Intel TDX, and NVIDIA Confidential Computing attestation formats. Each format has different report structures, signature schemes, and certificate chains. The attestation service normalizes them into a single verification flow.
-
-Verification checks the full chain: the report signature chains to the hardware vendor's root certificate, the launch measurement matches a known-good value, the TCB version meets minimum requirements, and the platform configuration is valid. Continuous re-attestation runs on schedule, with automatic certificate revocation if a measurement deviates from expected values.
-
-A public verification API and CLI allow independent verification. You don't take our word for it. You check the attestation yourself.
-
-
-### Certificate Distribution Service (CDS)
-
-**Problem:** At scale, TEEs need secrets, encryption keys, identity certificates, and a registry of authorized participants. All of this must be gated on attestation.
-
-The CDS is configurable. At its core, it gates secret and certificate distribution on attestation: workloads prove what they're running before they receive anything sensitive. Beyond that, you enable the capabilities you need.
-
-**Attestation-gated secrets.** Secrets are released only to workloads that pass attestation. Prove what you're running, then get your secrets. For organizations that maintain their own secret stores (e.g. HashiCorp Vault), the CDS handles the attestation gating while your systems hold the secrets.
-
-**Certificate distribution.** The CDS distributes certificates TEEs use for data in operation. Certificates are scoped to specific workloads, rotated on configurable schedules, and revoked immediately on security incidents. Certificate versioning maintains backward compatibility during rotation.
-
-**Certificate authority (optional).** For deployments where components need to verify each other's identity, the CDS can act as a certificate authority. It issues identity certificates to nodes and workloads that pass attestation. Certificates carry attestation trust forward without requiring re-attestation on every interaction. A typical example is a service mesh in Kubernetes.
-
-**TEE registry (optional).** An authoritative record of all legitimate TEEs in a system. Attestation proves "this is a real TEE running expected code." The registry adds a second check: "this TEE belongs to this tenant and is authorized to participate." This is the ultimate source of truth for which TEEs are part of which system.
-
-
-### Build Pipeline
-
-**Problem:** TEE attestation proves what code is running, but only if you can tie a build to a measurement. Non-deterministic toolchains and unsigned artifacts break the verification chain.
-
-The build pipeline produces what we call [attestable builds](/docs/attestable-builds/), a new approach to software verification. Instead of requiring bit-for-bit reproducible builds (which most toolchains can't achieve), attestable builds run your build inside a TEE and produce cryptographic proof of what inputs were used, what environment ran the build, and what came out. The result: a verifiable chain from git commit to running code, without needing deterministic compilers.
-
-It connects to your GitHub repo. On every commit: checks out code, builds inside a TEE, produces cryptographically signed provenance. The git commit maps directly to an expected attestation measurement.
-
-After inputs are loaded, networking is disabled. MAC policies, seccomp filters, and full process isolation ensure nothing is injected or exfiltrated during compilation. Together, these controls achieve SLSA Build L3 through hardware enforcement.
-
-The concept is new enough that it's worth reading about in depth. See the [attestable builds docs](/docs/attestable-builds/) for the full architecture, verification flow, and trust model.
-
-
-### Networking and Application Services
-
-**Problem:** Standard infrastructure (load balancers, firewalls, proxies) runs outside TEEs and sees traffic in plaintext. Your application is private but everything around it isn't.
-
-All networking and application services run inside TEEs. Traffic never leaves the encrypted boundary.
-
-The API gateway handles request validation, client authentication, and routing. TLS terminates at the load balancer, but payloads inside the TLS session are encrypted with multi-recipient hybrid encryption. The Client SDK encrypts each payload to multiple attested TEEs, so the load balancer can route to any of them for reliability without being able to read the content. Only a TEE that passed attestation and holds the corresponding private key can decrypt. Firewalls, DDoS protection, rate limiting, and load balancing all run inside TEEs.
-
-As an example of what this looks like in practice: internal traffic between components uses mTLS with certificates issued by the CDS. Standard mTLS proves a trusted CA issued a certificate. Ours proves the CDS issued a certificate to a workload that passed attestation. The network only ever sees ciphertext between verified peers.
-
-
-### Oblivious HTTP Gateway
-
-**Problem:** TLS protects request contents, but infrastructure operators can still observe metadata: which clients connect, when, and how often. For some applications, traffic analysis is itself a privacy concern.
-
-Confidential provides an OHTTP-compatible gateway that runs inside a TEE. It pairs with a third-party relay to separate identity from content.
-
-The client encrypts their request to the attested gateway, then sends it through the relay. The relay sees the client's IP address but cannot read the payload. The gateway decrypts and processes the request but only sees that it came from the relay, not which client sent it. No single party learns both who is asking and what they're asking. Clients verify the gateway's attestation before encrypting requests to it.
-
-
-### Control Plane
-
-**Problem:** Autoscaling requires system metrics, but hypervisors have limited visibility into TEEs. Orchestration systems see workload metadata. Depending on your deployment, the control plane is part of the attack surface.
-
-The control plane handles orchestration, scheduling, and autoscaling. It runs inside a TEE. Operators interact through APIs but cannot observe or tamper with internal state.
-
-Telemetry is extracted from within the TEE. Scaling decisions are based on CPU, GPU, memory, and request volume measured from within the encrypted boundary. For high-security use cases, zero-knowledge proofs verify that scaling decisions were computed correctly without exposing per-process data. The proof confirms "scaling was triggered because memory exceeded 85%" without revealing which processes consumed that memory. ZK proofs run asynchronously, with generation times on the order of seconds and verification in tens of milliseconds.
-
-The control plane scales across on-prem, bare metal, and cloud — supporting both CPU and GPU workloads.
-
-Not every deployment uses our control plane. For example, many organizations run managed Kubernetes, where the control plane is a service they don't own and can't trust. In those cases, we treat the control plane as untrusted and enforce additional security at the node level to adjust for an untrust control plane.
-
-### Hardened VM Image
-
-**Problem:** TEEs provide hardware isolation, but the software inside still needs to be locked down. A bloated or misconfigured VM image expands the attack surface inside the TEE.
-
-The hardened VM image is the base operating system all Confidential's workloads run on. It is minimal, hardened, and measured.
-
-Minimal means only the components needed to run your workload. No unnecessary services, no debugging tools, no package managers in production. Secure SELinux policies enforce mandatory access control. Seccomp filters block dangerous syscalls. Network isolation is enforced at multiple layers.
-
-The image is measured as part of the TEE launch sequence. Because the image is built reproducibly, its measurement is predictable and verifiable. A production mode locks down SSH entirely. A dev mode allows debugging access with the tradeoff clearly marked.
-
-
-### SDKs (Client and Server)
-
-**Problem:** Implementing attestation verification, encryption, and secure communication from scratch is complex and error-prone.
-
-The client and server SDKs handle encryption, attestation verification, and secure communication so you don't build it yourself.
-
-**Client SDK.** Encrypts data for upload, verifies attestation in responses, handles certificate negotiation with the CDS. On first connection, the SDK bootstraps trust: fetches reference measurements and the CA certificate from the CDS, then caches them locally. Subsequent connections verify against the cache. Attestation overhead is amortized after the first request. Multi-recipient hybrid encryption ensures payloads can only be decrypted by attested TEEs, even though TLS terminates at the load balancer.
-
-**Server SDK.** Generates attestation reports, manages TEE-side encryption, handles the internal mechanics of running inside a TEE.
-
-A verification API and CLI provide programmatic and manual verification. Standard formats mean you can always verify with your own tooling if you prefer.
-
-## Modularity
-
-Components can be adopted individually. Not everyone needs the full stack.
-
-Each component has defined interfaces and integrates with existing infrastructure. If you already have pieces of this puzzle, we fill the gaps. Common adoption patterns:
-
-- **Attestation only.** Attestation service + SDKs. For teams adding TEE verification to existing deployments.
-- **Security layer.** Attestation + CDS + build pipeline. For organizations with infrastructure that need the cryptographic verification layer.
-- **Full platform.** All components, end to end. Equivalent to the hosted platform, deployed on your infrastructure.
-
-Start with the component that solves the most pressing problem. Expand as you validate. Components are designed to compose, not to create lock-in.
-
-Talk to us about [what fits your stack](mailto:founders@confidential.ai) or see how [enterprise engagements](/enterprise.md) work.
+Run workloads on our infra — see [Cloud](/cloud.md). For enterprise and on-prem deployments, or anything else, [contact us](mailto:hello@confidential.ai).
 
 ---
 
@@ -187,14 +52,16 @@ Talk to us about [what fits your stack](mailto:founders@confidential.ai) or see 
 
 Run AI workloads on TEE-backed infrastructure with end-to-end attestations of hardware-enforced integrity, privacy and verifiability. No code changes. No TEE expertise required.
 
-If you'd rather deploy on your own infrastructure, see [Components](/components.md). For detailed rates, see [Pricing](/pricing.md). For licensed on-prem deployments, see [Enterprise](/enterprise.md).
+For detailed rates, see [Pricing](/pricing.md).
+
+> **Enterprise & on-prem.** Prefer to deploy on your own infrastructure? We license Confidential's modular stack to AI labs and infrastructure providers — on-prem, bare metal, all major clouds. Engagements run discovery (free) → pilot (paid, 1–4 months) → production. [Contact sales](mailto:hello@confidential.ai).
 
 ### Table of Contents
 
 - [Confidential Inference](/confidential-inference)
 - [Confidential VMs](/confidential-vms)
 - [Attestable Builds](/attestable-builds)
-- [Confidential Agents API](/agents-api)
+- [Confidential Agents](/confidential-agents)
 
 ---
 
@@ -214,7 +81,7 @@ OpenAI-compatible API. Drop-in replacement for existing inference providers. Swi
 | DeepSeek V4-Flash | General purpose, coding, long context |
 | DeepSeek V4-Pro | Reasoning, coding, long context |
 
-See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [founders@confidential.ai](mailto:founders@confidential.ai). Confidential inference vs non-confidential inference: 5-7% lower token throughput, negligible impact on Time to First Token (TTFT).
+See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [hello@confidential.ai](mailto:hello@confidential.ai). Confidential inference vs non-confidential inference: 5-7% lower token throughput, negligible impact on Time to First Token (TTFT).
 
 ---
 
@@ -252,7 +119,7 @@ See [build pricing](/pricing.md#attestable-builds) for per-minute rates.
 
 ---
 
-# Confidential Agents API
+# Confidential Agents
 
 Spin up a private, isolated environment for your AI agent in under 15 seconds. Each instance comes preloaded with an agent runtime and inference, ready over SSH — and is completely invisible to everyone except you, including us.
 
@@ -291,9 +158,9 @@ All prices include hardware-enforced integrity, privacy and verifiability by TEE
 
 On-demand usage. Pay for what you use.
 
-Custom pricing is available for high-volume deals — [get in touch](mailto:founders@confidential.ai).
+Custom pricing is available for high-volume deals — [get in touch](mailto:hello@confidential.ai).
 
-For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.md).
+> **Enterprise & on-prem.** Prefer to deploy on your own infrastructure? We license Confidential's modular stack to AI labs and infrastructure providers — on-prem, bare metal, all major clouds. Engagements run discovery (free) → pilot (paid, 1–4 months) → production. [Contact sales](mailto:hello@confidential.ai).
 
 ## Confidential Inference
 
@@ -306,7 +173,7 @@ For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.m
 | DeepSeek V4-Pro | $2.50 | $5.00 |
 
 
-Additional models available on request: [founders@confidential.ai](mailto:founders@confidential.ai).
+Additional models available on request: [hello@confidential.ai](mailto:hello@confidential.ai).
 
 ## Confidential VMs
 
@@ -339,101 +206,7 @@ Base rate: $0.008 per vCPU-minute. Runners scale linearly.
 
 ## Getting Started
 
-Let us know what you need: [founders@confidential.ai](mailto:founders@confidential.ai).
-
----
-
-# Enterprise
-
-This page is dedicated to highlight how we work with large organizations and enterprises. Typically, this is for engagements with AI labs and/or infrastructure providers.
-
-We know your infrastructure is bespoke. It looks different from everyone else's. It may be difficult or impossible to change your deployment target. The stack you've built over years isn't something you're going to rip out easily for a new vendor.
-
-We built Confidential with this in mind. Our platform is a set of modular components. Every component is designed to work standalone. You can license one, a few, or all of them. They compose into a full confidential computing platform, but none of them require the others. If you already have pieces of this puzzle, we fill the gaps.
-
-See the full [component catalogue](/components.md).
-
-### Table of Contents
-
-- [How We Work Together](#how-we-work-together)
-  - [Discovery](#discovery)
-  - [Pilot](#pilot)
-  - [Production](#production)
-- [Deep Dive: What Happens During a Pilot](#deep-dive-what-happens-during-a-pilot)
-  - [Drawing the Trust Boundary](#drawing-the-trust-boundary)
-  - [Making the Stack Confidential](#making-the-stack-confidential)
-  - [Filling the Gaps](#filling-the-gaps)
-- [Get Started](#get-started)
-
-
-## How We Work Together
-
-Every enterprise engagement follows the same three phases: discovery, pilot, production.
-
-### Discovery
-
-Discovery is free and carries no obligation. We meet to understand your architecture and threat model. What does your infrastructure look like? What are you trying to protect, and from whom? Where does sensitive data flow, and which components touch it?
-
-The outcome is a gap analysis: here is your trust boundary today, here are the components required to close it, and here is what a pilot would look like.
-
-
-### Pilot
-
-The pilot is a paid engagement. The timeline varies depending on the scope but the typical range is 1-4 months. The purpose is to deploy Confidential's components on your infrastructure and get a production ready deployment. At the end, you decide whether to license our stack or walk away. No strings attached.
-
-Every pilot typically follows this sequence:
-
-- **Architectural deep dive.** We go through your stack component by component. How workloads are deployed, how traffic flows, where keys are managed, and so on. The outcome is an integration design: which Confidential's components map where, what the deployment topology looks like, and where the trust boundaries sit.
-- **Design.** We define a fully end-to-end private architecture for your workloads. If closing the trust boundary requires components that don't exist yet, we build them for you during the pilot. The outcome is a complete design with every gap accounted for.
-- **Deployment.** Components deploy in your environment running real workloads. We iterate until the trust boundary holds end-to-end. The outcome is a working deployment on your infrastructure.
-- **Testing.** We verify the system together. Attestation reports, measurement verification, certificate chain validation. Every claim we make is cryptographically verifiable. You don't take our word for it. The outcome is evidence you can evaluate internally.
-- **Decision.** You have a production-ready deployment and the evidence to back it. License the components you need, or walk away no strings attached.
-
-### Production
-
-Full deployment with ongoing support. Licensing includes the components you chose during the pilot + any extra components that were custom built. On-prem, bare metal, all major clouds.
-
-
-## Deep Dive: What Happens During a Pilot
-
-This section describes in more detail what we work on and deliver for a pilot. This is meant to give some high level overview of our process and work. First, we define a trust boundary to identify which components need to be secured. Then we make those components confidential using our stack. We also identify any bespoke components that need to be built to close the boundary and meet your requirements. Then deployment.
-
-### Drawing the Trust Boundary
-
-Every engagement starts from the same question: where does sensitive data flow, and what touches it? From there, we draw a line around everything that needs protection. Everything inside that line runs in TEEs and is cryptographically verifiable. Everything outside it never sees plaintext. We call that line the **trust boundary**.
-
-Once the boundary is drawn, we make everything inside it confidential. We also identify anything bespoke that is missing. An example of a bespoke component could be that you're using a specific container runtime and we need to implement some attestation gated policy on what containers are allowed to be spun up.
-
-Inference provides a straightforward example of a trust boundary. Your ingress router sees request data and hence is inside the boundary. Worker nodes go inside (they see queries, responses, and model state). The network between them goes inside (it carries inference traffic). The KV cache goes inside. And so on.
-
-Some components can't go inside. They run on hardware that doesn't support trusted execution environments, or they're managed services you don't control. Managed kubernetes is a typical example we run into. Two strategies keep them from becoming liabilities:
-
-**Don't depend on them for confidentiality.** An orchestrator can schedule workloads, but it can't force nodes to run unauthorized ones. Every workload launch is checked against an allow-list at the node. The orchestrator requests. The node decides.
-
-**Encrypt before exposure.** Data that passes through untrusted components is always ciphertext. Storage backends hold encrypted blobs they can't decrypt. Internal traffic is mutually authenticated with attestation-rooted certificates. The untrusted component becomes a conduit for data it can't read.
-
-### Making the Stack Confidential
-
-Once the boundary is drawn, we make each component inside it confidential. This is a repeatable process applied to every layer that handles plaintext. This is where we bring in our components and map them onto your infrastructure as needed.
-
-For each component inside the trust boundary, we do the following:
-
-1. **Encrypt the runtime.** The component must run inside a trusted execution environment on a hardened VM image. All memory is encrypted by the hardware. The hypervisor, host OS, and operators can only see ciphertext.
-2. **Measure the code.** The hardware generates a cryptographic fingerprint of exactly what's running: the firmware, kernel, and application. This fingerprint is the foundation of everything that follows. If the code changes, the fingerprint changes.
-3. **Bind identity to measurement.** The component only receives credentials if its fingerprint matches a known-good value. A compromised or modified component can't impersonate a legitimate one.
-4. **Verify before connecting.** Every other component in the system checks this identity before communicating. No component trusts another until it can verify what that component is running.
-5. **Secure the egress.** All outbound traffic is encrypted and authenticated. Nothing leaves the trust boundary destined for an unverified endpoint.
-
-We have components that cover each of these.
-
-### Filling the Gaps
-
-Your infrastructure determines which components you need. In some cases, it requires adding extra components to achieve the required trust model. If closing the trust boundary requires a component that doesn't exist yet, we design and build it during the pilot. Custom integrations, nonstandard deployment targets, internal systems with unique trust requirements. We scope these during discovery and deliver them as part of the pilot.
-
-
-## Get Started
-
-[Tell us](mailto:founders@confidential.ai) about your infrastructure and what you're trying to protect. We'll scope a pilot.
+Let us know what you need: [hello@confidential.ai](mailto:hello@confidential.ai).
 
 ---
 
@@ -477,7 +250,7 @@ We work together in person in sunny San Francisco, California. We believe in per
 
 We're well capitalized. We raised $7.5M from [Initialized Capital](https://initialized.com/), [Notable Capital](https://www.notablecap.com/), [Soma Capital](https://somacap.com/), and great angels.
 
-We're looking for relentless minds. Interested? Email us at [founders@confidential.ai](mailto:founders@confidential.ai). We'd love to hear from you.
+We're looking for relentless minds. Interested? Email us at [hello@confidential.ai](mailto:hello@confidential.ai). We'd love to hear from you.
 
 
 ## 🧱 Software Engineer
@@ -531,7 +304,7 @@ It's a bonus, not a requirement, if you have experience with any of the followin
 
 ## Outro
 
-Don't see the right opening for you? [Email us](mailto:founders@confidential.ai). We'd love to hear from you.
+Don't see the right opening for you? [Email us](mailto:hello@confidential.ai). We'd love to hear from you.
 
 Confidential is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.
 
@@ -562,7 +335,7 @@ New to confidential computing at large? Start with the [Confidential Computing P
 
 ## Need Help?
 
-Don't see what you're looking for? [Contact us](mailto:founders@confidential.ai). We're here to help.
+Don't see what you're looking for? [Contact us](mailto:hello@confidential.ai). We're here to help.
 
 ---
 
@@ -7162,7 +6935,7 @@ The full architecture is in the paper. Threat model, trust boundary, component d
 
 If you want to run private inference, protect model weights, train on sensitive data, or deploy private agents, this is the substrate.
 
-[Get in touch](mailto:founders@confidential.ai).
+[Get in touch](mailto:hello@confidential.ai).
 
 ---
 
@@ -7218,7 +6991,7 @@ OpenClaw is the first hosted agent. Qwen is the first model. More of both are co
 
 The pattern generalizes. Any agent that handles sensitive context wants the same thing: hardware-isolated execution, attested inference, credentials that never exist in plaintext outside the TEE. The Confidential stack provides all of it.
 
-If you're building agents and the trust boundary matters, the same components are available to you. [Read the docs](/docs/confidential-agents-api) or [get in touch](mailto:founders@confidential.ai).
+If you're building agents and the trust boundary matters, the same components are available to you. [Read the docs](/docs/confidential-agents-api) or [get in touch](mailto:hello@confidential.ai).
 
 ## Try it
 
@@ -7250,7 +7023,7 @@ Now the name has changed. But the approach hasn't. Same team, same goal, same he
 
 We are Confidential and we do Confidential AI.
 
-If you build with AI and care about privacy and security, [we should talk](mailto:founders@confidential.ai).
+If you build with AI and care about privacy and security, [we should talk](mailto:hello@confidential.ai).
 
 ---
 

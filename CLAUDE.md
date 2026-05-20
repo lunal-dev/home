@@ -23,7 +23,7 @@ cd website && npm run lint      # ESLint
 
 Markdown files at the repo root are the source of truth for all page content. The website reads these files at build time.
 
-- Top-level `.md` files: `README.md` (home), `components.md`, `cloud.md`, `pricing.md`, `enterprise.md`, `team.md`
+- Top-level `.md` files: `README.md` (home), `cloud.md`, `pricing.md`, `team.md`
 - `docs/` — Technical documentation, nested directories use `README.md` as index pages
 - `blog/` — Blog posts
 - `careers/` — Careers page
@@ -32,15 +32,17 @@ Markdown files at the repo root are the source of truth for all page content. Th
 
 Next.js 16 + React 19 + Tailwind 4 app that renders the markdown content.
 
-**Content pipeline:** `lib/markdown.ts` reads `.md` files from the repo root (`..` relative to `website/`), strips the GitHub HTML nav header, rewrites internal links (`.md` extensions to routes, relative to absolute), and fixes asset paths. The processed markdown string is passed to `components/markdown-page.tsx` which renders it with `react-markdown` (remark-gfm, rehype-raw, rehype-slug). Internal links become Next.js `<Link>` components.
+**Content pipeline:** `lib/markdown.ts` reads `.md` files from the repo root (`..` relative to `website/`), rewrites internal links (`.md` extensions to routes, relative to absolute), and fixes asset paths. The processed markdown string is passed to `components/markdown-page.tsx` which renders it with `react-markdown` (remark-gfm, rehype-raw, rehype-slug). Internal links become Next.js `<Link>` components.
 
 **Routing:** Each top-level page has a dedicated `app/<name>/page.tsx` that calls `getMarkdownContent("<name>.md")`. Docs use a catch-all route (`app/docs/[...slug]/page.tsx`) that walks `docs/` to resolve slugs to files or `README.md` indexes. Blog uses the same pattern.
 
-**Navigation:** `components/navbar.tsx` defines `NAV_ITEMS` (top bar: components, cloud, pricing, docs) and `BOTTOM_NAV_ITEMS` (used in mobile menu). Footer links (enterprise, blog, team, careers) live in `app/layout.tsx` alongside social icons.
+**Navigation:** `components/navbar.tsx` defines `NAV_ITEMS` (top bar: cloud, pricing, docs) and `BOTTOM_NAV_ITEMS` (used in mobile menu). Footer links (blog, team, careers) live in `app/layout.tsx` alongside social icons.
+
+**Redirects:** Removed pages with inbound link equity (e.g. `/components`, `/enterprise`) are 301-redirected to `/cloud` via `redirects()` in `next.config.ts`.
 
 ### Adding a New Page
 
-1. Create `<name>.md` at the repo root with the standard nav header
+1. Create `<name>.md` at the repo root
 2. Create `website/app/<name>/page.tsx` following the pattern of existing pages (call `getMarkdownContent`, render `MarkdownPage`)
 3. Add to `NAV_ITEMS` or `BOTTOM_NAV_ITEMS` in `website/components/navbar.tsx`
 
@@ -55,11 +57,9 @@ General TEE education lives in `docs/intro-to-tees.md`. AI-specific TEE content 
 
 ## Formatting Conventions
 
-**Markdown nav header:** Every `.md` file starts with a centered HTML nav block: Home, Components, Cloud, Pricing, Docs. Footer items (Enterprise, Blog, Team, Careers) are handled by the website layout, not the markdown nav.
+**Internal links:** Use root-relative paths (`/docs/`, `/cloud.md`). Keep link text concise (WCAG/SEO).
 
-**Internal links:** Use root-relative paths (`/docs/`, `/components.md`). Keep link text concise (WCAG/SEO).
-
-**Email links:** Use linkified text like `[Contact us](mailto:founders@confidential.ai)`, not bare addresses.
+**Email links:** Use linkified text like `[Contact us](mailto:hello@confidential.ai)`, not bare addresses.
 
 **Headings:** H1 for page title, H2 for major sections, H3 for subsections.
 

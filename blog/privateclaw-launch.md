@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # PrivateClaw launches on Confidential: E2E Private AI Agents
 
 Your OpenClaw host can read every conversation you have with your AI agent.
@@ -60,7 +50,7 @@ OpenClaw is the first hosted agent. Qwen is the first model. More of both are co
 
 The pattern generalizes. Any agent that handles sensitive context wants the same thing: hardware-isolated execution, attested inference, credentials that never exist in plaintext outside the TEE. The Confidential stack provides all of it.
 
-If you're building agents and the trust boundary matters, the same components are available to you. [Read the docs](/docs/confidential-agents-api) or [get in touch](mailto:founders@confidential.ai).
+If you're building agents and the trust boundary matters, the same components are available to you. [Read the docs](/docs/confidential-agents-api) or [get in touch](mailto:hello@confidential.ai).
 
 ## Try it
 

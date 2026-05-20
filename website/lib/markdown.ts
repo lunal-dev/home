@@ -41,9 +41,8 @@ function resolveLink(href: string, sourceDir: string): string {
 }
 
 /**
- * Reads a markdown file from the content root (the repo root),
- * strips the GitHub HTML nav header, and rewrites internal links
- * to work as website routes.
+ * Reads a markdown file from the content root (the repo root)
+ * and rewrites internal links to work as website routes.
  *
  * @param relativePath - path to the markdown file relative to CONTENT_ROOT
  */
@@ -51,14 +50,7 @@ export function getMarkdownContent(relativePath: string): string {
   const filePath = safePath(relativePath);
   let content = fs.readFileSync(filePath, "utf-8");
 
-  // The directory of this markdown file, relative to CONTENT_ROOT
   const sourceDir = path.posix.dirname(relativePath);
-
-  // Strip the GitHub nav header block
-  content = content.replace(
-    /<div align="center">\s*<nav>[\s\S]*?<\/nav>\s*<\/div>\s*(?:<br\s*\/?>)?/,
-    ""
-  );
 
   // Rewrite markdown links: [text](href) -> [text](resolved route)
   // Matches (href) in markdown link syntax, but not image src or bare URLs

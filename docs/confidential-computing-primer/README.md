@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Confidential Computing Primer
 
 This is a six-part series explaining confidential computing, the technology behind Confidential. Confidential uses Trusted Execution Environments (TEEs) to provide secure, private, verifiable AI. This series explains how TEEs work under the hood.

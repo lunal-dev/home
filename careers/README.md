@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Careers at Confidential
 
 At Confidential, we wake up every day to protect the world's data with secure, private, verifiable AI.
@@ -20,7 +10,7 @@ We work together in person in sunny San Francisco, California. We believe in per
 
 We're well capitalized. We raised $7.5M from [Initialized Capital](https://initialized.com/), [Notable Capital](https://www.notablecap.com/), [Soma Capital](https://somacap.com/), and great angels.
 
-We're looking for relentless minds. Interested? Email us at [founders@confidential.ai](mailto:founders@confidential.ai). We'd love to hear from you.
+We're looking for relentless minds. Interested? Email us at [hello@confidential.ai](mailto:hello@confidential.ai). We'd love to hear from you.
 
 
 ## 🧱 Software Engineer
@@ -74,6 +64,6 @@ It's a bonus, not a requirement, if you have experience with any of the followin
 
 ## Outro
 
-Don't see the right opening for you? [Email us](mailto:founders@confidential.ai). We'd love to hear from you.
+Don't see the right opening for you? [Email us](mailto:hello@confidential.ai). We'd love to hear from you.
 
 Confidential is an equal opportunity employer. We covet diversity and inclusiveness. We do not discriminate on race, religion, color, nationality, gender, gender identity, sexual orientation, age, or marital, veteran, or disability status.

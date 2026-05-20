@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Confidential Documentation
 
 New to Confidential? Start with our [Product APIs](#product-apis).
@@ -33,4 +23,4 @@ New to confidential computing at large? Start with the [Confidential Computing P
 
 ## Need Help?
 
-Don't see what you're looking for? [Contact us](mailto:founders@confidential.ai). We're here to help.
+Don't see what you're looking for? [Contact us](mailto:hello@confidential.ai). We're here to help.

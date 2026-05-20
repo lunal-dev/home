@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Attestable Builds
 
 Cryptographic proof of what was built and from which source. Kettle, our attestable build service, runs your build process inside a TEE and emits a signed [attestable build](/docs/attestable-builds/) linking the git commit to the final artifact — no deterministic compilers required.

@@ -40,20 +40,13 @@ export default function RootLayout({
         </main>
         <footer className="border-t border-border px-6 py-10 text-xs text-muted tracking-wide">
           <div className="max-w-[860px] mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h4 className="text-heading font-medium mb-3">Resources</h4>
-                <ul className="flex flex-col gap-2">
-                  <li><a href="/enterprise" className="text-muted hover:text-foreground transition-colors">Enterprise</a></li>
-                  <li><a href="/components" className="text-muted hover:text-foreground transition-colors">Components</a></li>
-                  <li><a href="/docs" className="text-muted hover:text-foreground transition-colors">Docs</a></li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
               <div>
                 <h4 className="text-heading font-medium mb-3">Platform</h4>
                 <ul className="flex flex-col gap-2">
                   <li><a href="/cloud" className="text-muted hover:text-foreground transition-colors">Cloud</a></li>
                   <li><a href="/pricing" className="text-muted hover:text-foreground transition-colors">Pricing</a></li>
+                  <li><a href="/docs" className="text-muted hover:text-foreground transition-colors">Docs</a></li>
                 </ul>
               </div>
               <div>

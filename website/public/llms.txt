@@ -33,18 +33,18 @@ Full benchmark details: [TEE Performance on CPUs](https://confidential.ai/blog/t
 ## How To Use Confidential
 
 - **Confidential Cloud** — hosted TEE-backed infrastructure. On-demand inference, GPU and CPU VMs, attested CI/CD builds, and a private agents API. No code changes. [Cloud](https://confidential.ai/cloud) · [Pricing](https://confidential.ai/pricing)
-- **Enterprise / Licensed** — deploy Confidential's modular software stack on your own infrastructure. Use the full platform or specific pieces. On-prem, bare metal, all major clouds. [Enterprise](https://confidential.ai/enterprise)
+- **Enterprise / Licensed** — deploy Confidential's modular software stack on your own infrastructure. Use the full platform or specific pieces. On-prem, bare metal, all major clouds. [Contact sales](mailto:hello@confidential.ai).
 
 ## Confidential Cloud Services
 
 - [Confidential Inference](https://confidential.ai/confidential-inference) — Pay-per-token private inference. OpenAI-compatible API. Models include GLM 5.1, Qwen 3.5 35B, Qwen 3.6 27B, DeepSeek V4-Flash, and DeepSeek V4-Pro. 5–7% lower token throughput vs non-confidential; negligible TTFT impact.
 - [Confidential VMs](https://confidential.ai/confidential-vms) — Dedicated TEE-backed VMs. GPU options: RTX PRO 6000 ($1.50/GPU-hr, AMD SEV-SNP), H100 ($2.00/GPU-hr, AMD SEV-SNP or Intel TDX), B200 ($5.00/GPU-hr, Intel TDX). CPU VMs: AMD SEV-SNP or Intel TDX at $0.05/core-hour + $0.012/GB-hour RAM. Single-GPU pass-through on all, protected PCIe on H100, multi-GPU pass-through with encrypted NVLink on B200.
 - [Attestable Builds (Kettle)](https://confidential.ai/attestable-builds) — Attested CI/CD inside TEEs with cryptographic provenance. SLSA Build L3. GitHub integration. Base rate $0.008/vCPU-minute; runners from $0.016/min (Standard, 2 vCPU/8 GB) to $0.128/min (XL, 16 vCPU/64 GB).
-- [Confidential Agents API](https://confidential.ai/agents-api) — Spin up a private, isolated agent environment in under 15 seconds. Each instance ships with the OpenClaw runtime and bundled OpenAI-compatible inference, accessible over SSH. Invisible to everyone, including Confidential.
+- [Confidential Agents](https://confidential.ai/confidential-agents) — Spin up a private, isolated agent environment in under 15 seconds. Each instance ships with the OpenClaw runtime and bundled OpenAI-compatible inference, accessible over SSH. Invisible to everyone, including Confidential.
 
 ## Components
 
-Confidential is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack. See [Components](https://confidential.ai/components) for the full catalogue.
+Confidential is a set of independent, composable components. Use them all or integrate individual pieces into your existing stack. For licensing, [contact sales](mailto:hello@confidential.ai).
 
 - **Attestation Service** — Generates and verifies TEE attestation reports. Trust anchor for the platform. Supports AMD SEV-SNP (VCEK/VLEK), Intel TDX, and NVIDIA CC. Continuous re-attestation with automatic certificate revocation. Public verification API and CLI.
 - **Certificate Distribution Service (CDS)** — Gates secret and certificate distribution on attestation. Workloads prove what they're running before receiving secrets. Optional certificate authority and TEE registry. Integrates with existing secret stores (e.g. HashiCorp Vault).
@@ -63,7 +63,7 @@ Confidential is a set of independent, composable components. Use them all or int
 
 ## Enterprise
 
-Confidential works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure.
+Confidential works with AI labs and infrastructure providers. Components are modular and designed for existing bespoke infrastructure. [Contact sales](mailto:hello@confidential.ai) to scope an engagement.
 
 **Three-phase engagement:**
 1. **Discovery** (free) — Understand your architecture and threat model. Outcome: gap analysis and pilot scope.
@@ -112,7 +112,7 @@ Confidential works with AI labs and infrastructure providers. Components are mod
 
 - [Team](https://confidential.ai/team): The people building Confidential.
 - [Careers](https://confidential.ai/careers): Open positions at Confidential.
-- [Email](mailto:founders@confidential.ai): founders@confidential.ai
+- [Email](mailto:hello@confidential.ai): hello@confidential.ai
 
 ## Full Documentation
 

@@ -10,14 +10,13 @@ type NavDropdown = { label: string; items: NavLink[] };
 type NavItem = NavLink | NavDropdown;
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Enterprise", href: "/enterprise" },
   {
     label: "Cloud",
     items: [
       { label: "Confidential Inference", href: "/confidential-inference" },
       { label: "Confidential VMs", href: "/confidential-vms" },
       { label: "Attestable Builds", href: "/attestable-builds" },
-      { label: "Confidential Agents API", href: "/agents-api" },
+      { label: "Confidential Agents", href: "/confidential-agents" },
     ],
   },
   { label: "Pricing", href: "/pricing" },
@@ -36,7 +35,6 @@ const COMPANY_ITEMS = [
 ];
 
 const BOTTOM_NAV_ITEMS = [
-  { label: "Components", href: "/components" },
   { label: "Blog", href: "/blog" },
   { label: "Team", href: "/team" },
   { label: "Careers", href: "/careers" },

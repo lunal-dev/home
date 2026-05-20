@@ -1,27 +1,18 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Confidential AI
 
-Confidential is the confidential computing stack. We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
+The confidential computing stack for AI. 
 
-You can run the Confidential stack on your hardware. Or host your workload on our [Confidential Cloud](/cloud.md).
+We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs). 
+
+Data and weights stay private and untamperable while being processed.
 
 ## Use Cases
 
-* **Private inference.** Guarantee data privacy during inference. Customer prompts, responses, and model interactions are never visible to you or your infrastructure.
-* **Weight protection.** Protect proprietary weights from extraction during inference or fine-tuning. Weights never leave hardware-enforced secure enclaves.
+* **Private inference.** Guarantee data privacy during inference. Customer prompts, responses, and model interactions are never visible.
+* **Confidential Agents.** Agents run inside TEEs with hardware-enforced credential isolation. Tokens and API keys never exist in plaintext outside a TEE.
+* **Weight protection.** Protect proprietary weights from extraction during inference or fine-tuning. Weights never leave hardware-enforced secure enclaves unencrypted.
 * **Private training.** Train on sensitive data and cryptographically prove exactly what data was used.
-* **Agent security.** Agents run inside TEEs with hardware-enforced credential isolation. Tokens and API keys never exist in plaintext outside a TEE.
-
 
 ## Get Started
 
-To add privacy to your existing infra, see [components](/components.md). To run workloads on our infra, see [cloud](/cloud.md). Or [contact us](mailto:founders@confidential.ai).
+Run AI workloads on our infra — see [Cloud](/cloud.md). For enterprise and on-prem deployments, or anything else, [contact us](mailto:hello@confidential.ai).

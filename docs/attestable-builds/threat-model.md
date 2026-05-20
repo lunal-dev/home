@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Threat Model and Security Boundaries
 
 This document explains what attestable builds protect against and what they don't. After reading it, you'll understand where the trust boundaries lie, what specific attacks are prevented, and which assumptions you're still making. We assume familiarity with the concepts from the previous sections: [What Are Attestable Builds?](what-are-attestable-builds.md), [How It Works](how-it-works.md), and [Provenance & Standards](provenance-standards.md).

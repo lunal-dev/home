@@ -1,13 +1,3 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Lunal Becomes Confidential
 
 Confidential AI is the most important infrastructure problem of today.
@@ -28,4 +18,4 @@ Now the name has changed. But the approach hasn't. Same team, same goal, same he
 
 We are Confidential and we do Confidential AI.
 
-If you build with AI and care about privacy and security, [we should talk](mailto:founders@confidential.ai).
+If you build with AI and care about privacy and security, [we should talk](mailto:hello@confidential.ai).

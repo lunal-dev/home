@@ -1,22 +1,12 @@
-<div align="center">
-  <nav>
-    <a href="/README.md">Home</a>&nbsp;&nbsp;
-    <a href="/components.md">Components</a>&nbsp;&nbsp;
-    <a href="/cloud.md">Cloud</a>&nbsp;&nbsp;
-    <a href="/pricing.md">Pricing</a>&nbsp;&nbsp;
-    <a href="/docs/">Docs</a>
-  </nav>
-</div>
-
 # Pricing
 
 All prices include hardware-enforced integrity, privacy and verifiability by TEEs.
 
 On-demand usage. Pay for what you use.
 
-Custom pricing is available for high-volume deals — [get in touch](mailto:founders@confidential.ai).
+Custom pricing is available for high-volume deals — [get in touch](mailto:hello@confidential.ai).
 
-For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.md).
+**Enterprise & on-prem.** Prefer to deploy on your own infrastructure? We license Confidential's modular stack to AI labs and infrastructure providers — on-prem, bare metal, all major clouds. [Contact sales](mailto:hello@confidential.ai).
 
 ## Confidential Inference
 
@@ -29,7 +19,7 @@ For enterprise licensing and on-prem deployments, see [Enterprise](/enterprise.m
 | DeepSeek V4-Pro | $2.50 | $5.00 |
 
 
-Additional models available on request: [founders@confidential.ai](mailto:founders@confidential.ai).
+Additional models available on request: [hello@confidential.ai](mailto:hello@confidential.ai).
 
 ## Confidential VMs
 
@@ -62,4 +52,4 @@ Base rate: $0.008 per vCPU-minute. Runners scale linearly.
 
 ## Getting Started
 
-Let us know what you need: [founders@confidential.ai](mailto:founders@confidential.ai).
+Let us know what you need: [hello@confidential.ai](mailto:hello@confidential.ai).
