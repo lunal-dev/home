@@ -57,7 +57,7 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Link
             href="/"
-            className="hover:opacity-70 transition-opacity"
+            className="hover:opacity-80 transition-opacity"
           >
             <img src="/assets/white-logo-mid-width.svg" alt="Confidential" height={24} style={{ height: 24, width: "auto" }} />
           </Link>
