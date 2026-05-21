@@ -24,7 +24,6 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 const DEMO_ITEMS = [
-  { label: "Simulator", href: "https://simulator.confidential.ai/" },
   { label: "Private Inference", href: "https://private-inference-demo.confidential.ai/" },
 ];
 
