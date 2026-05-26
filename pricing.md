@@ -29,7 +29,8 @@ Additional models available on request: [hello@confidential.ai](mailto:hello@con
 |---|---|---|---|
 | RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | $1.50 |
 | H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | $2.00 |
-| B200 | 192 GB HBM3e | Intel TDX | $5.00 |
+| B200 | 192 GB HBM3e | AMD SEV-SNP or Intel TDX | $5.00 |
+| B300 | 288 GB HBM3e | AMD SEV-SNP or Intel TDX | $6.00 |
 
 
 **CPU VMs** — billed per vCPU core-hour, plus per GB-hour of RAM.

@@ -60,7 +60,6 @@ export default function RootLayout({
               <div>
                 <h4 className="text-heading font-medium mb-3">Demos</h4>
                 <ul className="flex flex-col gap-2">
-                  <li><a href="https://simulator.confidential.ai/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">Simulator</a></li>
                   <li><a href="https://private-inference-demo.confidential.ai/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">Private Inference</a></li>
                 </ul>
               </div>
