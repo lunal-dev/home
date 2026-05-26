@@ -30,21 +30,22 @@ Confidential runs AI workloads (inference, training, agents) inside hardware-enc
 
 # Confidential AI
 
-Confidential is the confidential computing stack. We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs). Your data and code stay private while being processed. Your code can't be tampered with. You can cryptographically verify both claims without trusting us.
+The confidential computing stack for AI.
 
-You can run the Confidential stack on your hardware. Or host your workload on our [Confidential Cloud](/cloud.md).
+We run your AI workloads (inference, training, agents) in hardware-encrypted Trusted Execution Environments (TEEs).
+
+Data and weights stay private and untamperable while being processed.
 
 ## Use Cases
 
-* **Private inference.** Guarantee data privacy during inference. Customer prompts, responses, and model interactions are never visible to you or your infrastructure.
-* **Weight protection.** Protect proprietary weights from extraction during inference or fine-tuning. Weights never leave hardware-enforced secure enclaves.
+* **Private inference.** Guarantee data privacy during inference. Customer prompts, responses, and model interactions are never visible.
+* **Confidential Agents.** Agents run inside TEEs with hardware-enforced credential isolation. Tokens and API keys never exist in plaintext outside a TEE.
+* **Weight protection.** Protect proprietary weights from extraction during inference or fine-tuning. Weights never leave hardware-enforced secure enclaves unencrypted.
 * **Private training.** Train on sensitive data and cryptographically prove exactly what data was used.
-* **Agent security.** Agents run inside TEEs with hardware-enforced credential isolation. Tokens and API keys never exist in plaintext outside a TEE.
-
 
 ## Get Started
 
-Run workloads on our infra — see [Cloud](/cloud.md). For enterprise and on-prem deployments, or anything else, [contact us](mailto:hello@confidential.ai).
+Run AI workloads on our infra — see [Cloud](/cloud.md). For enterprise and on-prem deployments, or anything else, [contact us](mailto:hello@confidential.ai).
 
 ---
 
@@ -95,7 +96,8 @@ Dedicated VMs on our cloud, running inside TEEs. You rent the VM, we run the inf
 |---|---|---|---|
 | RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | Low cost, high performance for single GPU models |
 | H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | Training, fine-tuning, latency-sensitive inference |
-| B200 | 192 GB HBM3e | Intel TDX | Frontier training, maximum performance |
+| B200 | 192 GB HBM3e | AMD SEV-SNP or Intel TDX | Frontier training, high performance |
+| B300 | 288 GB HBM3e | AMD SEV-SNP or Intel TDX | Frontier training, maximum performance |
 
 Configurations: Three confidential computing deployment modes are available, depending on GPU and workload. Single GPU pass-through attaches one GPU to one Confidential VM and is supported on all listed GPUs. Protected PCIe lets multiple GPUs share one confidential domain over PCIe, though GPU-GPU traffic over NVLink and NVSwitch is not encrypted. This mode is supported on H100 only. Multi-GPU pass-through attaches multiple independently attested GPUs to one VM with encrypted NVLink between them. This mode is supported on B200 only.
 
@@ -183,7 +185,8 @@ Additional models available on request: [hello@confidential.ai](mailto:hello@con
 |---|---|---|---|
 | RTX PRO 6000 | 96 GB GDDR7 | AMD SEV-SNP | $1.50 |
 | H100 | 80 GB HBM3 | AMD SEV-SNP or Intel TDX | $2.00 |
-| B200 | 192 GB HBM3e | Intel TDX | $5.00 |
+| B200 | 192 GB HBM3e | AMD SEV-SNP or Intel TDX | $5.00 |
+| B300 | 288 GB HBM3e | AMD SEV-SNP or Intel TDX | $6.00 |
 
 
 **CPU VMs** — billed per vCPU core-hour, plus per GB-hour of RAM.
