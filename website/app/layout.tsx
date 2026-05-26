@@ -38,8 +38,8 @@ export default function RootLayout({
         <main className="px-4 md:px-10 py-12 w-full max-w-[860px] mx-auto flex-1">
           {children}
         </main>
-        <footer className="border-t border-border px-6 py-10 text-xs text-muted tracking-wide">
-          <div className="max-w-[860px] mx-auto">
+        <footer className="border-t border-border py-10 text-xs text-muted tracking-wide">
+          <div className="max-w-[860px] mx-auto px-4 md:px-10">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
               <div>
                 <h4 className="text-heading font-medium mb-3">Platform</h4>
