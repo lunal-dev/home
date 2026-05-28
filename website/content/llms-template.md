@@ -37,10 +37,35 @@ Full benchmark details: [TEE Performance on CPUs](https://confidential.ai/blog/t
 
 ## Confidential Cloud Services
 
-- [Confidential Inference](https://confidential.ai/confidential-inference) — Pay-per-token private inference. OpenAI-compatible API. Models include GLM 5.1, Qwen 3.5 35B, Qwen 3.6 27B, DeepSeek V4-Flash, and DeepSeek V4-Pro. 5–7% lower token throughput vs non-confidential; negligible TTFT impact.
-- [Confidential VMs](https://confidential.ai/confidential-vms) — Dedicated TEE-backed VMs. GPU options: RTX PRO 6000 ($1.50/GPU-hr, AMD SEV-SNP), H100 ($2.00/GPU-hr, AMD SEV-SNP or Intel TDX), B200 ($5.00/GPU-hr, AMD SEV-SNP or Intel TDX), B300 ($6.00/GPU-hr, AMD SEV-SNP or Intel TDX). CPU VMs: AMD SEV-SNP or Intel TDX at $0.05/core-hour + $0.012/GB-hour RAM. Single-GPU pass-through on all, protected PCIe on H100, multi-GPU pass-through with encrypted NVLink on B200.
-- [Attestable Builds (Kettle)](https://confidential.ai/attestable-builds) — Attested CI/CD inside TEEs with cryptographic provenance. SLSA Build L3. GitHub integration. Base rate $0.008/vCPU-minute; runners from $0.016/min (Standard, 2 vCPU/8 GB) to $0.128/min (XL, 16 vCPU/64 GB).
-- [Confidential Agents](https://confidential.ai/confidential-agents) — Spin up a private, isolated agent environment in under 15 seconds. Each instance ships with the OpenClaw runtime and bundled OpenAI-compatible inference, accessible over SSH. Invisible to everyone, including Confidential.
+### [Confidential Inference](https://confidential.ai/confidential-inference)
+
+Pay-per-token private inference. OpenAI-compatible API. Drop-in replacement for existing providers. 5–7% lower token throughput vs non-confidential; negligible impact on Time to First Token.
+
+Token pricing:
+
+{{inference_pricing_table}}
+
+### [Confidential VMs](https://confidential.ai/confidential-vms)
+
+Dedicated TEE-backed VMs. Single-GPU pass-through on all GPUs, protected PCIe on H100, multi-GPU pass-through with encrypted NVLink on B200 and B300.
+
+GPU VMs (per GPU-hour):
+
+{{gpu_vms_table}}
+
+CPU VMs (per core-hour + per GB-hour RAM):
+
+{{cpu_vms_table}}
+
+### [Attestable Builds (Kettle)](https://confidential.ai/attestable-builds)
+
+Attested CI/CD inside TEEs with cryptographic provenance. SLSA Build L3. GitHub integration. Base rate $0.008 per vCPU-minute; runners scale linearly.
+
+{{attestable_builds_table}}
+
+### [Confidential Agents](https://confidential.ai/confidential-agents)
+
+Spin up a private, isolated agent environment in under 15 seconds. Each instance ships with the OpenClaw runtime and a bundled OpenAI-compatible inference gateway, accessible over SSH. Invisible to everyone, including Confidential.
 
 ## Components
 
@@ -72,41 +97,11 @@ Confidential works with AI labs and infrastructure providers. Components are mod
 
 ## Documentation
 
-### Product APIs
-
-- [Confidential Agents API Reference](https://confidential.ai/docs/confidential-agents-api): REST API to provision and manage confidential agent instances inside Confidential VMs.
-
-### Whitepapers
-
-- [C8s: Confidential Kubernetes](https://confidential.ai/docs/c8s-whitepaper): Architecture of C8s, Confidential's confidential Kubernetes stack.
-- [Kettle: Attested Builds](https://confidential.ai/docs/kettle-whitepaper): Architecture of Kettle, Confidential's attested build system for verifiable software provenance.
-
-### Guides
-
-- [Introduction to TEEs](https://confidential.ai/docs/intro-to-tees): High-level introduction to Trusted Execution Environments — what they are, how they work, limitations.
-- [Confidential Computing Primer](https://confidential.ai/docs/confidential-computing-primer): Six-part deep technical series on confidential computing using AMD SEV-SNP.
-  - [01. Threat Model & Security Boundaries](https://confidential.ai/docs/confidential-computing-primer/01-threat-model)
-  - [02. Hardware Foundations](https://confidential.ai/docs/confidential-computing-primer/02-hardware-foundations)
-  - [03. Memory Integrity](https://confidential.ai/docs/confidential-computing-primer/03-memory-integrity)
-  - [04. Privilege & Communication](https://confidential.ai/docs/confidential-computing-primer/04-privilege-and-communication)
-  - [05. Attestation & Verification](https://confidential.ai/docs/confidential-computing-primer/05-attestation)
-  - [06. Measurement Strategies](https://confidential.ai/docs/confidential-computing-primer/06-measurement-strategies)
-- [Attestable Builds](https://confidential.ai/docs/attestable-builds): What attestable builds are, why they matter, and how TEEs make software verification possible.
-  - [What Are Attestable Builds?](https://confidential.ai/docs/attestable-builds/what-are-attestable-builds)
-  - [How It Works](https://confidential.ai/docs/attestable-builds/how-it-works)
-  - [Provenance & Standards](https://confidential.ai/docs/attestable-builds/provenance-standards)
-  - [Threat Model](https://confidential.ai/docs/attestable-builds/threat-model)
-- [Zero-Knowledge Proofs](https://confidential.ai/docs/zk): How Confidential uses ZK proofs to complement TEE attestations.
+{{docs_index}}
 
 ## Blog
 
-- [A New Mark for Confidential](https://confidential.ai/blog/new-logo): Sunsetting the moon — the new redacted-bracket logo and what it stands for.
-- [Announcing C8s: Confidential Kubernetes](https://confidential.ai/blog/c8s-launch): Launch post for the C8s confidential Kubernetes architecture.
-- [PrivateClaw launches on Confidential](https://confidential.ai/blog/privateclaw-launch): End-to-end private AI agents running on Confidential's stack.
-- [Lunal Becomes Confidential AI](https://confidential.ai/blog/lunal-becomes-confidential): The rebrand from Lunal to Confidential and why.
-- [Kettle: Attested Builds from a TEE](https://confidential.ai/blog/kettle-attested-builds): Open-sourcing Kettle for building and verifying attested builds.
-- [Secure AI Needs TEEs](https://confidential.ai/blog/secure-ai-needs-tees): Why TEEs are essential for AI security.
-- [TEE Performance on CPUs](https://confidential.ai/blog/tee-performance-cpus): Benchmarks showing ~1.5% overhead.
+{{blog_index}}
 
 ## Company
 
@@ -116,4 +111,4 @@ Confidential works with AI labs and infrastructure providers. Components are mod
 
 ## Full Documentation
 
-- [llms-full.txt](https://confidential.ai/llms-full.txt): Complete content from all pages — entire site in one file (7000+ lines).
+- [llms-full.txt](https://confidential.ai/llms-full.txt): Complete content from all pages — entire site in one file.
