@@ -14,4 +14,4 @@ OpenAI-compatible API. Drop-in replacement for existing inference providers. Swi
 | DeepSeek V4-Flash | General purpose, coding, long context |
 | DeepSeek V4-Pro | Reasoning, coding, long context |
 
-See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [hello@confidential.ai](mailto:hello@confidential.ai). Confidential inference vs non-confidential inference: 5-7% lower token throughput, negligible impact on Time to First Token (TTFT).
+See [inference pricing](/pricing.md#confidential-inference) for per-token rates. Model requests: [hello@confidential.ai](mailto:hello@confidential.ai). Confidential inference vs non-confidential inference: 4% lower token throughput, negligible impact on Time to First Token (TTFT).

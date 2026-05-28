@@ -39,7 +39,7 @@ Full benchmark details: [TEE Performance on CPUs](https://confidential.ai/blog/t
 
 ### [Confidential Inference](https://confidential.ai/confidential-inference)
 
-Pay-per-token private inference. OpenAI-compatible API. Drop-in replacement for existing providers. 5–7% lower token throughput vs non-confidential; negligible impact on Time to First Token.
+Pay-per-token private inference. OpenAI-compatible API. Drop-in replacement for existing providers. 4% lower token throughput vs non-confidential; negligible impact on Time to First Token.
 
 Token pricing:
 

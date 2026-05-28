@@ -42,7 +42,7 @@ PrivateClaw is what the Confidential platform is built for. The components doing
 - **Networking inside TEEs** keeps the path from VM to inference endpoint inside the encrypted boundary the whole way.
 - **Hardened VM image** is the base OS. Minimal, measured, no debugging tools in production.
 
-Overhead is negligible. Our [benchmarks](/blog/tee-performance-cpus) on SEV-SNP show ~1.3% across CPU-heavy workloads, and ~5-7% token throughput overhead for inference.
+Overhead is negligible. Our [benchmarks](/blog/tee-performance-cpus) on SEV-SNP show ~1.3% across CPU-heavy workloads, and ~4% token throughput overhead for inference.
 
 ## Why this is the start, not the end
 
