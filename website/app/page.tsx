@@ -1,13 +1,7 @@
 import { getMarkdownContent } from "@/lib/markdown";
 import { MarkdownPage } from "@/components/markdown-page";
-import { TrustPanel } from "@/components/trust-panel";
 
 export default function HomePage() {
   const content = getMarkdownContent("README.md");
-  return (
-    <>
-      <MarkdownPage content={content} />
-      <TrustPanel />
-    </>
-  );
+  return <MarkdownPage content={content} />;
 }
