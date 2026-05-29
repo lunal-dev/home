@@ -2,6 +2,8 @@
 
 Spin up a private, isolated environment for your AI agent in under 15 seconds. Each instance comes preloaded with an agent runtime and inference, ready over SSH — and is completely invisible to everyone except you, including us.
 
+[Sign up for the beta here](https://forms.gle/QkfCfAjvDcujZLzB6).
+
 ## Up and running in under 15 seconds
 
 Call the API and you're SSH'd into a ready environment in under fifteen seconds. No waiting, no manual provisioning. Treat agent environments as disposable — spin one up for every task, run it, throw it away.
@@ -16,7 +18,7 @@ Every instance launches with the OpenClaw agent runtime installed and ready to g
 
 ## Confidential inference, included
 
-Each instance can call a bundled OpenAI-compatible inference gateway that serves open-weight models from the TEE pool — your agent gets attested inference out of the box, with no separate setup. See [Confidential Inference](/cloud.md#confidential-inference) for the model lineup.
+Every instance gets attested inference out of the box — open-weight models served from the TEE pool, with no separate setup. See [Confidential Inference](/cloud.md#confidential-inference) for the model lineup.
 
 ## How it works
 
