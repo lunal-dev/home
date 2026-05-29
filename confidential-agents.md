@@ -2,7 +2,7 @@
 
 Spin up a private, isolated environment for your AI agent in under 15 seconds. Each instance comes preloaded with an agent runtime and inference, ready over SSH — and is completely invisible to everyone except you, including us.
 
-[Sign up for the beta here](https://forms.gle/QkfCfAjvDcujZLzB6)
+[Sign up for the beta here](https://forms.gle/QkfCfAjvDcujZLzB6).
 
 ## Up and running in under 15 seconds
 
