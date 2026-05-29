@@ -18,7 +18,7 @@ Every instance launches with the OpenClaw agent runtime installed and ready to g
 
 ## Confidential inference, included
 
-Each instance can call a bundled OpenAI-compatible inference gateway that serves open-weight models from the TEE pool — your agent gets attested inference out of the box, with no separate setup. See [Confidential Inference](/cloud.md#confidential-inference) for the model lineup.
+Every instance gets attested inference out of the box — open-weight models served from the TEE pool, with no separate setup. See [Confidential Inference](/cloud.md#confidential-inference) for the model lineup.
 
 ## How it works
 
