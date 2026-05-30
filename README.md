@@ -17,8 +17,8 @@ Data and weights stay private and untamperable while being processed.
 
 Run AI workloads on our infra — see [Cloud](/cloud.md). For enterprise and on-prem deployments, or anything else, [contact us](mailto:hello@confidential.ai).
 
-## Affiliations
+## Member of
 
-* Member of the [Confidential Computing Consortium](https://confidentialcomputing.io/)
-* Member of the [Linux Foundation](https://www.linuxfoundation.org/)
-* Member of [Nvidia Inception](https://www.nvidia.com/en-us/startups/)
+* [Confidential Computing Consortium](https://confidentialcomputing.io/)
+* [Linux Foundation](https://www.linuxfoundation.org/)
+* [Nvidia Inception](https://www.nvidia.com/en-us/startups/)
