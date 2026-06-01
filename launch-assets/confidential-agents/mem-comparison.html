@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root{
+    --bg:#09090b; --bg-card:#111113; --fg:#fafafa; --fg-muted:#a1a1aa;
+    --accent:#3fb950; --accent-soft:#6bd76b; --danger:#f85149; --border:#27272a;
+    --mono:'JetBrains Mono','Fira Code','DejaVu Sans Mono','Liberation Mono',monospace;
+    --sans:system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1280px;height:720px;overflow:hidden;background:var(--bg);color:var(--fg);font-family:var(--sans)}
+  .wrap{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
+        padding:54px 64px 48px;background:radial-gradient(1200px 500px at 50% -10%, #121217 0%, #09090b 60%)}
+  h1{font-size:27px;font-weight:700;letter-spacing:-.01em;text-align:center}
+  h1 .q{color:var(--fg)}
+  .sub{margin-top:10px;font-size:15px;color:var(--fg-muted);text-align:center}
+  .cards{margin-top:34px;display:flex;gap:28px;width:100%;flex:1}
+  .card{flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:11px;overflow:hidden;display:flex;flex-direction:column}
+  .bar{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--border)}
+  .bar.bad{background:rgba(248,81,73,.10)}
+  .bar.good{background:rgba(63,185,80,.10)}
+  .dots{display:flex;gap:7px}
+  .dots i{width:11px;height:11px;border-radius:50%;display:block}
+  .d1{background:#ff5f57}.d2{background:#febc2e}.d3{background:#28c840}
+  .bar .t{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.02em}
+  .bar.bad .t{color:var(--danger)}
+  .bar.good .t{color:var(--accent)}
+  .body{padding:20px 18px 16px;font-family:var(--mono);font-size:13px;line-height:1.62;flex:1}
+  .cmd{color:var(--fg-muted);margin-bottom:16px}
+  .cmd b{color:var(--fg);font-weight:600}
+  .row{white-space:pre}
+  .off{color:#52525b}
+  .pt{color:var(--fg)}
+  .hex{color:#3f6f46}
+  .badge{margin:14px 0 0;display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;
+         letter-spacing:.03em;padding:7px 12px;border-radius:7px;border:1px solid}
+  .badge.bad{color:var(--danger);border-color:rgba(248,81,73,.4);background:rgba(248,81,73,.08)}
+  .badge.good{color:var(--accent);border-color:rgba(63,185,80,.4);background:rgba(63,185,80,.08)}
+  .cap{padding:12px 16px 14px;font-family:var(--mono);font-size:12.5px;text-align:center;border-top:1px solid var(--border)}
+  .cap.bad{color:var(--danger);background:rgba(248,81,73,.05)}
+  .cap.good{color:var(--accent);background:rgba(63,185,80,.05)}
+  .foot{margin-top:22px;font-family:var(--mono);font-size:13px;color:var(--fg-muted);letter-spacing:.01em}
+  .foot b{color:var(--fg)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1><span class="q">&ldquo;Can the host read your agent&rsquo;s memory?&rdquo;</span></h1>
+    <div class="sub">A host admin&rsquo;s view of agent memory &mdash; a standard host vs. Confidential Agents</div>
+    <div class="cards">
+      <div class="card">
+        <div class="bar bad"><span class="dots"><i class="d1"></i><i class="d2"></i><i class="d3"></i></span><span class="t">Standard host &mdash; admin view</span></div>
+        <div class="body">
+          <div class="cmd">$ sudo cat /proc/agent/8423/mem | <b>hexdump -C</b></div>
+          <div class="row"><span class="off">0x7f3a00:</span> <span class="pt">Analyze our Q3 book and draft</span></div>
+          <div class="row"><span class="off">0x7f3a20:</span> <span class="pt">the rebalance. LONG NVDA 40M,</span></div>
+          <div class="row"><span class="off">0x7f3a40:</span> <span class="pt">SHORT INTC 25M. Client: Merid</span></div>
+          <div class="row"><span class="off">0x7f3a60:</span> <span class="pt">ian Capital LP. Broker key:</span></div>
+          <div class="row"><span class="off">0x7f3a80:</span> <span class="pt">sk_live_4eC39HqLyjWDarjtT1u0</span></div>
+          <div class="row"><span class="off">0x7f3aa0:</span> <span class="pt">8xZ &mdash; do not disclose.</span></div>
+          <div class="badge bad">[ ! ] PLAINTEXT &mdash; FULLY READABLE</div>
+        </div>
+        <div class="cap bad">Your prompts, data, and keys are visible to the host</div>
+      </div>
+      <div class="card">
+        <div class="bar good"><span class="dots"><i class="d1"></i><i class="d2"></i><i class="d3"></i></span><span class="t">Confidential Agents &mdash; admin view</span></div>
+        <div class="body">
+          <div class="cmd">$ sudo cat /proc/agent/8423/mem | <b>hexdump -C</b></div>
+          <div class="row"><span class="off">0x7f3a00:</span> <span class="hex">a7 2f c3 91 0e b8 44 d2 6f 1c</span></div>
+          <div class="row"><span class="off">0x7f3a20:</span> <span class="hex">f1 83 5a e6 7c 09 b2 3d 41 aa</span></div>
+          <div class="row"><span class="off">0x7f3a40:</span> <span class="hex">8e 4b d7 15 a0 63 f9 c8 2b 5e</span></div>
+          <div class="row"><span class="off">0x7f3a60:</span> <span class="hex">2c 97 e1 4a b6 d0 38 7f 19 c4</span></div>
+          <div class="row"><span class="off">0x7f3a80:</span> <span class="hex">55 c2 a9 3e 81 f4 16 db 70 9a</span></div>
+          <div class="row"><span class="off">0x7f3aa0:</span> <span class="hex">03 6d e8 72 bf 45 9a c1 d4 28</span></div>
+          <div class="badge good">[ OK ] HARDWARE-ENCRYPTED &mdash; CPU-MANAGED KEYS</div>
+        </div>
+        <div class="cap good">Encrypted in use &mdash; no one can read it. Not even us.</div>
+      </div>
+    </div>
+    <div class="foot"><b>Confidential Agents</b> &nbsp;&middot;&nbsp; verifiably private, secure agent runtime &nbsp;&middot;&nbsp; confidential.ai</div>
+  </div>
+</body>
+</html>
