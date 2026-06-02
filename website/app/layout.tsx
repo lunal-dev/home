@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "Confidential AI",
     template: "Confidential AI ･ %s",
   },
-  description: "The confidential computing stack.",
+  description: "The confidential computing stack for AI. Run AI inference, agents, & training in hardware-encrypted Trusted Execution Environments (TEEs).",
 };
 
 export default function RootLayout({
