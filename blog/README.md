@@ -2,7 +2,7 @@
 
 | Date | Post |
 |------|------|
-| 01 Jun 2026 | [Confidential Agents: Verifiably Private Agent Runtime](/blog/confidential-agents-launch.md) |
+| 02 Jun 2026 | [Confidential Agents: Verifiably Private Agent Runtime](/blog/confidential-agents-launch.md) |
 | 19 May 2026 | [A New Mark for Confidential](/blog/new-logo.md) |
 | 28 Apr 2026 | [Announcing C8s: Confidential Kubernetes](/blog/c8s-launch.md) |
 | 27 Apr 2026 | [PrivateClaw launches on Confidential: E2E Private AI Agents](/blog/privateclaw-launch.md) |
